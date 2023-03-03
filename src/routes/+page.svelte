@@ -28,8 +28,15 @@
 	<grid>
 		{#each artworks as artwork}
 			<div>
-				<div>
-					<textscroll>{artwork.title}</textscroll>
+				<item>
+					<scrolltext>
+						<content>
+							<h1>{artwork.title}</h1>
+						</content>
+						<content aria-hidden="true">
+							<h1>{artwork.title}</h1>
+						</content>
+					</scrolltext>
 					<img
 						width="50%"
 						height="50%"
@@ -38,7 +45,7 @@
 							: '/'}
 						alt={artwork.title}
 					/>
-				</div>
+				</item>
 			</div>
 		{/each}
 	</grid>
@@ -51,18 +58,43 @@
 		gap: 0.5rem;
 	}
 
-	textscroll {
-		width: 566px;
-		display: flex;
-		flex-wrap: nowrap;
-		animation: move 2s infinite linear; /* set the time to what you want of course */
+	grid item {
+		position: relative;
+		overflow: hidden;
+		display: block;
 	}
-	@keyframes move {
+
+	scrolltext {
+		--gap: 1rem;
+		position: absolute;
+		display: flex;
+		overflow: hidden;
+		user-select: none;
+		gap: var(--gap);
+	}
+
+	scrolltext content {
+		flex-shrink: 0;
+		display: flex;
+		justify-content: space-around;
+		gap: var(--gap);
+		min-width: 100%;
+		animation: scroll 15s linear infinite;
+	}
+
+	scrolltext content h1 {
+		
+	}
+	@keyframes scroll {
+		from {
+			transform: translateX(0);
+		}
 		to {
-			transform: translateX(-50%);
+			transform: translate(calc(-100% - var(--gap)));
 		}
 	}
+
 	img {
-		object-fit: cover;
+		object-fit: fill;
 	}
 </style>
