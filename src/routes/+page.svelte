@@ -3,7 +3,8 @@
 	import { onMount, onDestroy } from 'svelte'
 	import { getImageURL } from '$lib/utils/getURL'
 	import { spring } from 'svelte/motion'
-
+	import { fade } from 'svelte/transition'
+	let visibility = true
 	let mousePosition = spring(
 		{ x: 0, y: 0 },
 		{
@@ -20,33 +21,52 @@
 		})
 		artworks = artworkquery.items
 	})
+
+	let xPos = 0
+	let yPos = 0
+
+	function handleMouseMove(event) {
+		const container = event.target.getBoundingClientRect()
+		xPos = event.clientX - container.left
+		yPos = event.clientY - container.top
+	}
 </script>
 
-<div on:mousemove={(e) => mousePosition.set({ x: e.clientX, y: e.clientY })}>
-	<p>{$mousePosition.x}x, {$mousePosition.y}y</p>
+<!-- <div on:mousemove={(e) => mousePosition.set({ x: e.clientX, y: e.clientY })}>
+	<p>{$mousePosition.x}x, {$mousePosition.y}y</p> -->
+<div>
 	<h1>Welcome to SvelteKit</h1>
 	<grid>
 		{#each artworks as artwork}
-			<div>
-				<item>
-					<scrolltext>
-						<content>
+			<item on:mouseover={handleMouseMove} on:focus>
+				<!-- {#if visibility} -->
+				<!-- <scrolltext style="transform: translate({$mousePosition.x}px,{$mousePosition.y}px"> -->
+				<scrolltext>
+					<content>
+						<div>
 							<h1>{artwork.title}</h1>
-						</content>
-						<content aria-hidden="true">
+							<p>{artwork.genre} | {artwork.founding_date}</p>
+							<p>{artwork.materials}</p>
+						</div>
+					</content>
+					<content aria-hidden="true">
+						<div>
 							<h1>{artwork.title}</h1>
-						</content>
-					</scrolltext>
-					<img
-						width="50%"
-						height="50%"
-						src={artwork.front_image
-							? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
-							: '/'}
-						alt={artwork.title}
-					/>
-				</item>
-			</div>
+							<p>{artwork.genre} | {artwork.founding_date}</p>
+							<p>{artwork.materials}</p>
+						</div>
+					</content>
+				</scrolltext>
+				<!-- {/if} -->
+				<img
+					width="50%"
+					height="50%"
+					src={artwork.front_image
+						? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+						: '/'}
+					alt={artwork.title}
+				/>
+			</item>
 		{/each}
 	</grid>
 </div>
@@ -74,6 +94,7 @@
 	}
 
 	scrolltext content {
+		opacity: 0;
 		flex-shrink: 0;
 		display: flex;
 		justify-content: space-around;
@@ -81,10 +102,18 @@
 		min-width: 100%;
 		animation: scroll 15s linear infinite;
 	}
+	scrolltext content:hover {
+		opacity: 1;
+	}
 
 	scrolltext content h1 {
-		
+		margin-bottom: 0.75rem;
+		text-align: center;
 	}
+	scrolltext content p {
+		text-align: center;
+	}
+
 	@keyframes scroll {
 		from {
 			transform: translateX(0);
@@ -96,5 +125,6 @@
 
 	img {
 		object-fit: fill;
+		width: 100%;
 	}
 </style>
