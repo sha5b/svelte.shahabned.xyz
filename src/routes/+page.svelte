@@ -1,15 +1,14 @@
 <script>
-	import { currentUser, pb } from '../lib/pocketbase'
+	import { pb } from '../lib/pocketbase'
 	import { onMount, onDestroy } from 'svelte'
 	import { getImageURL } from '$lib/utils/getURL'
 	import { spring } from 'svelte/motion'
-	import { fade } from 'svelte/transition'
 	import Time from 'svelte-time'
-	let visibility = true
+
 	let mousePosition = spring(
 		{ x: 0, y: 0 },
 		{
-			stiffness: 0.1,
+			stiffness: 0.2,
 			damping: 1
 		}
 	)
@@ -23,12 +22,13 @@
 		artworks = artworkquery.items
 	})
 </script>
+
 <div>
 	<h1>Welcome to SvelteKit</h1>
 	<grid>
 		{#each artworks as artwork}
-			<item>
-				<scrolltext>
+			<item on:mousemove={(e) => mousePosition.set({ x: e.clientX, y: e.clientY })}>
+				<scrolltext style="top:{$mousePosition.y}px">
 					<content>
 						<div>
 							<h1>{artwork.title}</h1>
@@ -55,8 +55,9 @@
 					</content>
 				</scrolltext>
 				<img
-					width="50%"
-					height="50%"
+					width="100%"
+					height="100%"
+					loading="lazy"
 					src={artwork.front_image
 						? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 						: '/'}
@@ -75,12 +76,20 @@
 	}
 
 	grid item {
+		border-radius: 1rem;
 		position: relative;
 		overflow: hidden;
 		display: block;
 	}
+	grid item:hover scrolltext {
+		opacity: 1;
+	}
+	grid item:hover {
+		border-radius: 0;
+	}
 
 	scrolltext {
+		margin: auto 0;
 		opacity: 0;
 		--gap: 1rem;
 		position: absolute;
@@ -88,10 +97,6 @@
 		overflow: hidden;
 		user-select: none;
 		gap: var(--gap);
-	}
-
-	scrolltext:hover {
-		opacity: 1;
 	}
 
 	scrolltext content {
@@ -102,6 +107,8 @@
 	}
 
 	scrolltext content h1 {
+		letter-spacing: 1rem;
+		font-size: 3rem;
 		margin-bottom: 0.75rem;
 	}
 	scrolltext content p {
@@ -119,7 +126,7 @@
 	}
 
 	img {
-		object-fit: fill;
+		object-fit: cover;
 		width: 100%;
 	}
 </style>
