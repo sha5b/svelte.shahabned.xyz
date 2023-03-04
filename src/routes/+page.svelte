@@ -27,43 +27,76 @@
 	<h1>Welcome to SvelteKit</h1>
 	<grid>
 		{#each artworks as artwork}
-			<item on:mousemove={(e) => mousePosition.set({ x: e.clientX, y: e.clientY })}>
-				<scrolltext style="top:{$mousePosition.y}px">
-					<content>
+			{#if artwork.featured}
+				<item on:mousemove={(e) => mousePosition.set({ x: e.clientX, y: e.clientY })}>
+					<scrolltext style="top:{$mousePosition.y}px">
 						<div>
-							<h1>{artwork.title}</h1>
-							<p>{artwork.genre}</p>
-							<Time format="YYYY/MM/DD">{artwork.founding_date}</Time>
-							<p>{artwork.materials}</p>
+							<content>
+								<h1>{artwork.title}</h1>
+							</content>
+							<content>
+								<div>
+									<p style="font-size: 2rem">{artwork.genre}</p>
+									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+									<hr />
+									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.materials}</p>
+								</div>
+							</content>
 						</div>
-					</content>
-					<content aria-hidden="true">
+						<div aria-hidden="true">
+							<content>
+								<h1>{artwork.title}</h1>
+							</content>
+							<content>
+								<div>
+									<p style="font-size: 2rem">{artwork.genre}</p>
+									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+									<hr />
+									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.materials}</p>
+								</div>
+							</content>
+						</div>
 						<div>
-							<h1>{artwork.title}</h1>
-							<p>{artwork.genre}</p>
-							<Time format="YYYY/MM/DD">{artwork.founding_date}</Time>
-							<p>{artwork.materials}</p>
+							<content aria-hidden="true">
+								<h1>{artwork.title}</h1>
+							</content>
+							<content>
+								<div>
+									<p style="font-size: 2rem">{artwork.genre}</p>
+									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+									<hr />
+									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.materials}</p>
+								</div>
+							</content>
 						</div>
-					</content>
-					<content aria-hidden="true">
 						<div>
-							<h1>{artwork.title}</h1>
-							<p>{artwork.genre}</p>
-							<Time format="YYYY/MM/DD">{artwork.founding_date}</Time>
-							<p>{artwork.materials}</p>
+							<content aria-hidden="true">
+								<h1>{artwork.title}</h1>
+							</content>
+							<content>
+								<div>
+									<p style="font-size: 2rem">{artwork.genre}</p>
+									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+									<hr />
+									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.materials}</p>
+								</div>
+							</content>
 						</div>
-					</content>
-				</scrolltext>
-				<img
-					width="100%"
-					height="100%"
-					loading="lazy"
-					src={artwork.front_image
-						? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
-						: '/'}
-					alt={artwork.title}
-				/>
-			</item>
+					</scrolltext>
+					<div>
+						<div class="img-overlay" />
+						<img
+							width="100%"
+							height="100%"
+							loading="lazy"
+							src={artwork.front_image
+								? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+								: '/'}
+							alt={artwork.title}
+						/>
+					</div>
+				</item>
+			{/if}
 		{/each}
 	</grid>
 </div>
@@ -91,29 +124,56 @@
 	scrolltext {
 		margin: auto 0;
 		opacity: 0;
-		--gap: 1rem;
+		--gap: 5rem;
 		position: absolute;
 		display: flex;
 		overflow: hidden;
 		user-select: none;
 		gap: var(--gap);
+		z-index: 3;
+		pointer-events: none;
 	}
 
 	scrolltext content {
-		flex-shrink: 0;
 		display: flex;
 		gap: var(--gap);
 		animation: scroll 10s linear infinite;
+		width: 100%;
 	}
 
 	scrolltext content h1 {
-		letter-spacing: 1rem;
-		font-size: 3rem;
-		margin-bottom: 0.75rem;
+		color: white;
+		letter-spacing: 0.5rem;
+		font-size: 3.5rem;
+		margin-bottom: 0.5rem;
+		flex-shrink: 0;
+		white-space: nowrap;
 	}
 	scrolltext content p {
+		color: white;
+		font-size: 1rem;
+		letter-spacing: 0.25rem;
 		display: flex;
-		flex-shrink: 1;
+		line-height: 0.25rem;
+	}
+
+	img {
+		position: relative;
+		object-fit: cover;
+		width: 100%;
+		z-index: 1;
+	}
+
+	.img-overlay {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: black;
+		opacity: 0;
+		z-index: 2;
+	}
+	.img-overlay:hover {
+		opacity: 0.5;
 	}
 
 	@keyframes scroll {
@@ -123,10 +183,5 @@
 		to {
 			transform: translate(calc(-100% - var(--gap)));
 		}
-	}
-
-	img {
-		object-fit: cover;
-		width: 100%;
 	}
 </style>

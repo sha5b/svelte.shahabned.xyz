@@ -2,7 +2,7 @@
 	import Navigation from '$lib/components/Navigation.svelte'
 </script>
 
-<body>
+<body >
 	<Navigation />
 	<slot />
 </body>
@@ -12,12 +12,12 @@
 	@import url('https://fonts.googleapis.com/css?family=Outfit&display=swap');
 
 	body {
-		font-family: 'Bitter', sans-serif;
+		font-family: 'Outfit';
 		display: flex;
 	}
 	
 	h1 {
-		font-family: 'Outfit', serif;
+		font-family: 'Bitter';
 	}
 
 </style>
