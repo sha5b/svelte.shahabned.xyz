@@ -2,7 +2,7 @@
 	import Navigation from '$lib/components/Navigation.svelte'
 </script>
 
-<body >
+<body>
 	<Navigation />
 	<slot />
 </body>
@@ -16,5 +16,4 @@
 		font-family: 'Urbanist';
 		display: flex;
 	}
-
 </style>

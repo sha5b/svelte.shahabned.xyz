@@ -1,19 +1,16 @@
 <script>
-	// @ts-nocheck
 	import Time from 'svelte-time'
 	export let mousePosY
+	export let scroll
 	export let title
 	export let genre
 	export let dimensions
 	export let founding_date
 	export let medium
-
-	onMount = log()
 </script>
 
-<scrolltext style="top:{$mousePosY}px">
+<scrolltext style:transform={`translate3d(0, ${$mousePosY - scroll * -0.2}px, 0)`}>
 	<div>
-        <div>TEST</div>
 		<content>
 			<h1>{title}</h1>
 		</content>

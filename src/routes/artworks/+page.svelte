@@ -26,241 +26,252 @@
 	})
 </script>
 
-<svelte:window bind:scrollY={scroll}/>
-
+<svelte:window bind:scrollY={scroll} />
 
 <flexcontainer on:mousemove={(e) => mousePosition.set({ x: e.clientX, y: e.layerY })}>
-	<flex style:transform={`translate3d(0, ${scroll * - 0.1}px, 0)`} >
+	<flex style:transform={`translate3d(0, ${scroll * -0.1}px, 0)`}>
 		{#each artworks as artwork, i}
 			{#if i % 3 === 2}
-				<item>
-					<scrolltext style:transform={`translate3d(0, ${$mousePosition.y - (scroll * - 0.1)}px, 0)`}>
-						<div style='margin: 0; padding: 0'>
-							<content>
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 1.2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
+				<a href={`/artworks/${artwork.slug}`}>
+					<item>
+						<scrolltext
+							style:transform={`translate3d(0, ${$mousePosition.y - scroll * -0.1 - 100}px, 0)`}
+						>
+							<div style="margin: 0; padding: 0">
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 1.2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+							<div style="margin: 0; padding: 0">
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 1.2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+							<div style="margin: 0; padding: 0">
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 1.2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+							<div style="margin: 0; padding: 0">
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 1.2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+						</scrolltext>
+						<div>
+							<div class="img-overlay" />
+							<img
+								width="100%"
+								height="100%"
+								loading="lazy"
+								src={artwork.front_image
+									? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+									: '/'}
+								alt={artwork.title}
+							/>
 						</div>
-						<div style='margin: 0; padding: 0'>
-							<content>
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 1.2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
-						</div>
-						<div style='margin: 0; padding: 0'>
-							<content>
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 1.2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
-						</div>
-						<div style='margin: 0; padding: 0'>
-							<content>
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 1.2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
-						</div>
-					</scrolltext>
-					<div>
-						<div class="img-overlay" />
-						<img
-							width="100%"
-							height="100%"
-							loading="lazy"
-							src={artwork.front_image
-								? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
-								: '/'}
-							alt={artwork.title}
-						/>
-					</div>
-				</item>
+					</item>
+				</a>
 			{/if}
 		{/each}
 	</flex>
-	<flex style:transform={`translate3d(0, ${scroll * - 0.2}px, 0)`}>
+	<flex style:transform={`translate3d(0, ${scroll * -0.2}px, 0)`}>
 		{#each artworks as artwork, i}
 			{#if i % 3 === 1}
-				<item>
-					<scrolltext style:transform={`translate3d(0, ${$mousePosition.y - (scroll * - 0.2)}px, 0)`}>
-						<div style='margin: 0; padding: 0'>
-							<content>
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 1.2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
+				<a href={`/artworks/${artwork.slug}`}>
+					<item>
+						<scrolltext
+							style:transform={`translate3d(0, ${$mousePosition.y - scroll * -0.2 - 100}px, 0)`}
+						>
+							<div style="margin: 0; padding: 0">
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 1.2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+							<div style="margin: 0; padding: 0">
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 1.2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+							<div style="margin: 0; padding: 0">
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 1.2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+							<div style="margin: 0; padding: 0">
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 1.2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+						</scrolltext>
+						<div>
+							<div class="img-overlay" />
+							<img
+								width="100%"
+								height="100%"
+								loading="lazy"
+								src={artwork.front_image
+									? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+									: '/'}
+								alt={artwork.title}
+							/>
 						</div>
-						<div style='margin: 0; padding: 0'>
-							<content>
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 1.2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
-						</div>
-						<div style='margin: 0; padding: 0'>
-							<content>
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 1.2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
-						</div>
-						<div style='margin: 0; padding: 0'>
-							<content>
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 1.2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
-						</div>
-					</scrolltext>
-					<div>
-						<div class="img-overlay" />
-						<img
-							width="100%"
-							height="100%"
-							loading="lazy"
-							src={artwork.front_image
-								? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
-								: '/'}
-							alt={artwork.title}
-						/>
-					</div>
-				</item>
+					</item>
+				</a>
 			{/if}
 		{/each}
 	</flex>
-	<flex style:transform={`translate3d(0, ${scroll * - 0.3}px, 0)`}>
+	<flex style:transform={`translate3d(0, ${scroll * -0.3}px, 0)`}>
 		{#each artworks as artwork, i}
 			{#if i % 3 === 0}
-				<item>
-					<scrolltext style:transform={`translate3d(0, ${$mousePosition.y - (scroll * - 0.3)}px, 0)`}>
-						<div style='margin: 0; padding: 0'>
-							<content>
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 1.2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
-						</div>
-						<div aria-hidden="true">
-							<content>
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 1.2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
-						</div>
+				<a href={`/artworks/${artwork.slug}`}>
+					<item>
+						<scrolltext
+							style:transform={`translate3d(0, ${$mousePosition.y - scroll * -0.3 - 100}px, 0)`}
+						>
+							<div style="margin: 0; padding: 0">
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 1.2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+							<div aria-hidden="true">
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 1.2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+							<div>
+								<content aria-hidden="true">
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 1.2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+							<div>
+								<content aria-hidden="true">
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 1.2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+						</scrolltext>
 						<div>
-							<content aria-hidden="true">
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 1.2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
+							<div class="img-overlay" />
+							<img
+								width="100%"
+								height="100%"
+								loading="lazy"
+								src={artwork.front_image
+									? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+									: '/'}
+								alt={artwork.title}
+							/>
 						</div>
-						<div>
-							<content aria-hidden="true">
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 1.2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
-						</div>
-					</scrolltext>
-					<div>
-						<div class="img-overlay" />
-						<img
-							width="100%"
-							height="100%"
-							loading="lazy"
-							src={artwork.front_image
-								? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
-								: '/'}
-							alt={artwork.title}
-						/>
-					</div>
-				</item>
+					</item>
+				</a>
 			{/if}
 		{/each}
 	</flex>
@@ -269,8 +280,7 @@
 <style lang="css">
 	flexcontainer {
 		display: flex;
-        height: fit-content;
-        
+		height: fit-content;
 	}
 
 	flex {

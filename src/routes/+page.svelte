@@ -1,5 +1,5 @@
 <script>
-	import { pb } from '../lib/pocketbase'
+	import { pb } from '$lib/pocketbase'
 	import { onMount, onDestroy } from 'svelte'
 	import { getImageURL } from '$lib/utils/getURL'
 	import { spring } from 'svelte/motion'
@@ -29,165 +29,174 @@
 <svelte:window bind:scrollY={scroll} />
 
 <flexcontainer on:mousemove={(e) => mousePosition.set({ x: e.clientX, y: e.layerY })}>
-	<flex style:transform={`translate3d(0, ${scroll * -0.1}px, 0)`} >
+	<flex style:transform={`translate3d(0, ${scroll * -0.1}px, 0)`}>
 		{#each artworks as artwork, i}
 			{#if artwork.featured && i % 2 === 1}
-				<item >
-					<scrolltext style:transform={`translate3d(0, ${$mousePosition.y - (scroll * - 0.1)}px, 0)`}>
+				<a href={`/artworks/${artwork.slug}`}>
+					<item>
+						<scrolltext
+							style:transform={`translate3d(0, ${$mousePosition.y - scroll * -0.1 - 150}px, 0)`}
+						>
+							<div>
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+							<div aria-hidden="true">
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+							<div>
+								<content aria-hidden="true">
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+							<div>
+								<content aria-hidden="true">
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+						</scrolltext>
 						<div>
-							<content>
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
+							<div class="img-overlay" />
+							<img
+								width="100%"
+								height="100%"
+								loading="lazy"
+								src={artwork.front_image
+									? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+									: '/'}
+								alt={artwork.title}
+							/>
 						</div>
-						<div aria-hidden="true">
-							<content>
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
-						</div>
-						<div>
-							<content aria-hidden="true">
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
-						</div>
-						<div>
-							<content aria-hidden="true">
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
-						</div>
-					</scrolltext>
-					<div>
-						<div class="img-overlay" />
-						<img
-							width="100%"
-							height="100%"
-							loading="lazy"
-							src={artwork.front_image
-								? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
-								: '/'}
-							alt={artwork.title}
-						/>
-					</div>
-				</item>
+					</item>
+				</a>
 			{/if}
 		{/each}
 	</flex>
-	<flex style:transform={`translate3d(0, ${scroll * - 0.2}px, 0)`}>
+	<flex style:transform={`translate3d(0, ${scroll * -0.2}px, 0)`}>
 		{#each artworks as artwork, i}
 			{#if artwork.featured && i % 2 === 0}
-				<item>
-					<scrolltext style:transform={`translate3d(0, ${$mousePosition.y - (scroll * - 0.2)}px, 0)`}>
+				<a href={`/artworks/${artwork.slug}`}>
+					<item>
+						<scrolltext
+							style:transform={`translate3d(0, ${$mousePosition.y - scroll * -0.2 - 150}px, 0)`}
+						>
+							<div>
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+							<div aria-hidden="true">
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+							<div>
+								<content aria-hidden="true">
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+							<div>
+								<content aria-hidden="true">
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 2rem">{artwork.genre}</p>
+										<p>{artwork.dimensions}</p>
+										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<hr />
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+									</div>
+								</content>
+							</div>
+						</scrolltext>
 						<div>
-							<content>
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
+							<div class="img-overlay" />
+							<img
+								width="100%"
+								height="100%"
+								loading="lazy"
+								src={artwork.front_image
+									? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+									: '/'}
+								alt={artwork.title}
+							/>
 						</div>
-						<div aria-hidden="true">
-							<content>
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
-						</div>
-						<div>
-							<content aria-hidden="true">
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
-						</div>
-						<div>
-							<content aria-hidden="true">
-								<h1>{artwork.title}</h1>
-							</content>
-							<content>
-								<div>
-									<p style="font-size: 2rem">{artwork.genre}</p>
-									<p>{artwork.dimensions}</p>
-									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
-									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-								</div>
-							</content>
-						</div>
-					</scrolltext>
-					<div>
-						<div class="img-overlay" />
-						<img
-							width="100%"
-							height="100%"
-							loading="lazy"
-							src={artwork.front_image
-								? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
-								: '/'}
-							alt={artwork.title}
-						/>
-					</div>
-				</item>
+					</item>
+				</a>
 			{/if}
 		{/each}
 	</flex>
 </flexcontainer>
 
 <style lang="css">
+	a {}
 	flexcontainer {
 		position: relative;
 		display: flex;
