@@ -28,12 +28,12 @@
 
 <svelte:window bind:scrollY={scroll} />
 
-<flexcontainer on:mousemove={(e) => mousePosition.set({ x: e.clientX, y: e.clientY })}>
-	<flex style:transform={`translate3d(0, ${scroll * -0.1}px, 0)`}>
+<flexcontainer on:mousemove={(e) => mousePosition.set({ x: e.clientX, y: e.layerY })}>
+	<flex style:transform={`translate3d(0, ${scroll * -0.1}px, 0)`} >
 		{#each artworks as artwork, i}
-			{#if artwork.featured && i % 2 === 0}
-				<item>
-					<scrolltext style:transform={`translate3d(0, ${$mousePosition.y}px, 0)`}>
+			{#if artwork.featured && i % 2 === 1}
+				<item >
+					<scrolltext style:transform={`translate3d(0, ${$mousePosition.y - (scroll * - 0.1)}px, 0)`}>
 						<div>
 							<content>
 								<h1>{artwork.title}</h1>
@@ -97,8 +97,6 @@
 							width="100%"
 							height="100%"
 							loading="lazy"
-							in:fade
-							out:fade
 							src={artwork.front_image
 								? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 								: '/'}
@@ -109,11 +107,11 @@
 			{/if}
 		{/each}
 	</flex>
-	<flex style:transform={`translate3d(0, ${scroll * -0.2}px, 0)`}>
+	<flex style:transform={`translate3d(0, ${scroll * - 0.2}px, 0)`}>
 		{#each artworks as artwork, i}
-			{#if artwork.featured && i % 2 === 1}
+			{#if artwork.featured && i % 2 === 0}
 				<item>
-					<scrolltext style:transform={`translate3d(0, ${$mousePosition.y}px, 0)`}>
+					<scrolltext style:transform={`translate3d(0, ${$mousePosition.y - (scroll * - 0.2)}px, 0)`}>
 						<div>
 							<content>
 								<h1>{artwork.title}</h1>
@@ -177,8 +175,6 @@
 							width="100%"
 							height="100%"
 							loading="lazy"
-							in:fade
-							out:fade
 							src={artwork.front_image
 								? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 								: '/'}
@@ -193,37 +189,28 @@
 
 <style lang="css">
 	flexcontainer {
+		position: relative;
 		display: flex;
-		flex-shrink: 2;
-		align-items: stretch;
 		overflow: hidden;
 	}
 
 	flex {
-		height: fit-content;
 		width: 50%;
 		padding-top: 0.5rem;
 		padding-bottom: 0.5rem;
 		display: flex;
 		gap: 0.5rem;
-		flex-wrap: wrap;
 		flex-direction: column;
 	}
 
-	flex item {	
-		border-radius: 0.25rem;
-		flex: 1;
+	flex item {
 		width: 99%;
-		height: auto;
 		border-radius: 0.5rem;
 		position: relative;
 		overflow: hidden;
 		display: block;
-		transition: border 0.3s ease-in-out;
 	}
-	flex item:hover {
-		border: 1px solid black;
-	}
+
 	flex item:hover scrolltext {
 		opacity: 1;
 	}
@@ -274,6 +261,7 @@
 	}
 
 	.img-overlay {
+		border-radius: 0.25rem;
 		position: absolute;
 		width: 100%;
 		height: 100%;

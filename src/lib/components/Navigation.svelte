@@ -4,23 +4,22 @@
 
 <nav>
 	<ul>
-		<li><a href="/info">info</a></li>
+		<li><a href="/info/">info</a></li>
 		<li><a href="/">shahab</a></li>
-		<li><a href="/works">works</a></li>
+		<li><a href="/artworks/">works</a></li>
 		<li><a href="/editions">editions</a></li>
-		<li style='flex-shrink: 2'><a href="/exhibitions">exhibitions</a></li>
+		<li><a href="/exhibitions">exhibitions</a></li>
 	</ul>
 </nav>
 
 <style>
 	a {
 		color: black;
-
 		text-decoration: none;
 	}
 	nav {
 		margin: 0.5rem 0.5rem 0.5rem 0.5rem;
-		border: 2px solid black;
+		border-radius: 0.5rem;
 		height: 97.5vh;
 		position: sticky;
 		top: 0.5rem;

@@ -1,0 +1,1 @@
+<h1>Single Artwork</h1>
