@@ -4,6 +4,9 @@
 	import { getImageURL } from '$lib/utils/getURL'
 	import { spring } from 'svelte/motion'
 	import Time from 'svelte-time'
+	import { fade, scale } from 'svelte/transition'
+
+	let scroll
 
 	let mousePosition = spring(
 		{ x: 0, y: 0 },
@@ -23,13 +26,14 @@
 	})
 </script>
 
-<div>
-	<h1>Welcome to SvelteKit</h1>
-	<grid>
-		{#each artworks as artwork}
-			{#if artwork.featured}
-				<item on:mousemove={(e) => mousePosition.set({ x: e.clientX, y: e.clientY })}>
-					<scrolltext style="top:{$mousePosition.y}px">
+<svelte:window bind:scrollY={scroll} />
+
+<flexcontainer on:mousemove={(e) => mousePosition.set({ x: e.clientX, y: e.clientY })}>
+	<flex style:transform={`translate3d(0, ${scroll * -0.1}px, 0)`}>
+		{#each artworks as artwork, i}
+			{#if artwork.featured && i % 2 === 0}
+				<item>
+					<scrolltext style:transform={`translate3d(0, ${$mousePosition.y}px, 0)`}>
 						<div>
 							<content>
 								<h1>{artwork.title}</h1>
@@ -37,9 +41,10 @@
 							<content>
 								<div>
 									<p style="font-size: 2rem">{artwork.genre}</p>
+									<p>{artwork.dimensions}</p>
 									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
 									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.materials}</p>
+									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 								</div>
 							</content>
 						</div>
@@ -50,9 +55,10 @@
 							<content>
 								<div>
 									<p style="font-size: 2rem">{artwork.genre}</p>
+									<p>{artwork.dimensions}</p>
 									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
 									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.materials}</p>
+									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 								</div>
 							</content>
 						</div>
@@ -63,9 +69,10 @@
 							<content>
 								<div>
 									<p style="font-size: 2rem">{artwork.genre}</p>
+									<p>{artwork.dimensions}</p>
 									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
 									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.materials}</p>
+									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 								</div>
 							</content>
 						</div>
@@ -76,9 +83,10 @@
 							<content>
 								<div>
 									<p style="font-size: 2rem">{artwork.genre}</p>
+									<p>{artwork.dimensions}</p>
 									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
 									<hr />
-									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.materials}</p>
+									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 								</div>
 							</content>
 						</div>
@@ -89,6 +97,8 @@
 							width="100%"
 							height="100%"
 							loading="lazy"
+							in:fade
+							out:fade
 							src={artwork.front_image
 								? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 								: '/'}
@@ -98,31 +108,127 @@
 				</item>
 			{/if}
 		{/each}
-	</grid>
-</div>
+	</flex>
+	<flex style:transform={`translate3d(0, ${scroll * -0.2}px, 0)`}>
+		{#each artworks as artwork, i}
+			{#if artwork.featured && i % 2 === 1}
+				<item>
+					<scrolltext style:transform={`translate3d(0, ${$mousePosition.y}px, 0)`}>
+						<div>
+							<content>
+								<h1>{artwork.title}</h1>
+							</content>
+							<content>
+								<div>
+									<p style="font-size: 2rem">{artwork.genre}</p>
+									<p>{artwork.dimensions}</p>
+									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+									<hr />
+									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+								</div>
+							</content>
+						</div>
+						<div aria-hidden="true">
+							<content>
+								<h1>{artwork.title}</h1>
+							</content>
+							<content>
+								<div>
+									<p style="font-size: 2rem">{artwork.genre}</p>
+									<p>{artwork.dimensions}</p>
+									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+									<hr />
+									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+								</div>
+							</content>
+						</div>
+						<div>
+							<content aria-hidden="true">
+								<h1>{artwork.title}</h1>
+							</content>
+							<content>
+								<div>
+									<p style="font-size: 2rem">{artwork.genre}</p>
+									<p>{artwork.dimensions}</p>
+									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+									<hr />
+									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+								</div>
+							</content>
+						</div>
+						<div>
+							<content aria-hidden="true">
+								<h1>{artwork.title}</h1>
+							</content>
+							<content>
+								<div>
+									<p style="font-size: 2rem">{artwork.genre}</p>
+									<p>{artwork.dimensions}</p>
+									<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+									<hr />
+									<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+								</div>
+							</content>
+						</div>
+					</scrolltext>
+					<div>
+						<div class="img-overlay" />
+						<img
+							width="100%"
+							height="100%"
+							loading="lazy"
+							in:fade
+							out:fade
+							src={artwork.front_image
+								? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+								: '/'}
+							alt={artwork.title}
+						/>
+					</div>
+				</item>
+			{/if}
+		{/each}
+	</flex>
+</flexcontainer>
 
 <style lang="css">
-	grid {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 0.5rem;
+	flexcontainer {
+		display: flex;
+		flex-shrink: 2;
+		align-items: stretch;
+		overflow: hidden;
 	}
 
-	grid item {
-		border-radius: 1rem;
+	flex {
+		height: fit-content;
+		width: 50%;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		display: flex;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+		flex-direction: column;
+	}
+
+	flex item {	
+		border-radius: 0.25rem;
+		flex: 1;
+		width: 99%;
+		height: auto;
+		border-radius: 0.5rem;
 		position: relative;
 		overflow: hidden;
 		display: block;
+		transition: border 0.3s ease-in-out;
 	}
-	grid item:hover scrolltext {
+	flex item:hover {
+		border: 1px solid black;
+	}
+	flex item:hover scrolltext {
 		opacity: 1;
-	}
-	grid item:hover {
-		border-radius: 0;
 	}
 
 	scrolltext {
-		margin: auto 0;
 		opacity: 0;
 		--gap: 5rem;
 		position: absolute;
@@ -132,9 +238,11 @@
 		gap: var(--gap);
 		z-index: 3;
 		pointer-events: none;
+		transition: opacity 0.3s ease-in-out;
 	}
 
 	scrolltext content {
+		justify-content: left;
 		display: flex;
 		gap: var(--gap);
 		animation: scroll 10s linear infinite;
@@ -142,7 +250,9 @@
 	}
 
 	scrolltext content h1 {
+		font-family: 'Bitter';
 		color: white;
+		flex-basis: auto;
 		letter-spacing: 0.5rem;
 		font-size: 3.5rem;
 		margin-bottom: 0.5rem;
@@ -151,6 +261,7 @@
 	}
 	scrolltext content p {
 		color: white;
+		flex-basis: auto;
 		font-size: 1rem;
 		letter-spacing: 0.25rem;
 		display: flex;
@@ -158,8 +269,6 @@
 	}
 
 	img {
-		position: relative;
-		object-fit: cover;
 		width: 100%;
 		z-index: 1;
 	}
@@ -171,6 +280,7 @@
 		background: black;
 		opacity: 0;
 		z-index: 2;
+		transition: opacity 0.3s ease-in-out;
 	}
 	.img-overlay:hover {
 		opacity: 0.5;

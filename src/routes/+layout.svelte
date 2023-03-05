@@ -10,14 +10,11 @@
 <style global>
 	@import url('https://fonts.googleapis.com/css?family=Bitter&display=swap');
 	@import url('https://fonts.googleapis.com/css?family=Outfit&display=swap');
+	@import url('https://fonts.googleapis.com/css?family=Urbanist&display=swap');
 
 	body {
-		font-family: 'Outfit';
+		font-family: 'Urbanist';
 		display: flex;
-	}
-	
-	h1 {
-		font-family: 'Bitter';
 	}
 
 </style>

@@ -1,22 +1,46 @@
+<script>
+
+</script>
 
 <nav>
 	<ul>
-		<li>
-			<a href="/">Home</a>
-		</li>
-		<li><a href="/artworks">Artwork</a></li>
-		<li><a href="/about">About</a></li>
+		<li><a href="/info">info</a></li>
+		<li><a href="/">shahab</a></li>
+		<li><a href="/works">works</a></li>
+		<li><a href="/editions">editions</a></li>
+		<li style='flex-shrink: 2'><a href="/exhibitions">exhibitions</a></li>
 	</ul>
 </nav>
 
 <style>
-	ul {
+	a {
+		color: black;
+
+		text-decoration: none;
+	}
+	nav {
+		margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+		border: 2px solid black;
+		height: 97.5vh;
+		position: sticky;
+		top: 0.5rem;
+		width: fit-content;
 		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		align-content: space-around;
+	}
+	ul {
+		font-size: 0.75rem;
+
+		flex-direction: column-reverse;
+		gap: 3rem;
+		justify-content: flex-start;
 	}
 	li {
+		letter-spacing: 0.1rem;
+		font-family: 'Bitter';
+		font-weight: 700;
+		font-style: normal;
+		padding-left: 0;
+		padding-right: 0;
 		transform: rotate(-90deg);
 	}
 </style>
