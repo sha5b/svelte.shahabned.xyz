@@ -12,9 +12,8 @@
 
 	let artworks = []
 	onMount(async () => {
-		const artworkquery = await pb.collection('artworks').getList(1, 50, {
-			sort: 'created',
-			expand: 'user'
+		const artworkquery = await pb.collection('artworks').getList(1, 250, {
+			sort: 'founding_date',
 		})
 		artworks = artworkquery.items
 	})
@@ -28,9 +27,9 @@
 			<flex>
 				<img-wrapper>
 					<img
+						class="front-img"
 						width="100%"
 						height="100%"
-						loading="lazy"
 						src={artwork.front_image
 							? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 							: '/'}
@@ -41,44 +40,60 @@
 				<content>
 					<h1>{artwork.title}</h1>
 					<div>
-						<p style="font-size: 3rem; letter-spacing: .25rem">{artwork.genre}</p>
+						<h6>{artwork.genre}</h6>
 					</div>
 					<flex-row>
 						<div>
-							<p style="font-weight:bolder">dimensions</p>
+							<p style="font-weight:bolder; font-family: 'Bitter';">medium</p>
+							<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+						</div>
+					</flex-row>
+					<flex-row>
+						<div>
+							<p style="font-weight:bolder; font-family: 'Bitter';">dimensions</p>
 							<p>{artwork.dimensions}</p>
 						</div>
 						<div>
-							<p style="font-weight:bolder">created</p>
-							<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+							<p style="font-weight:bolder; font-family: 'Bitter';">created</p>
+							<p><Time>{artwork.founding_date}</Time></p>
 						</div>
-						<div>
-							<p style="font-weight:bolder">medium</p>
-							<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-						</div>
+
 						{#if artwork.editions}
 							<div>
-								<p style="font-weight:bolder">edition</p>
+								<p style="font-weight:bolder; font-family: 'Bitter';">edition</p>
 								<p>{artwork.editions}</p>
 							</div>
 						{/if}
-						{#if artwork.colab}
-							{#each artwork.colab as colab}
-								<div>
-									<p style="font-weight:bolder">colab</p>
-									<a href={`${colab.link}`}>{colab.name}</a>
-								</div>
-							{/each}
-						{/if}
 					</flex-row>
-					<div>
+
+					{#if artwork.colab}
+						{#each artwork.colab as colab}
+							<div>
+								<p style="font-weight:bolder; font-family: 'Bitter';">colab</p>
+								<a href={`${colab.link}`}>{colab.name}</a>
+							</div>
+						{/each}
+					{/if}
+					{#if artwork.main_image}
+						<img
+							style="padding-bottom: 5rem"
+							class="gallery-img"
+							width="100%"
+							height="100%"
+							src={artwork.main_image
+								? getImageURL(artwork.collectionId, artwork.id, artwork.main_image)
+								: '/'}
+							alt={artwork.title}
+						/>
+					{/if}
+					<p style="line-height: 2rem">
 						{artwork.synopsis}
-					</div>
+					</p>
 				</content>
 				<flex-column>
 					{#each artwork.gallery as image}
 						<img
-							loading="lazy"
+							class="galler_img"
 							src={image ? getImageURL(artwork.collectionId, artwork.id, image) : '/'}
 							alt={artwork.title}
 						/>
@@ -88,7 +103,7 @@
 				<flex-column>
 					{#each artwork.process_gallery as image}
 						<img
-							loading="lazy"
+							class="galler_img"
 							src={image ? getImageURL(artwork.collectionId, artwork.id, image) : '/'}
 							alt={artwork.title}
 						/>
@@ -108,11 +123,22 @@
 		font-size: 5rem;
 		letter-spacing: 0.75rem;
 		margin-bottom: 0.5rem;
+		line-height: 5.5rem;
+		padding-bottom: 1.5rem;
 	}
+	h6 {
+		font-family: 'Urbanist';
+		font-size: 3rem;
+		letter-spacing: 0.25rem;
+		padding-bottom: 1rem;
+		font-weight: 300;
+	}
+
 	p {
+		line-height: 0.75rem;
 		font-size: 1.3rem;
 	}
-	img {
+	.front-img {
 		object-fit: cover;
 		z-index: 1;
 		overflow: hide;
@@ -131,36 +157,34 @@
 
 	flex-column {
 		display: flex;
-		flex-shrink: 1;
+		padding-left: 2.5rem;
+		padding-right: 2.5rem;
 		flex-wrap: wrap;
-		gap: 0.25rem;
-		width: fit-content;
-		height: fit-content;
 	}
 
-	flex-column img {
-		padding-top: 0.25rem;
+	flex-column .galler_img {
+		padding: 0.25rem;
 		display: flex;
-		object-fit: cover;
 		overflow: hide;
-		width: 25%;
-		height: fit-content;
-		aspect-ratio: auto;
-
+		width: 33%;
+		flex-basis: 1;
+		flex-grow: 1;
+		flex-wrap: wrap;
+		align-self: stretch;
+		object-fit: cover;
 	}
 
 	flex-row {
-		justify-content: space-between;
 		display: flex;
+		justify-content: space-between;
 		flex-wrap: wrap;
-		line-break: auto;
-		align-items: baseline;
-		flex-direction: row;
-		align-items: flex-start;
-		gap: 5rem;
+		flex: 1;
+		height: fit-content;
+		padding-bottom: 1rem;
 	}
 
 	content {
 		padding: 2.5rem 10rem 2.5rem 10rem;
+		white-space: wrap;
 	}
 </style>

@@ -18,9 +18,8 @@
 
 	let artworks = []
 	onMount(async () => {
-		const artworkquery = await pb.collection('artworks').getList(1, 50, {
-			sort: 'created',
-			expand: 'user'
+		const artworkquery = await pb.collection('artworks').getList(1, 250, {
+			sort: 'founding_date',
 		})
 		artworks = artworkquery.items
 	})
@@ -45,7 +44,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p>{artwork.dimensions}</p>
-										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<p><Time>{artwork.founding_date}</Time></p>
 										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 									</div>
@@ -59,7 +58,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p>{artwork.dimensions}</p>
-										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<p><Time>{artwork.founding_date}</Time></p>
 										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 									</div>
@@ -73,7 +72,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p>{artwork.dimensions}</p>
-										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<p><Time>{artwork.founding_date}</Time></p>
 										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 									</div>
@@ -87,7 +86,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p>{artwork.dimensions}</p>
-										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<p><Time>{artwork.founding_date}</Time></p>
 										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 									</div>
@@ -126,7 +125,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p>{artwork.dimensions}</p>
-										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<p><Time>{artwork.founding_date}</Time></p>
 										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 									</div>
@@ -140,7 +139,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p>{artwork.dimensions}</p>
-										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<p><Time>{artwork.founding_date}</Time></p>
 										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 									</div>
@@ -154,7 +153,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p>{artwork.dimensions}</p>
-										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<p><Time>{artwork.founding_date}</Time></p>
 										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 									</div>
@@ -168,7 +167,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p>{artwork.dimensions}</p>
-										<p><Time format="YYYY/MM/DD">{artwork.founding_date}</Time></p>
+										<p><Time>{artwork.founding_date}</Time></p>
 										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 									</div>
