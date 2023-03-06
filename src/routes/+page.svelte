@@ -99,7 +99,6 @@
 							<img
 								width="100%"
 								height="100%"
-								loading="lazy"
 								src={artwork.front_image
 									? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 									: '/'}
@@ -181,7 +180,6 @@
 							<img
 								width="100%"
 								height="100%"
-								loading="lazy"
 								src={artwork.front_image
 									? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 									: '/'}

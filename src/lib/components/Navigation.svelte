@@ -18,7 +18,6 @@
 		text-decoration: none;
 	}
 	nav {
-		margin: 0.5rem 0.5rem 0.5rem 0.5rem;
 		border-radius: 0.5rem;
 		height: 97.5vh;
 		position: sticky;
@@ -27,11 +26,11 @@
 		display: flex;
 	}
 	ul {
+		margin: 1.5rem 0 0 0;
 		font-size: 0.75rem;
-
 		flex-direction: column-reverse;
 		gap: 3rem;
-		justify-content: flex-start;
+		justify-content: space-between;
 	}
 	li {
 		letter-spacing: 0.1rem;
