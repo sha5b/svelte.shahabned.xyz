@@ -181,9 +181,7 @@
 			{#if i % 3 === 0}
 				<a href={`/artworks/${artwork.slug}`}>
 					<item>
-						<scrolltext
-							style:transform={`translate3d(0, ${$mousePosition.y - 100}px, 0)`}
-						>
+						<scrolltext style:transform={`translate3d(0, ${$mousePosition.y - 100}px, 0)`}>
 							<div style="margin: 0; padding: 0">
 								<content>
 									<h1>{artwork.title}</h1>
@@ -314,8 +312,10 @@
 		color: white;
 		flex-basis: auto;
 		font-size: 2rem;
-		margin-bottom: 0.5rem;
+		margin-bottom: 0.25rem;
 		flex-shrink: 1;
+		padding-bottom: 0rem;
+		line-height: 2rem;
 	}
 	scrolltext content p {
 		color: white;

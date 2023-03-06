@@ -34,7 +34,7 @@
 				<a href={`/artworks/${artwork.slug}`}>
 					<item>
 						<scrolltext
-							style:transform={`translate3d(0, ${$mousePosition.y - scroll * -0.1 - 150}px, 0)`}
+							style:transform={`translate3d(0, ${$mousePosition.y - scroll * -0.1 - 100}px, 0)`}
 						>
 							<div>
 								<content>
@@ -107,7 +107,7 @@
 			{#if artwork.featured && i % 2 === 0}
 				<a href={`/artworks/${artwork.slug}`}>
 					<item>
-						<scrolltext style:transform={`translate3d(0, ${$mousePosition.y - 150}px, 0)`}>
+						<scrolltext style:transform={`translate3d(0, ${$mousePosition.y - 100}px, 0)`}>
 							<div>
 								<content>
 									<h1>{artwork.title}</h1>
@@ -236,6 +236,8 @@
 		font-size: 3.5rem;
 		margin-bottom: 0.25rem;
 		flex-shrink: 1;
+		padding-bottom: 0rem;
+		line-height: 4rem;
 	}
 	scrolltext content p {
 		color: white;

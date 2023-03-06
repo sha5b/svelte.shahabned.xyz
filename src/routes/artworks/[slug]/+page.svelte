@@ -111,7 +111,7 @@
 						</div>
 					{/if}
 				</content>
-				<flex-column>
+				<flex-column style='padding-bottom:10rem'>
 					{#each artwork.gallery as image}
 						<img
 							class="galler_img"
@@ -200,7 +200,7 @@
 		padding: 0.25rem;
 		display: flex;
 		overflow: hide;
-		width: 15%;
+		width: 20%;
 		flex-basis: 1;
 		flex-grow: 1;
 		flex-wrap: wrap;
