@@ -29,14 +29,14 @@
 
 <flexcontainer on:mousemove={(e) => mousePosition.set({ x: e.clientX, y: e.layerY })}>
 	<flex style:transform={`translate3d(0, ${scroll * -0.1}px, 0)`}>
-		{#each artworks as artwork, i}
+		{#each artworks as artwork, i (artwork.id)}
 			{#if artwork.featured && i % 2 === 1}
 				<a href={`/artworks/${artwork.slug}`}>
 					<item>
 						<scrolltext
 							style:transform={`translate3d(0, ${$mousePosition.y - scroll * -0.1 - 100}px, 0)`}
 						>
-							<div>
+							<div style="margin: 0; padding: 0">
 								<content>
 									<h1>{artwork.title}</h1>
 								</content>
@@ -44,7 +44,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -56,7 +56,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -68,7 +68,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -80,7 +80,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -103,12 +103,12 @@
 		{/each}
 	</flex>
 	<flex>
-		{#each artworks as artwork, i}
+		{#each artworks as artwork, i (artwork.id)}
 			{#if artwork.featured && i % 2 === 0}
 				<a href={`/artworks/${artwork.slug}`}>
 					<item>
 						<scrolltext style:transform={`translate3d(0, ${$mousePosition.y - 100}px, 0)`}>
-							<div>
+							<div style="margin: 0; padding: 0">
 								<content>
 									<h1>{artwork.title}</h1>
 								</content>
@@ -116,7 +116,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -128,7 +128,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -140,7 +140,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -152,7 +152,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<div> <p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p></div>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -232,7 +232,7 @@
 		font-family: 'Bitter';
 		color: white;
 		flex-basis: auto;
-		letter-spacing: 0.5rem;
+		letter-spacing: 0.25rem;
 		font-size: 3.5rem;
 		margin-bottom: 0.25rem;
 		flex-shrink: 1;
@@ -244,7 +244,7 @@
 		flex-basis: auto;
 		font-size: 1.2rem;
 		letter-spacing: 0.25rem;
-		line-height: 2rem;
+		line-height: 2.5rem;
 		display: flex;
 		padding-bottom: .25rem;
 		margin: 0;

@@ -12,17 +12,19 @@
 
 	let artworks = []
 	onMount(async () => {
-		const artworkquery = await pb.collection('artworks').getList(1, 250, {
-			sort: '-founding_date'
+		const artworkQuery = await pb.collection('artworks').getList(1, 250, {
+			sort: '-founding_date',
+			expand: 'exhibitions'
 		})
-		artworks = artworkquery.items
+		artworks = artworkQuery.items
+		console.log(artworks)
 	})
 </script>
 
 <svelte:window bind:innerHeight bind:innerWidth />
 
 <div style="--height: {innerHeight};--width: {innerWidth}">
-	{#each artworks as artwork, i}
+	{#each artworks as artwork, i (artwork.id)}
 		{#if artwork.slug === $page.params.slug}
 			<flex>
 				<img-wrapper>
@@ -99,19 +101,27 @@
 							<p style="font-weight:bolder; font-family: 'Bitter';">exhibited</p>
 						</div>
 					</flex-row>
-					<flex-row>
-						<div>
-							<p><Time timestamp={artwork.founding_date} /></p>
-							<p>{artwork.dimensions}</p>
-						</div>
+					<flex-row style='justify-content: flex-start; gap: 2rem'>
+						{#each artwork.expand.exhibitions as exhibition, i (exhibition.id)}
+							<div style='border-left: 1px solid black; padding: 1rem'>
+								<p>{exhibition.title}</p>
+								<p><Time timestamp={exhibition.date} /></p>
+								<a href={`${exhibition.curator_link}`}><p>{exhibition.curator_name}</p></a>
+								<a href={`${exhibition.location_link}`}><p>{exhibition.location_name}</p></a>
+							</div>
+						{/each}
 					</flex-row>
+					<flex-row style='padding-top: 2.5rem'>
 					{#if artwork.editions}
-						<div>
-							<button style="width:100%">buy edition / {artwork.editions}</button>
+						<div style='justify-cotent: flex-start'>
+							<button class="contrast" style="width:100%"
+								>buy one edition / {artwork.editions}</button
+							>
 						</div>
 					{/if}
+					</flex-row>
 				</content>
-				<flex-column style='padding-bottom:10rem'>
+				<flex-column style="padding-bottom:10rem">
 					{#each artwork.gallery as image}
 						<img
 							class="galler_img"

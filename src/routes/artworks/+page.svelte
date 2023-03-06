@@ -29,7 +29,7 @@
 
 <flexcontainer on:mousemove={(e) => mousePosition.set({ x: e.clientX, y: e.layerY })}>
 	<flex style:transform={`translate3d(0, ${scroll * -0.1}px, 0)`}>
-		{#each artworks as artwork, i}
+		{#each artworks as artwork, i (artwork.id)}
 			{#if i % 3 === 2}
 				<a href={`/artworks/${artwork.slug}`}>
 					<item>
@@ -44,7 +44,7 @@
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -56,7 +56,7 @@
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -68,7 +68,7 @@
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -80,7 +80,7 @@
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -103,7 +103,7 @@
 		{/each}
 	</flex>
 	<flex style:transform={`translate3d(0, ${scroll * -0.2}px, 0)`}>
-		{#each artworks as artwork, i}
+		{#each artworks as artwork, i (artwork.id)}
 			{#if i % 3 === 1}
 				<a href={`/artworks/${artwork.slug}`}>
 					<item>
@@ -118,7 +118,7 @@
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -130,7 +130,7 @@
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -142,7 +142,7 @@
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -154,7 +154,7 @@
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -177,7 +177,7 @@
 		{/each}
 	</flex>
 	<flex>
-		{#each artworks as artwork, i}
+		{#each artworks as artwork, i (artwork.id)}
 			{#if i % 3 === 0}
 				<a href={`/artworks/${artwork.slug}`}>
 					<item>
@@ -190,7 +190,7 @@
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -202,7 +202,7 @@
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -214,7 +214,7 @@
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -226,7 +226,7 @@
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -313,6 +313,7 @@
 		flex-basis: auto;
 		font-size: 2rem;
 		margin-bottom: 0.25rem;
+		letter-spacing: 0.2rem;
 		flex-shrink: 1;
 		padding-bottom: 0rem;
 		line-height: 2rem;
