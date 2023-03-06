@@ -9,7 +9,7 @@
 	export let medium
 </script>
 
-<scrolltext style:transform={`translate3d(0, ${$mousePosY - scroll * -0.2}px, 0)`}>
+<scrolltext style:transform={`translate3d(0, ${$mousePosY - scroll * -0.2 - 150}px, 0)`}>
 	<div>
 		<content>
 			<h1>{title}</h1>
@@ -18,7 +18,7 @@
 			<div>
 				<p style="font-size: 2rem">{genre}</p>
 				<p>{dimensions}</p>
-				<p><Time format="YYYY/MM/DD">{founding_date}</Time></p>
+				<p><Time timestamp={founding_date} /></p>
 				<hr />
 				<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{medium}</p>
 			</div>
@@ -32,7 +32,7 @@
 			<div>
 				<p style="font-size: 2rem">{genre}</p>
 				<p>{dimensions}</p>
-				<p><Time format="YYYY/MM/DD">{founding_date}</Time></p>
+				<p><Time timestamp={founding_date} /></p>
 				<hr />
 				<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{medium}</p>
 			</div>
@@ -46,7 +46,7 @@
 			<div>
 				<p style="font-size: 2rem">{genre}</p>
 				<p>{dimensions}</p>
-				<p><Time format="YYYY/MM/DD">{founding_date}</Time></p>
+				<p><Time timestamp={founding_date} /></p>
 				<hr />
 				<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{medium}</p>
 			</div>
@@ -60,7 +60,7 @@
 			<div>
 				<p style="font-size: 2rem">{genre}</p>
 				<p>{dimensions}</p>
-				<p><Time format="YYYY/MM/DD">{founding_date}</Time></p>
+				<p><Time timestamp={founding_date} /></p>
 				<hr />
 				<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{medium}</p>
 			</div>

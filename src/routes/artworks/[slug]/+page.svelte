@@ -13,7 +13,7 @@
 	let artworks = []
 	onMount(async () => {
 		const artworkquery = await pb.collection('artworks').getList(1, 250, {
-			sort: 'founding_date',
+			sort: '-founding_date'
 		})
 		artworks = artworkquery.items
 	})
@@ -30,6 +30,7 @@
 						class="front-img"
 						width="100%"
 						height="100%"
+						loading="lazy"
 						src={artwork.front_image
 							? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 							: '/'}
@@ -76,24 +77,45 @@
 					{/if}
 					{#if artwork.main_image}
 						<img
-							style="padding-bottom: 5rem"
+							style="padding-bottom: 2.5rem"
 							class="gallery-img"
 							width="100%"
 							height="100%"
+							loading="lazy"
 							src={artwork.main_image
 								? getImageURL(artwork.collectionId, artwork.id, artwork.main_image)
 								: '/'}
 							alt={artwork.title}
 						/>
 					{/if}
-					<p style="line-height: 2rem">
-						{artwork.synopsis}
-					</p>
+					{#if artwork.synopsis}
+						<p style="line-height: 2rem">
+							{artwork.synopsis}
+						</p>
+					{/if}
+
+					<flex-row>
+						<div style="padding-top:2.5rem">
+							<p style="font-weight:bolder; font-family: 'Bitter';">exhibited</p>
+						</div>
+					</flex-row>
+					<flex-row>
+						<div>
+							<p><Time timestamp={artwork.founding_date} /></p>
+							<p>{artwork.dimensions}</p>
+						</div>
+					</flex-row>
+					{#if artwork.editions}
+						<div>
+							<button style="width:100%">buy edition / {artwork.editions}</button>
+						</div>
+					{/if}
 				</content>
 				<flex-column>
 					{#each artwork.gallery as image}
 						<img
 							class="galler_img"
+							loading="lazy"
 							src={image ? getImageURL(artwork.collectionId, artwork.id, image) : '/'}
 							alt={artwork.title}
 						/>
@@ -103,7 +125,8 @@
 				<flex-column>
 					{#each artwork.process_gallery as image}
 						<img
-							class="galler_img"
+							class="process_img"
+							loading="lazy"
 							src={image ? getImageURL(artwork.collectionId, artwork.id, image) : '/'}
 							alt={artwork.title}
 						/>
@@ -167,6 +190,17 @@
 		display: flex;
 		overflow: hide;
 		width: 33%;
+		flex-basis: 1;
+		flex-grow: 1;
+		flex-wrap: wrap;
+		align-self: stretch;
+		object-fit: cover;
+	}
+	flex-column .process_img {
+		padding: 0.25rem;
+		display: flex;
+		overflow: hide;
+		width: 15%;
 		flex-basis: 1;
 		flex-grow: 1;
 		flex-wrap: wrap;

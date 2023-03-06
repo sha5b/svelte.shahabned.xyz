@@ -19,7 +19,7 @@
 	let artworks = []
 	onMount(async () => {
 		const artworkquery = await pb.collection('artworks').getList(1, 250, {
-			sort: 'founding_date',
+			sort: '-founding_date'
 		})
 		artworks = artworkquery.items
 	})
@@ -43,10 +43,8 @@
 								<content>
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
-										<p>{artwork.dimensions}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
-										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+										<p><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -57,10 +55,8 @@
 								<content>
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
-										<p>{artwork.dimensions}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
-										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+										<p><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -71,10 +67,8 @@
 								<content>
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
-										<p>{artwork.dimensions}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
-										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+										<p><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -85,10 +79,8 @@
 								<content>
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
-										<p>{artwork.dimensions}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
-										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+										<p><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -98,6 +90,7 @@
 							<img
 								width="100%"
 								height="100%"
+								loading="lazy"
 								src={artwork.front_image
 									? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 									: '/'}
@@ -109,14 +102,12 @@
 			{/if}
 		{/each}
 	</flex>
-	<flex style:transform={`translate3d(0, ${scroll * -0.2}px, 0)`}>
+	<flex>
 		{#each artworks as artwork, i}
 			{#if artwork.featured && i % 2 === 0}
 				<a href={`/artworks/${artwork.slug}`}>
 					<item>
-						<scrolltext
-							style:transform={`translate3d(0, ${$mousePosition.y - scroll * -0.2 - 150}px, 0)`}
-						>
+						<scrolltext style:transform={`translate3d(0, ${$mousePosition.y - 150}px, 0)`}>
 							<div>
 								<content>
 									<h1>{artwork.title}</h1>
@@ -124,10 +115,8 @@
 								<content>
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
-										<p>{artwork.dimensions}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
-										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+										<p><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -138,10 +127,8 @@
 								<content>
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
-										<p>{artwork.dimensions}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
-										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+										<p><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -152,10 +139,8 @@
 								<content>
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
-										<p>{artwork.dimensions}</p>
-										<p><Time timestamp={artwork.founding_date} /></p>
-										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+										<p><Time timestamp={artwork.founding_date} /></p>
 									</div>
 								</content>
 							</div>
@@ -166,10 +151,8 @@
 								<content>
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
-										<p>{artwork.dimensions}</p>
+										<div> <p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p></div>
 										<p><Time timestamp={artwork.founding_date} /></p>
-										<hr />
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 									</div>
 								</content>
 							</div>
@@ -179,6 +162,7 @@
 							<img
 								width="100%"
 								height="100%"
+								loading="lazy"
 								src={artwork.front_image
 									? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 									: '/'}
@@ -224,7 +208,7 @@
 
 	scrolltext {
 		opacity: 0;
-		--gap: 5rem;
+		--gap: 2rem;
 		position: absolute;
 		display: flex;
 		overflow: hidden;
@@ -241,6 +225,7 @@
 		gap: var(--gap);
 		animation: scroll 10s linear infinite;
 		width: 100%;
+		min-width: 500px;
 	}
 
 	scrolltext content h1 {
@@ -249,17 +234,18 @@
 		flex-basis: auto;
 		letter-spacing: 0.5rem;
 		font-size: 3.5rem;
-		margin-bottom: 0.5rem;
-		flex-shrink: 0;
-		white-space: nowrap;
+		margin-bottom: 0.25rem;
+		flex-shrink: 1;
 	}
 	scrolltext content p {
 		color: white;
 		flex-basis: auto;
-		font-size: 1rem;
+		font-size: 1.2rem;
 		letter-spacing: 0.25rem;
+		line-height: 2rem;
 		display: flex;
-		line-height: 0.25rem;
+		padding-bottom: .25rem;
+		margin: 0;
 	}
 
 	img {
@@ -278,7 +264,7 @@
 		transition: opacity 0.3s ease-in-out;
 	}
 	.img-overlay:hover {
-		opacity: 0.5;
+		opacity: 0.6;
 	}
 
 	@keyframes scroll {
