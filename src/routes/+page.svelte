@@ -44,7 +44,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p>{artwork.dimensions}</p>
-										<p><Time>{artwork.founding_date}</Time></p>
+										<p><Time timestamp={artwork.founding_date} /></p>
 										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 									</div>
@@ -58,7 +58,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p>{artwork.dimensions}</p>
-										<p><Time>{artwork.founding_date}</Time></p>
+										<p><Time timestamp={artwork.founding_date} /></p>
 										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 									</div>
@@ -72,7 +72,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p>{artwork.dimensions}</p>
-										<p><Time>{artwork.founding_date}</Time></p>
+										<p><Time timestamp={artwork.founding_date} /></p>
 										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 									</div>
@@ -86,7 +86,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p>{artwork.dimensions}</p>
-										<p><Time>{artwork.founding_date}</Time></p>
+										<p><Time timestamp={artwork.founding_date} /></p>
 										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 									</div>
@@ -125,7 +125,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p>{artwork.dimensions}</p>
-										<p><Time>{artwork.founding_date}</Time></p>
+										<p><Time timestamp={artwork.founding_date} /></p>
 										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 									</div>
@@ -139,7 +139,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p>{artwork.dimensions}</p>
-										<p><Time>{artwork.founding_date}</Time></p>
+										<p><Time timestamp={artwork.founding_date} /></p>
 										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 									</div>
@@ -153,7 +153,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p>{artwork.dimensions}</p>
-										<p><Time>{artwork.founding_date}</Time></p>
+										<p><Time timestamp={artwork.founding_date} /></p>
 										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 									</div>
@@ -167,7 +167,7 @@
 									<div>
 										<p style="font-size: 2rem">{artwork.genre}</p>
 										<p>{artwork.dimensions}</p>
-										<p><Time>{artwork.founding_date}</Time></p>
+										<p><Time timestamp={artwork.founding_date} /></p>
 										<hr />
 										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
 									</div>
@@ -193,7 +193,8 @@
 </flexcontainer>
 
 <style lang="css">
-	a {}
+	a {
+	}
 	flexcontainer {
 		position: relative;
 		display: flex;

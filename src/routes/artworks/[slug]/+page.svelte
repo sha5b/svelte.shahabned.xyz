@@ -55,7 +55,7 @@
 						</div>
 						<div>
 							<p style="font-weight:bolder; font-family: 'Bitter';">created</p>
-							<p><Time>{artwork.founding_date}</Time></p>
+							<p><Time timestamp={artwork.founding_date} /></p>
 						</div>
 
 						{#if artwork.editions}
