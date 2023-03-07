@@ -7,6 +7,7 @@
 	import { fade, scale } from 'svelte/transition'
 	import { page } from '$app/stores'
 
+	let videoPlayState = false
 	$: innerWidth = 0
 	$: innerHeight = 0
 
@@ -17,7 +18,6 @@
 			expand: 'exhibitions'
 		})
 		artworks = artworkQuery.items
-		console.log(artworks)
 	})
 </script>
 
@@ -28,16 +28,35 @@
 		{#if artwork.slug === $page.params.slug}
 			<flex>
 				<img-wrapper>
-					<img
-						class="front-img"
-						width="100%"
-						height="100%"
-						loading="lazy"
-						src={artwork.front_image
-							? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
-							: '/'}
-						alt={artwork.title}
-					/>
+					{#if artwork.front_video}
+						<video
+							style=""
+							on:mouseenter={() => (videoPlayState = false)}
+							on:mouseleave={() => (videoPlayState = true)}
+							bind:paused={videoPlayState}
+							loop
+							autoplay
+							controls
+							class="front_video"
+							poster={artwork.front_image
+								? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+								: '/'}
+							src={artwork.front_video
+								? getImageURL(artwork.collectionId, artwork.id, artwork.front_video)
+								: '/'}>
+							<track kind="captions" />
+						</video>
+					{:else}
+						<img
+							class="front-img"
+							width="100%"
+							height="100%"
+							loading="lazy"
+							src={artwork.front_image
+								? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+								: '/'}
+							alt={artwork.title} />
+					{/if}
 				</img-wrapper>
 
 				<content>
@@ -47,8 +66,8 @@
 					</div>
 					<flex-row>
 						<div>
-							<p style="font-weight:bolder; font-family: 'Bitter';">medium</p>
-							<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
+							<p style="font-weight:bolder; font-family: 'Bitter';">material</p>
+							<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
 						</div>
 					</flex-row>
 					<flex-row>
@@ -63,7 +82,7 @@
 
 						{#if artwork.editions}
 							<div>
-								<p style="font-weight:bolder; font-family: 'Bitter';">edition</p>
+								<p style="font-weight:bolder; font-family: 'Bitter';">editions</p>
 								<p>{artwork.editions}</p>
 							</div>
 						{/if}
@@ -87,8 +106,7 @@
 							src={artwork.main_image
 								? getImageURL(artwork.collectionId, artwork.id, artwork.main_image)
 								: '/'}
-							alt={artwork.title}
-						/>
+							alt={artwork.title} />
 					{/if}
 					{#if artwork.synopsis}
 						<p style="line-height: 2rem">
@@ -96,29 +114,39 @@
 						</p>
 					{/if}
 
-					<flex-row>
-						<div style="padding-top:2.5rem">
-							<p style="font-weight:bolder; font-family: 'Bitter';">exhibited</p>
-						</div>
-					</flex-row>
-					<flex-row style='justify-content: flex-start; gap: 2rem'>
-						{#each artwork.expand.exhibitions as exhibition, i (exhibition.id)}
-							<div style='border-left: 1px solid black; padding: 1rem'>
-								<p>{exhibition.title}</p>
-								<p><Time timestamp={exhibition.date} /></p>
-								<a href={`${exhibition.curator_link}`}><p>{exhibition.curator_name}</p></a>
-								<a href={`${exhibition.location_link}`}><p>{exhibition.location_name}</p></a>
+					{#if artwork.expand.exhibitions}
+						<flex-row>
+							<div style="padding-top:2.5rem">
+								<p style="font-weight:bolder; font-family: 'Bitter';">exhibited</p>
 							</div>
-						{/each}
-					</flex-row>
-					<flex-row style='padding-top: 2.5rem'>
-					{#if artwork.editions}
-						<div style='justify-cotent: flex-start'>
-							<button class="contrast" style="width:100%"
-								>buy one edition / {artwork.editions}</button
-							>
-						</div>
+						</flex-row>
+						<flex-row style="justify-content: flex-start; gap: 2rem">
+							{#each artwork.expand.exhibitions as exhibition, i (exhibition.id)}
+								<div style="border-left: 1px solid black; padding: 1rem">
+									<p>{exhibition.title}</p>
+									<p><Time timestamp={exhibition.date} /></p>
+									<a href={`${exhibition.curator_link}`}><p>{exhibition.curator_name}</p></a>
+									<a href={`${exhibition.location_link}`}><p>{exhibition.location_name}</p></a>
+								</div>
+							{/each}
+						</flex-row>
 					{/if}
+					<flex-row style="padding-top: 2.5rem">
+						{#if artwork.editions}
+							<div style="justify-cotent: flex-start">
+								{#if artwork.nft}
+									<a href={`${artwork.nft}`}
+										><button class="contrast" style="width:100%"
+											>buy nft / {artwork.editions}</button
+										></a>
+								{:else}
+									<a href="/"
+										><button class="contrast" style="width:100%"
+											>buy edition / {artwork.editions}</button
+										></a>
+								{/if}
+							</div>
+						{/if}
 					</flex-row>
 				</content>
 				<flex-column style="padding-bottom:10rem">
@@ -127,8 +155,7 @@
 							class="galler_img"
 							loading="lazy"
 							src={image ? getImageURL(artwork.collectionId, artwork.id, image) : '/'}
-							alt={artwork.title}
-						/>
+							alt={artwork.title} />
 					{/each}
 				</flex-column>
 
@@ -138,8 +165,7 @@
 							class="process_img"
 							loading="lazy"
 							src={image ? getImageURL(artwork.collectionId, artwork.id, image) : '/'}
-							alt={artwork.title}
-						/>
+							alt={artwork.title} />
 					{/each}
 				</flex-column>
 			</flex>
@@ -175,9 +201,17 @@
 		object-fit: cover;
 		z-index: 1;
 		overflow: hide;
-		width: 100vw;
+		width: 100%;
 		aspect-ratio: calc(var(--width)) / calc(var(--height) + 50);
 	}
+	.front_video {
+		object-fit: cover;
+		z-index: 1;
+		overflow: hide;
+		width: 100%;
+		aspect-ratio: calc(var(--width)) / calc(var(--height) + 50);
+	}
+
 	img-wrapper {
 		min-width: 100%;
 	}

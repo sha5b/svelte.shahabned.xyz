@@ -1,6 +1,5 @@
 <script>
 	import Navigation from '$lib/components/Navigation.svelte'
-	export const prerender = true;
 </script>
 
 <body>
@@ -17,5 +16,4 @@
 		font-family: 'Urbanist';
 		display: flex;
 	}
-
 </style>

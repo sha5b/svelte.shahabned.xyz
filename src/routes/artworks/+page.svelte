@@ -34,8 +34,7 @@
 				<a href={`/artworks/${artwork.slug}`}>
 					<item>
 						<scrolltext
-							style:transform={`translate3d(0, ${$mousePosition.y - scroll * -0.1 - 100}px, 0)`}
-						>
+							style:transform={`translate3d(0, ${$mousePosition.y - scroll * -0.1 - 100}px, 0)`}>
 							<div style="margin: 0; padding: 0">
 								<content>
 									<h1>{artwork.title}</h1>
@@ -43,8 +42,10 @@
 								<content>
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
 									</div>
 								</content>
 							</div>
@@ -55,8 +56,10 @@
 								<content>
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
 									</div>
 								</content>
 							</div>
@@ -67,8 +70,10 @@
 								<content>
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
 									</div>
 								</content>
 							</div>
@@ -79,8 +84,10 @@
 								<content>
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
 									</div>
 								</content>
 							</div>
@@ -94,8 +101,7 @@
 								src={artwork.front_image
 									? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 									: '/'}
-								alt={artwork.title}
-							/>
+								alt={artwork.title} />
 						</div>
 					</item>
 				</a>
@@ -108,8 +114,7 @@
 				<a href={`/artworks/${artwork.slug}`}>
 					<item>
 						<scrolltext
-							style:transform={`translate3d(0, ${$mousePosition.y - scroll * -0.2 - 100}px, 0)`}
-						>
+							style:transform={`translate3d(0, ${$mousePosition.y - scroll * -0.2 - 100}px, 0)`}>
 							<div style="margin: 0; padding: 0">
 								<content>
 									<h1>{artwork.title}</h1>
@@ -117,8 +122,10 @@
 								<content>
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
 									</div>
 								</content>
 							</div>
@@ -129,8 +136,10 @@
 								<content>
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
 									</div>
 								</content>
 							</div>
@@ -141,8 +150,10 @@
 								<content>
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
 									</div>
 								</content>
 							</div>
@@ -153,8 +164,10 @@
 								<content>
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
 									</div>
 								</content>
 							</div>
@@ -168,8 +181,7 @@
 								src={artwork.front_image
 									? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 									: '/'}
-								alt={artwork.title}
-							/>
+								alt={artwork.title} />
 						</div>
 					</item>
 				</a>
@@ -189,8 +201,10 @@
 								<content>
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
 									</div>
 								</content>
 							</div>
@@ -201,8 +215,10 @@
 								<content>
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
 									</div>
 								</content>
 							</div>
@@ -213,8 +229,10 @@
 								<content>
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
 									</div>
 								</content>
 							</div>
@@ -225,8 +243,10 @@
 								<content>
 									<div>
 										<p style="font-size: 1.5rem">{artwork.genre}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.medium}</p>
-										<p style="line-height: 1.5rem; letter-spacing: 0.1rem"><Time timestamp={artwork.founding_date} /></p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
 									</div>
 								</content>
 							</div>
@@ -240,8 +260,7 @@
 								src={artwork.front_image
 									? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 									: '/'}
-								alt={artwork.title}
-							/>
+								alt={artwork.title} />
 						</div>
 					</item>
 				</a>
