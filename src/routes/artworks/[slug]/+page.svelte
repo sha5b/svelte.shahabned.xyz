@@ -30,7 +30,6 @@
 				<img-wrapper>
 					{#if artwork.front_video}
 						<video
-							style=""
 							on:mouseenter={() => (videoPlayState = false)}
 							on:mouseleave={() => (videoPlayState = true)}
 							bind:paused={videoPlayState}

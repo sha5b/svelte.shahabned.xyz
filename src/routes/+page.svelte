@@ -23,6 +23,8 @@
 		})
 		artworks = artworkquery.items
 	})
+
+	let videoPlayState = false
 </script>
 
 <svelte:window bind:scrollY={scroll} />
@@ -92,12 +94,15 @@
 								</content>
 							</div>
 						</scrolltext>
-						<div>
+						<div
+							on:mouseenter={() => (videoPlayState = false)}
+							on:mouseleave={() => (videoPlayState = true)}>
 							<div class="img-overlay" />
 							{#if artwork.front_video}
 								<video
-									paused
+									bind:paused={videoPlayState}
 									muted
+									loop
 									class="front-img"
 									poster={artwork.front_image
 										? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
@@ -190,11 +195,15 @@
 							</div>
 						</scrolltext>
 
-						<div>
+						<div
+							on:mouseenter={() => (videoPlayState = false)}
+							on:mouseleave={() => (videoPlayState = true)}>
 							<div class="img-overlay" />
 							{#if artwork.front_video}
 								<video
+									bind:paused={videoPlayState}
 									muted
+									loop
 									class="front-img"
 									width="100%"
 									height="100%"
