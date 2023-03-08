@@ -15,7 +15,7 @@
 	onMount(async () => {
 		const artworkQuery = await pb.collection('artworks').getList(1, 250, {
 			sort: '-founding_date',
-			expand: 'exhibitions'
+			expand: 'exhibitions, colabs'
 		})
 		artworks = artworkQuery.items
 	})
@@ -30,9 +30,9 @@
 				<img-wrapper>
 					{#if artwork.front_video}
 						<video
-							on:mouseenter={() => (videoPlayState = false)}
-							on:mouseleave={() => (videoPlayState = true)}
-							bind:paused={videoPlayState}
+							on:mouseenter={() => (artwork.play = false)}
+							on:mouseleave={() => (artwork.play = true)}
+							bind:paused={artwork.play}
 							loop
 							autoplay
 							controls
@@ -86,12 +86,11 @@
 							</div>
 						{/if}
 					</flex-row>
-
-					{#if artwork.colab}
-						{#each artwork.colab as colab}
+					{#if artwork.expand.colabs}
+						<p style="font-weight:bolder; font-family: 'Bitter';">colab</p>
+						{#each artwork.expand.colabs as colab}
 							<div>
-								<p style="font-weight:bolder; font-family: 'Bitter';">colab</p>
-								<a href={`${colab.link}`}>{colab.name}</a>
+								<p><a href={`${colab.hp_link}`}>{colab.name}</a></p>
 							</div>
 						{/each}
 					{/if}
@@ -108,7 +107,7 @@
 							alt={artwork.title} />
 					{/if}
 					{#if artwork.synopsis}
-						<p style="line-height: 2rem">
+						<p style="line-height: 2rem; white-space: pre-wrap">
 							{artwork.synopsis}
 						</p>
 					{/if}
@@ -196,6 +195,7 @@
 		line-height: 0.75rem;
 		font-size: 1.3rem;
 	}
+
 	.front-img {
 		object-fit: cover;
 		z-index: 1;
@@ -232,7 +232,7 @@
 		padding: 0.25rem;
 		display: flex;
 		overflow: hide;
-		width: 33%;
+		width: 50%;
 		flex-basis: 1;
 		flex-grow: 1;
 		flex-wrap: wrap;

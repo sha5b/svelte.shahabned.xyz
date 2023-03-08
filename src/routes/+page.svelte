@@ -23,8 +23,6 @@
 		})
 		artworks = artworkquery.items
 	})
-
-	let videoPlayState = false
 </script>
 
 <svelte:window bind:scrollY={scroll} />
@@ -94,16 +92,14 @@
 								</content>
 							</div>
 						</scrolltext>
-						<div
-							on:mouseenter={() => (videoPlayState = false)}
-							on:mouseleave={() => (videoPlayState = true)}>
+						<div>
 							<div class="img-overlay" />
 							{#if artwork.front_video}
 								<video
-									bind:paused={videoPlayState}
+									autoplay
 									muted
 									loop
-									class="front-img"
+									class="front-video"
 									poster={artwork.front_image
 										? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 										: '/'}
@@ -113,15 +109,17 @@
 									<track kind="captions" />
 								</video>
 							{:else}
-								<img
-									class="front-img"
-									width="100%"
-									height="100%"
-									loading="lazy"
-									src={artwork.front_image
-										? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
-										: '/'}
-									alt={artwork.title} />
+								<div>
+									<img
+										class="front-img"
+										width="100%"
+										height="100%"
+										loading="lazy"
+										src={artwork.front_image
+											? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+											: '/'}
+										alt={artwork.title} />
+								</div>
 							{/if}
 						</div>
 					</item>
@@ -194,19 +192,14 @@
 								</content>
 							</div>
 						</scrolltext>
-
-						<div
-							on:mouseenter={() => (videoPlayState = false)}
-							on:mouseleave={() => (videoPlayState = true)}>
+						<div>
 							<div class="img-overlay" />
 							{#if artwork.front_video}
 								<video
-									bind:paused={videoPlayState}
+									autoplay
 									muted
 									loop
-									class="front-img"
-									width="100%"
-									height="100%"
+									class="front-video"
 									poster={artwork.front_image
 										? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 										: '/'}
@@ -216,15 +209,17 @@
 									<track kind="captions" />
 								</video>
 							{:else}
-								<img
-									class="front-img"
-									width="100%"
-									height="100%"
-									loading="lazy"
-									src={artwork.front_image
-										? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
-										: '/'}
-									alt={artwork.title} />
+								<div>
+									<img
+										class="front-img"
+										width="100%"
+										height="100%"
+										loading="lazy"
+										src={artwork.front_image
+											? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+											: '/'}
+										alt={artwork.title} />
+								</div>
 							{/if}
 						</div>
 					</item>
@@ -306,9 +301,20 @@
 		margin: 0;
 	}
 
-	img {
-		width: 100%;
+	.front-img {
+		object-fit: cover;
 		z-index: 1;
+		overflow: hide;
+		width: 100%;
+		aspect-ratio: calc(var(--width)) / calc(var(--height) + 50);
+	}
+	.front-video {
+		object-fit: cover;
+		z-index: 1;
+		overflow: hide;
+		width: 100%;
+		min-height: 750px;
+		aspect-ratio: calc(var(--width)) / calc(var(--height) + 50);
 	}
 
 	.img-overlay {

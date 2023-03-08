@@ -94,14 +94,33 @@
 						</scrolltext>
 						<div>
 							<div class="img-overlay" />
-							<img
-								width="100%"
-								height="100%"
-								loading="lazy"
-								src={artwork.front_image
-									? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
-									: '/'}
-								alt={artwork.title} />
+							{#if artwork.front_video}
+								<video
+									autoplay
+									muted
+									loop
+									class="front-video"
+									poster={artwork.front_image
+										? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+										: '/'}
+									src={artwork.front_video
+										? getImageURL(artwork.collectionId, artwork.id, artwork.front_video)
+										: '/'}>
+									<track kind="captions" />
+								</video>
+							{:else}
+								<div>
+									<img
+										class="front-img"
+										width="100%"
+										height="100%"
+										loading="lazy"
+										src={artwork.front_image
+											? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+											: '/'}
+										alt={artwork.title} />
+								</div>
+							{/if}
 						</div>
 					</item>
 				</a>
@@ -174,14 +193,33 @@
 						</scrolltext>
 						<div>
 							<div class="img-overlay" />
-							<img
-								width="100%"
-								height="100%"
-								loading="lazy"
-								src={artwork.front_image
-									? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
-									: '/'}
-								alt={artwork.title} />
+							{#if artwork.front_video}
+								<video
+									autoplay
+									muted
+									loop
+									class="front-video"
+									poster={artwork.front_image
+										? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+										: '/'}
+									src={artwork.front_video
+										? getImageURL(artwork.collectionId, artwork.id, artwork.front_video)
+										: '/'}>
+									<track kind="captions" />
+								</video>
+							{:else}
+								<div>
+									<img
+										class="front-img"
+										width="100%"
+										height="100%"
+										loading="lazy"
+										src={artwork.front_image
+											? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+											: '/'}
+										alt={artwork.title} />
+								</div>
+							{/if}
 						</div>
 					</item>
 				</a>
@@ -253,14 +291,33 @@
 						</scrolltext>
 						<div>
 							<div class="img-overlay" />
-							<img
-								width="100%"
-								height="100%"
-								loading="lazy"
-								src={artwork.front_image
-									? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
-									: '/'}
-								alt={artwork.title} />
+							{#if artwork.front_video}
+								<video
+									autoplay
+									muted
+									loop
+									class="front-video"
+									poster={artwork.front_image
+										? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+										: '/'}
+									src={artwork.front_video
+										? getImageURL(artwork.collectionId, artwork.id, artwork.front_video)
+										: '/'}>
+									<track kind="captions" />
+								</video>
+							{:else}
+								<div>
+									<img
+										class="front-img"
+										width="100%"
+										height="100%"
+										loading="lazy"
+										src={artwork.front_image
+											? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+											: '/'}
+										alt={artwork.title} />
+								</div>
+							{/if}
 						</div>
 					</item>
 				</a>
@@ -352,6 +409,22 @@
 		z-index: 1;
 	}
 
+	.front-img {
+		object-fit: cover;
+		z-index: 1;
+		overflow: hide;
+		width: 100%;
+		aspect-ratio: calc(var(--width)) / calc(var(--height) + 50);
+	}
+
+	.front-video {
+		object-fit: cover;
+		z-index: 1;
+		overflow: hide;
+		width: 100%;
+		min-height: 500px;
+		aspect-ratio: calc(var(--width)) / calc(var(--height) + 50);
+	}
 	.img-overlay {
 		position: absolute;
 		width: 100%;
