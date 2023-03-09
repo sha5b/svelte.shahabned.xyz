@@ -200,13 +200,15 @@
 		object-fit: cover;
 		z-index: 1;
 		overflow: hide;
-		width: 100%;
+		flex-grow: 1;
+		width: 100vw;
 		aspect-ratio: calc(var(--width)) / calc(var(--height) + 50);
 	}
 	.front_video {
 		object-fit: cover;
 		z-index: 1;
 		overflow: hide;
+		flex-grow: 1;
 		width: 100%;
 		aspect-ratio: calc(var(--width)) / calc(var(--height) + 50);
 	}

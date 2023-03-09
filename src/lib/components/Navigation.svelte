@@ -7,7 +7,6 @@
 		<li><a href="/">shahab</a></li>
 		<li><a href="/artworks/">works</a></li>
 		<li><a href="/editions">editions</a></li>
-		<li><a href="/exhibitions">exhibitions</a></li>
 	</ul>
 </nav>
 

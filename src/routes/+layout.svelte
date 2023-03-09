@@ -15,5 +15,6 @@
 	body {
 		font-family: 'Urbanist';
 		display: flex;
+		flex-grow: 1;
 	}
 </style>
