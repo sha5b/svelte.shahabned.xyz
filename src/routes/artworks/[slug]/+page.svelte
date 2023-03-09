@@ -129,20 +129,17 @@
 							{/each}
 						</flex-row>
 					{/if}
-					<flex-row style="padding-top: 2.5rem">
+					<flex-row style="padding-top: 2.5rem; justify-content: flex-start; gap: 5rem">
 						{#if artwork.editions}
+							<div>
+								<a href={`mailto:ned.tabulov@gmail.com?subject=acquisition for"${artwork.title}"`}
+									><button class="contrast" style="width:100%">buy edition</button></a>
+							</div>
+						{/if}
+						{#if artwork.nft}
 							<div style="justify-cotent: flex-start">
-								{#if artwork.nft}
-									<a href={`${artwork.nft}`}
-										><button class="contrast" style="width:100%"
-											>buy nft / {artwork.editions}</button
-										></a>
-								{:else}
-									<a href="/"
-										><button class="contrast" style="width:100%"
-											>buy edition / {artwork.editions}</button
-										></a>
-								{/if}
+								<a href={`${artwork.nft}`}
+									><button class="contrast" style="width:100%">buy nft</button></a>
 							</div>
 						{/if}
 					</flex-row>
