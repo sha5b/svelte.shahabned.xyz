@@ -7,14 +7,68 @@
 	<slot />
 </body>
 
-<style global>
+<style>
 	@import url('https://fonts.googleapis.com/css?family=Bitter&display=swap');
 	@import url('https://fonts.googleapis.com/css?family=Outfit&display=swap');
 	@import url('https://fonts.googleapis.com/css?family=Urbanist&display=swap');
 
 	body {
+		--main-black: #15171c;
+		--main-white: #f6f7f7;
+		--main-grey: #74818b;
+		--secondary-grey: #818484;
+		--gap: 2rem;
 		font-family: 'Urbanist';
 		display: flex;
 		flex-grow: 1;
+	}
+
+	:global(a) {
+		text-decoration: none;
+	}
+
+	:global(flexcontainer) {
+		position: relative;
+		display: flex;
+		overflow: hidden;
+	}
+
+	:global(flex item) {
+		width: 99%;
+		border-radius: 0.5rem;
+		position: relative;
+		overflow: hidden;
+		display: block;
+	}
+
+	:global(.front-img) {
+		object-fit: cover;
+		z-index: 1;
+		overflow: hide;
+		width: 100%;
+		max-height: 1000px;
+	}
+
+	:global(.front-video) {
+		object-fit: cover;
+		z-index: 1;
+		overflow: hide;
+		width: 100%;
+		min-height: 750px;
+	}
+
+	:global(.img-overlay) {
+		border-radius: 0.25rem;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: black;
+		opacity: 0;
+		z-index: 2;
+		transition: opacity 0.3s ease-in-out;
+	}
+
+	:global(.img-overlay:hover) {
+		opacity: 0.6;
 	}
 </style>

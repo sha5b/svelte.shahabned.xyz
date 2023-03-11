@@ -333,32 +333,13 @@
 </flexcontainer>
 
 <style lang="css">
-	flexcontainer {
-		display: flex;
-		height: fit-content;
-	}
-
 	flex {
-		height: fit-content;
 		width: 50%;
 		padding-top: 0.5rem;
 		padding-bottom: 0.5rem;
 		display: flex;
 		gap: 0.5rem;
-		flex-wrap: wrap;
 		flex-direction: column;
-	}
-
-	flex item {
-		border-radius: 0.25rem;
-		flex: 1;
-		width: 98%;
-		height: auto;
-		border-radius: 0.5rem;
-		position: relative;
-		overflow: hidden;
-		display: block;
-		transition: border 0.3s ease-in-out;
 	}
 	flex item:hover scrolltext {
 		opacity: 1;
@@ -409,41 +390,6 @@
 		padding: 0;
 		margin: 0;
 	}
-
-	img {
-		width: 100%;
-		z-index: 1;
-	}
-
-	.front-img {
-		object-fit: cover;
-		z-index: 1;
-		overflow: hide;
-		width: 100%;
-		aspect-ratio: calc(var(--width)) / calc(var(--height) + 50);
-	}
-
-	.front-video {
-		object-fit: cover;
-		z-index: 1;
-		overflow: hide;
-		width: 100%;
-		min-height: 500px;
-		aspect-ratio: calc(var(--width)) / calc(var(--height) + 50);
-	}
-	.img-overlay {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		background: black;
-		opacity: 0;
-		z-index: 2;
-		transition: opacity 0.3s ease-in-out;
-	}
-	.img-overlay:hover {
-		opacity: 0.6;
-	}
-
 	@keyframes scroll {
 		from {
 			transform: translateX(0);

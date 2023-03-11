@@ -36,7 +36,7 @@
 							loop
 							autoplay
 							controls
-							class="front_video"
+							class="featured-video"
 							poster={artwork.front_image
 								? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 								: '/'}
@@ -47,7 +47,7 @@
 						</video>
 					{:else}
 						<img
-							class="front-img"
+							class="featured-img"
 							width="100%"
 							height="100%"
 							loading="lazy"
@@ -169,9 +169,6 @@
 </div>
 
 <style lang="css">
-	a {
-	}
-
 	h1 {
 		font-family: 'Bitter';
 		font-size: 5rem;
@@ -193,7 +190,7 @@
 		font-size: 1.3rem;
 	}
 
-	.front-img {
+	.featured-img {
 		object-fit: cover;
 		z-index: 1;
 		overflow: hide;
@@ -201,7 +198,7 @@
 		width: 100vw;
 		aspect-ratio: calc(var(--width)) / calc(var(--height) + 50);
 	}
-	.front_video {
+	.featured-video {
 		object-fit: cover;
 		z-index: 1;
 		overflow: hide;
@@ -215,11 +212,13 @@
 	}
 
 	flex {
-		justify-content: center;
+		width: 100%;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
 		display: flex;
+		gap: 0.5rem;
 		flex-direction: column;
 	}
-
 	flex-column {
 		display: flex;
 		padding-left: 2.5rem;

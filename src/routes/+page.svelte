@@ -236,12 +236,6 @@
 </flexcontainer>
 
 <style lang="css">
-	flexcontainer {
-		position: relative;
-		display: flex;
-		overflow: hidden;
-	}
-
 	flex {
 		width: 50%;
 		padding-top: 0.5rem;
@@ -250,22 +244,12 @@
 		gap: 0.5rem;
 		flex-direction: column;
 	}
-
-	flex item {
-		width: 99%;
-		border-radius: 0.5rem;
-		position: relative;
-		overflow: hidden;
-		display: block;
-	}
-
 	flex item:hover scrolltext {
 		opacity: 1;
 	}
 
 	scrolltext {
 		opacity: 0;
-		--gap: 2rem;
 		position: absolute;
 		display: flex;
 		overflow: hidden;
@@ -287,7 +271,7 @@
 
 	scrolltext content h1 {
 		font-family: 'Bitter';
-		color: white;
+		color: var(--main-white);
 		flex-basis: auto;
 		letter-spacing: 0.25rem;
 		font-size: 3.5rem;
@@ -297,7 +281,7 @@
 		line-height: 4rem;
 	}
 	scrolltext content p {
-		color: white;
+		color: var(--main-white);
 		flex-basis: auto;
 		font-size: 1.2rem;
 		letter-spacing: 0.25rem;
@@ -328,7 +312,7 @@
 		position: absolute;
 		width: 100%;
 		height: 100%;
-		background: black;
+		background: var(--main-black);
 		opacity: 0;
 		z-index: 2;
 		transition: opacity 0.3s ease-in-out;
