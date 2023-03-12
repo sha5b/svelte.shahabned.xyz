@@ -413,6 +413,7 @@
 		line-height: 2rem;
 	}
 	scrolltext content p {
+		text-align: left;
 		color: white;
 		flex-basis: auto;
 		font-size: 1rem;

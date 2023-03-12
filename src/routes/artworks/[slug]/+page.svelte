@@ -1,4 +1,3 @@
-
 <script>
 	// @ts-nocheck
 	import { pb } from '$lib/pocketbase'
@@ -8,6 +7,7 @@
 	import Time from 'svelte-time'
 	import { fade, scale } from 'svelte/transition'
 	import { page } from '$app/stores'
+	import sanitizeHtml from 'sanitize-html'
 
 	let videoPlayState = false
 	$: innerWidth = 0
@@ -63,7 +63,7 @@
 				<content>
 					<h1>{artwork.title}</h1>
 					<div>
-						<h6>{artwork.genre}</h6>
+						<h3>{artwork.genre}</h3>
 					</div>
 					<flex-row>
 						<div>
@@ -109,11 +109,10 @@
 							alt={artwork.title} />
 					{/if}
 					{#if artwork.synopsis}
-						<p style="line-height: 2rem; white-space: pre-wrap">
-							{artwork.synopsis}
-						</p>
+						<div>
+							{@html sanitizeHtml(artwork.synopsis)}
+						</div>
 					{/if}
-
 					{#if artwork.expand.exhibitions}
 						<flex-row>
 							<div style="padding-top:2.5rem">
@@ -134,7 +133,8 @@
 					<flex-row style="padding-top: 2.5rem; justify-content: flex-start; gap: 5rem">
 						{#if artwork.editions}
 							<div>
-								<a href={`mailto:ned.tabulov@gmail.com?subject=acquisition for"${artwork.title}"`}
+								<a
+									href={`mailto:ned.tabulov@gmail.com?subject=acquisition for"${artwork.title}" from ...${artwork.collectionName}/${artwork.slug}`}
 									><button class="contrast" style="width:100%">buy edition</button></a>
 							</div>
 						{/if}
@@ -179,7 +179,7 @@
 		line-height: 5.5rem;
 		padding-bottom: 1.5rem;
 	}
-	h6 {
+	h3 {
 		font-family: 'Urbanist';
 		font-size: 3rem;
 		letter-spacing: 0.25rem;

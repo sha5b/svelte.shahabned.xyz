@@ -23,6 +23,49 @@
 		flex-grow: 1;
 	}
 
+	:global(h1) {
+		font-family: 'Bitter';
+		font-size: 5rem;
+		letter-spacing: 0.75rem;
+		margin-bottom: 0.5rem;
+		line-height: 5.5rem;
+		padding-bottom: 1.5rem;
+	}
+
+	:global(h2) {
+		font-size: 4rem;
+		letter-spacing: 0.25rem;
+		padding-bottom: 1rem;
+		font-weight: 300;
+	}
+	:global(h3) {
+		font-family: 'Urbanist';
+		font-size: 3rem;
+		letter-spacing: 0.25rem;
+		padding-bottom: 1rem;
+		font-weight: 300;
+	}
+	:global(h4) {
+		font-family: 'Urbanist';
+		font-size: 2rem;
+		letter-spacing: 0.25rem;
+		padding-bottom: 1rem;
+		font-weight: 300;
+	}
+	:global(h5) {
+		font-size: 1.5rem;
+		letter-spacing: 0.25rem;
+		padding-bottom: 1rem;
+		font-weight: 300;
+	}
+
+	:global(p) {
+		text-align: justify;
+		line-height: 2rem;
+		white-space: pre-wrap;
+		font-size: 1.3rem;
+	}
+
 	:global(a) {
 		text-decoration: none;
 	}
