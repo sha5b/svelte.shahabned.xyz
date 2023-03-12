@@ -43,6 +43,7 @@
 						<flex-row>
 							<p>{exhibition.title}</p>
 							<p><Time timestamp={exhibition.date} /></p>
+							<button href={`${exhibition.location_link}`} />
 						</flex-row>
 						<flex-row>
 							<p>

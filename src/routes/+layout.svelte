@@ -2,26 +2,37 @@
 	import Navigation from '$lib/components/Navigation.svelte'
 </script>
 
-<body>
+<main>
 	<Navigation />
 	<slot />
-</body>
+</main>
 
 <style>
 	@import url('https://fonts.googleapis.com/css?family=Bitter&display=swap');
 	@import url('https://fonts.googleapis.com/css?family=Outfit&display=swap');
 	@import url('https://fonts.googleapis.com/css?family=Urbanist&display=swap');
 
-	body {
+	:root {
 		--main-black: #15171c;
 		--main-white: #f6f7f7;
 		--main-grey: #74818b;
 		--secondary-grey: #818484;
 		--gap: 2rem;
 		font-family: 'Urbanist';
-		display: flex;
 		width: 100%;
 		background-color: var(--main-white);
+	}
+
+	:root::-webkit-scrollbar {
+		width: 0.25rem;
+	}
+
+	:root::-webkit-scrollbar-track {
+		background: var(--main-grey);
+	}
+
+	:root::-webkit-scrollbar-thumb {
+		background: var(--main-black);
 	}
 
 	:global(h1) {
@@ -72,6 +83,7 @@
 	}
 
 	:global(flexcontainer) {
+		padding-left: 5rem;
 		position: relative;
 		overflow: hidden;
 		display: flex;

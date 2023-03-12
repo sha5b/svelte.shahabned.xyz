@@ -25,7 +25,7 @@
 
 <svelte:window bind:innerHeight bind:innerWidth />
 
-<div style="--height: {innerHeight};--width: {innerWidth}">
+<flexcontainer style="--height: {innerHeight};--width: {innerWidth}">
 	{#each artworks as artwork, i (artwork.id)}
 		{#if artwork.slug === $page.params.slug}
 			<flex>
@@ -168,7 +168,7 @@
 			</flex>
 		{/if}
 	{/each}
-</div>
+</flexcontainer>
 
 <style lang="css">
 	h1 {
@@ -261,7 +261,7 @@
 	}
 
 	content {
-		padding: 2.5rem 10rem 2.5rem 10rem;
+		padding: 2.5rem 10rem 2.5rem 5rem;
 		white-space: wrap;
 	}
 </style>

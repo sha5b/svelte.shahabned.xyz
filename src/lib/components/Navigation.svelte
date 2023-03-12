@@ -2,14 +2,15 @@
 	export let navTitel = 'shahab'
 </script>
 
-<nav>
-	<ul>
-		<li><a href="/info/">info</a></li>
-		<li><a href="/">{navTitel}</a></li>
-		<li><a href="/artworks/">art</a></li>
-		<li><a href="/editions">editions</a></li>
-	</ul>
-</nav>
+<div>
+	<nav>
+		<item><a href="/info/">info</a></item>
+		<item><a href="/">{navTitel}</a></item>
+		<item><a href="/artworks/">art</a></item>
+		<item><a href="/editions">editions</a></item>
+		<item><a href="/">back</a></item>
+	</nav>
+</div>
 
 <style>
 	a {
@@ -17,27 +18,27 @@
 		text-decoration: none;
 	}
 	nav {
-		border-radius: 0.5rem;
-		height: 97.5vh;
-		position: sticky;
-		top: 0.5rem;
-		width: fit-content;
 		display: flex;
+		width: 5rem;
+		height: 100vh;
+		position: fixed;
+		z-index: 4;
+		flex-direction: column;
 	}
-	ul {
-		margin: 1.5rem 0 0 0;
-		font-size: 0.75rem;
-		flex-direction: column-reverse;
-		gap: 3rem;
-		justify-content: space-between;
+	nav item {
+		rotate: -90deg;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		width: 100;
+		height: 5rem;
 	}
-	li {
-		letter-spacing: 0.1rem;
-		font-family: 'Bitter';
-		font-weight: 700;
-		font-style: normal;
-		padding-left: 0;
-		padding-right: 0;
-		transform: rotate(-90deg);
+
+	nav item:last-child {
+		margin-top: auto;
+		rotate: 0deg;
 	}
 </style>
