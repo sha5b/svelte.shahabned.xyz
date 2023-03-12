@@ -19,7 +19,7 @@
 		--secondary-grey: #818484;
 		--gap: 2rem;
 		font-family: 'Urbanist';
-		display: inline-block;
+		display: flex;
 		width: 100%;
 		background-color: var(--main-white);
 	}
