@@ -363,7 +363,7 @@
 		padding-top: 0.5rem;
 		padding-bottom: 0.5rem;
 		display: flex;
-		gap: 0.5rem;
+		gap: 0.25rem;
 		flex-direction: column;
 	}
 	flex item:hover scrolltext {

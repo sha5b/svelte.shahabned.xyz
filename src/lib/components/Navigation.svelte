@@ -6,7 +6,7 @@
 	<ul>
 		<li><a href="/info/">info</a></li>
 		<li><a href="/">{navTitel}</a></li>
-		<li><a href="/artworks/">works</a></li>
+		<li><a href="/artworks/">art</a></li>
 		<li><a href="/editions">editions</a></li>
 	</ul>
 </nav>

@@ -60,11 +60,6 @@
 		artColTwo = sliceAndJoinArray(artworks, columns)[1]
 		artColThree = sliceAndJoinArray(artworks, columns)[2]
 	})
-
-	$: console.log(artColOne)
-	$: console.log(artColTwo)
-	$: console.log(artColThree)
-	$: console.log()
 </script>
 
 <svelte:window bind:scrollY={scroll} />
@@ -371,10 +366,10 @@
 <style lang="css">
 	flex {
 		width: 50%;
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
 		display: flex;
-		gap: 0.5rem;
+		gap: 0.25rem;
 		flex-direction: column;
 	}
 	flex item:hover scrolltext {
