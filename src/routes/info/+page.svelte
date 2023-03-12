@@ -9,8 +9,6 @@
 	import { page } from '$app/stores'
 
 	let exhibitions = []
-	$: innerWidth = 0
-	$: innerHeight = 0
 
 	let artworks = []
 	onMount(async () => {
@@ -22,12 +20,12 @@
 	})
 </script>
 
-<svelte:window bind:innerHeight bind:innerWidth />
-
-<div style="--height: {innerHeight};--width: {innerWidth}">
+<flexcontainer>
 	<flex>
 		<content>
-			<flex-row><h1>shahab nedaei</h1></flex-row>
+			<div>
+				<flex-row><h1>shahab nedaei</h1></flex-row>
+			</div>
 			<flex-row style="justify-content: flex-start; gap: 2rem">
 				<div>
 					<h3>statement</h3>
@@ -37,69 +35,54 @@
 			<flex-row style="justify-content: flex-start; gap: 2rem">
 				<div>
 					<p>insta and shit</p>
-					<p>{exhibition.title}</p>
-					<p><Time timestamp={exhibition.date} /></p>
-					<a href={`${exhibition.curator_link}`}><p>{exhibition.curator_name}</p></a>
-					<a href={`${exhibition.location_link}`}><p>{exhibition.location_name}</p></a>
 				</div>
 			</flex-row>
 			{#each exhibitions as exhibition, i (exhibition.id)}
 				<flex-row style="justify-content: flex-start; gap: 2rem">
-					<div />
+					<div>
+						<flex-row>
+							<p>{exhibition.title}</p>
+							<p><Time timestamp={exhibition.date} /></p>
+						</flex-row>
+						<flex-row>
+							<p>
+								curated: <a href={`${exhibition.curator_link}`}><p>{exhibition.curator_name}</p></a>
+							</p>
+							<p>
+								location: <a href={`${exhibition.location_link}`}
+									><p>{exhibition.location_name}</p></a>
+							</p>
+						</flex-row>
+					</div>
 				</flex-row>
 			{/each}
 		</content>
 	</flex>
-</div>
+</flexcontainer>
 
 <style lang="css">
+	h1 {
+		margin: 0;
+		height: 100%;
+		width: 100%;
+	}
+
 	flex {
 		justify-content: center;
 		display: flex;
-		flex-direction: column;
-	}
-
-	flex-column {
-		display: flex;
-		padding-left: 2.5rem;
-		padding-right: 2.5rem;
-		flex-wrap: wrap;
-	}
-
-	flex-column .galler_img {
-		padding: 0.25rem;
-		display: flex;
-		overflow: hide;
-		width: 50%;
-		flex-basis: 1;
-		flex-grow: 1;
-		flex-wrap: wrap;
-		align-self: stretch;
-		object-fit: cover;
-	}
-	flex-column .process_img {
-		padding: 0.25rem;
-		display: flex;
-		overflow: hide;
-		width: 20%;
-		flex-basis: 1;
-		flex-grow: 1;
-		flex-wrap: wrap;
-		align-self: stretch;
-		object-fit: cover;
+		width: 100%;
 	}
 
 	flex-row {
+		width: 100%;
 		display: flex;
+		flex-grow: 1;
+		gap: var(--gap);
 		justify-content: space-between;
-		flex-wrap: wrap;
-		flex: 1;
-		height: fit-content;
-		padding-bottom: 1rem;
 	}
 
 	content {
+		width: 100%;
 		padding: 2.5rem 10rem 2.5rem 10rem;
-		white-space: wrap;
 	}
 </style>

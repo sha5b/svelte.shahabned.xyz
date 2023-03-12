@@ -422,6 +422,23 @@
 		padding: 0;
 		margin: 0;
 	}
+
+	.front-img {
+		object-fit: cover;
+		z-index: 1;
+		overflow: hide;
+		width: 100%;
+		max-height: 750px;
+	}
+
+	.front-video {
+		object-fit: cover;
+		z-index: 1;
+		overflow: hide;
+		width: 100%;
+		min-height: 500px;
+	}
+
 	@keyframes scroll {
 		from {
 			transform: translateX(0);

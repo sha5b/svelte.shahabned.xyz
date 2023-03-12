@@ -19,8 +19,8 @@
 		--secondary-grey: #818484;
 		--gap: 2rem;
 		font-family: 'Urbanist';
-		display: flex;
-		flex-grow: 1;
+		display: inline-block;
+		width: 100%;
 		background-color: var(--main-white);
 	}
 
@@ -34,10 +34,11 @@
 	}
 
 	:global(h2) {
+		font-family: 'Bitter';
 		font-size: 4rem;
 		letter-spacing: 0.25rem;
 		padding-bottom: 1rem;
-		font-weight: 300;
+		font-weight: 500;
 	}
 	:global(h3) {
 		font-family: 'Urbanist';
@@ -72,8 +73,9 @@
 
 	:global(flexcontainer) {
 		position: relative;
-		display: flex;
 		overflow: hidden;
+		display: flex;
+		justify-content: center;
 	}
 
 	:global(flex item) {
@@ -82,6 +84,7 @@
 		position: relative;
 		overflow: hidden;
 		display: block;
+		flex-grow: 1;
 	}
 
 	:global(.front-img) {
