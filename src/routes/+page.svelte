@@ -1,10 +1,12 @@
 <script>
+	// @ts-nocheck
 	import { pb } from '$lib/pocketbase'
 	import { onMount, onDestroy } from 'svelte'
 	import { getImageURL } from '$lib/utils/getURL'
 	import { spring } from 'svelte/motion'
 	import Time from 'svelte-time'
 	import { fade, scale } from 'svelte/transition'
+	import { each } from 'svelte/internal'
 
 	let scroll
 
@@ -17,11 +19,43 @@
 	)
 
 	let artworks = []
+	let artColOne = []
+	let artColTwo = []
+	const columns = 2
+
+	function sliceAndJoinArray(myArray, sliceSize) {
+		const slicedArray = []
+		let tempArray = []
+
+		myArray.forEach((item, index) => {
+			tempArray.push(item)
+			if (tempArray.length === sliceSize || index === myArray.length - 1) {
+				slicedArray.push(tempArray.slice(0, sliceSize))
+				tempArray = tempArray.slice(sliceSize)
+			}
+		})
+
+		const pairArray = []
+
+		slicedArray.forEach((subArray) => {
+			for (let i = 0; i < subArray.length; i++) {
+				if (!pairArray[i]) {
+					pairArray[i] = []
+				}
+				pairArray[i].push(subArray[i])
+			}
+		})
+
+		return pairArray
+	}
 	onMount(async () => {
 		const artworkquery = await pb.collection('artworks').getList(1, 250, {
-			sort: '-founding_date'
+			sort: '-founding_date',
+			filter: 'featured = true'
 		})
 		artworks = artworkquery.items
+		artColOne = sliceAndJoinArray(artworks, columns)[0]
+		artColTwo = sliceAndJoinArray(artworks, columns)[1]
 	})
 </script>
 
@@ -29,207 +63,203 @@
 
 <flexcontainer on:mousemove={(e) => mousePosition.set({ x: e.clientX, y: e.layerY })}>
 	<flex style:transform={`translate3d(0, ${scroll * -0.1}px, 0)`}>
-		{#each artworks as artwork, i (artwork.id)}
+		{#each artColOne as artwork, i (artwork.id)}
 			{#if artwork.artwork === true}
-				{#if artwork.featured && i % 2 === 1}
-					<a href={`/artworks/${artwork.slug}`}>
-						<item>
-							<scrolltext
-								style:transform={`translate3d(0, ${$mousePosition.y - scroll * -0.1 - 100}px, 0)`}>
-								<div style="margin: 0; padding: 0">
-									<content>
-										<h1>{artwork.title}</h1>
-									</content>
-									<content>
-										<div>
-											<p style="font-size: 2rem">{artwork.genre}</p>
-											<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
-											<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
-												<Time timestamp={artwork.founding_date} />
-											</p>
-										</div>
-									</content>
-								</div>
-								<div aria-hidden="true">
-									<content>
-										<h1>{artwork.title}</h1>
-									</content>
-									<content>
-										<div>
-											<p style="font-size: 2rem">{artwork.genre}</p>
-											<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
-											<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
-												<Time timestamp={artwork.founding_date} />
-											</p>
-										</div>
-									</content>
-								</div>
-								<div>
-									<content aria-hidden="true">
-										<h1>{artwork.title}</h1>
-									</content>
-									<content>
-										<div>
-											<p style="font-size: 2rem">{artwork.genre}</p>
-											<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
-											<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
-												<Time timestamp={artwork.founding_date} />
-											</p>
-										</div>
-									</content>
-								</div>
-								<div>
-									<content aria-hidden="true">
-										<h1>{artwork.title}</h1>
-									</content>
-									<content>
-										<div>
-											<p style="font-size: 2rem">{artwork.genre}</p>
-											<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
-											<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
-												<Time timestamp={artwork.founding_date} />
-											</p>
-										</div>
-									</content>
-								</div>
-							</scrolltext>
+				<a href={`/artworks/${artwork.slug}`}>
+					<item>
+						<scrolltext
+							style:transform={`translate3d(0, ${$mousePosition.y - scroll * -0.1 - 100}px, 0)`}>
+							<div style="margin: 0; padding: 0">
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 2rem">{artwork.genre}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
+									</div>
+								</content>
+							</div>
+							<div aria-hidden="true">
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 2rem">{artwork.genre}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
+									</div>
+								</content>
+							</div>
 							<div>
-								<div class="img-overlay" />
-								{#if artwork.front_video}
-									<video
-										autoplay
-										muted
-										loop
-										class="front-video"
-										poster={artwork.front_image
+								<content aria-hidden="true">
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 2rem">{artwork.genre}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
+									</div>
+								</content>
+							</div>
+							<div>
+								<content aria-hidden="true">
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 2rem">{artwork.genre}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
+									</div>
+								</content>
+							</div>
+						</scrolltext>
+						<div>
+							<div class="img-overlay" />
+							{#if artwork.front_video}
+								<video
+									autoplay
+									muted
+									loop
+									class="front-video"
+									poster={artwork.front_image
+										? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+										: '/'}
+									src={artwork.video_thumb
+										? getImageURL(artwork.collectionId, artwork.id, artwork.video_thumb)
+										: '/'}>
+									<track kind="captions" />
+								</video>
+							{:else}
+								<div>
+									<img
+										class="front-img"
+										width="100%"
+										height="100%"
+										loading="lazy"
+										src={artwork.front_image
 											? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 											: '/'}
-										src={artwork.video_thumb
-											? getImageURL(artwork.collectionId, artwork.id, artwork.video_thumb)
-											: '/'}>
-										<track kind="captions" />
-									</video>
-								{:else}
-									<div>
-										<img
-											class="front-img"
-											width="100%"
-											height="100%"
-											loading="lazy"
-											src={artwork.front_image
-												? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
-												: '/'}
-											alt={artwork.title} />
-									</div>
-								{/if}
-							</div>
-						</item>
-					</a>
-				{/if}
+										alt={artwork.title} />
+								</div>
+							{/if}
+						</div>
+					</item>
+				</a>
 			{/if}
 		{/each}
 	</flex>
 	<flex>
-		{#each artworks as artwork, i (artwork.id)}
+		{#each artColTwo as artwork, i (artwork.id)}
 			{#if artwork.artwork === true}
-				{#if artwork.featured && i % 2 === 0}
-					<a href={`/artworks/${artwork.slug}`}>
-						<item>
-							<scrolltext style:transform={`translate3d(0, ${$mousePosition.y - 100}px, 0)`}>
-								<div style="margin: 0; padding: 0">
-									<content>
-										<h1>{artwork.title}</h1>
-									</content>
-									<content>
-										<div>
-											<p style="font-size: 2rem">{artwork.genre}</p>
-											<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
-											<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
-												<Time timestamp={artwork.founding_date} />
-											</p>
-										</div>
-									</content>
-								</div>
-								<div aria-hidden="true">
-									<content>
-										<h1>{artwork.title}</h1>
-									</content>
-									<content>
-										<div>
-											<p style="font-size: 2rem">{artwork.genre}</p>
-											<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
-											<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
-												<Time timestamp={artwork.founding_date} />
-											</p>
-										</div>
-									</content>
-								</div>
-								<div>
-									<content aria-hidden="true">
-										<h1>{artwork.title}</h1>
-									</content>
-									<content>
-										<div>
-											<p style="font-size: 2rem">{artwork.genre}</p>
-											<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
-											<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
-												<Time timestamp={artwork.founding_date} />
-											</p>
-										</div>
-									</content>
-								</div>
-								<div>
-									<content aria-hidden="true">
-										<h1>{artwork.title}</h1>
-									</content>
-									<content>
-										<div>
-											<p style="font-size: 2rem">{artwork.genre}</p>
-											<div>
-												<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
-													{artwork.material}
-												</p>
-											</div>
-											<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
-												<Time timestamp={artwork.founding_date} />
-											</p>
-										</div>
-									</content>
-								</div>
-							</scrolltext>
+				<a href={`/artworks/${artwork.slug}`}>
+					<item>
+						<scrolltext style:transform={`translate3d(0, ${$mousePosition.y - 100}px, 0)`}>
+							<div style="margin: 0; padding: 0">
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 2rem">{artwork.genre}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
+									</div>
+								</content>
+							</div>
+							<div aria-hidden="true">
+								<content>
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 2rem">{artwork.genre}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
+									</div>
+								</content>
+							</div>
 							<div>
-								<div class="img-overlay" />
-								{#if artwork.front_video}
-									<video
-										autoplay
-										muted
-										loop
-										class="front-video"
-										poster={artwork.front_image
+								<content aria-hidden="true">
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 2rem">{artwork.genre}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">{artwork.material}</p>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
+									</div>
+								</content>
+							</div>
+							<div>
+								<content aria-hidden="true">
+									<h1>{artwork.title}</h1>
+								</content>
+								<content>
+									<div>
+										<p style="font-size: 2rem">{artwork.genre}</p>
+										<div>
+											<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+												{artwork.material}
+											</p>
+										</div>
+										<p style="line-height: 1.5rem; letter-spacing: 0.1rem">
+											<Time timestamp={artwork.founding_date} />
+										</p>
+									</div>
+								</content>
+							</div>
+						</scrolltext>
+						<div>
+							<div class="img-overlay" />
+							{#if artwork.front_video}
+								<video
+									autoplay
+									muted
+									loop
+									class="front-video"
+									poster={artwork.front_image
+										? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
+										: '/'}
+									src={artwork.video_thumb
+										? getImageURL(artwork.collectionId, artwork.id, artwork.video_thumb)
+										: '/'}>
+									<track kind="captions" />
+								</video>
+							{:else}
+								<div>
+									<img
+										class="front-img"
+										width="100%"
+										height="100%"
+										loading="lazy"
+										src={artwork.front_image
 											? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
 											: '/'}
-										src={artwork.video_thumb
-											? getImageURL(artwork.collectionId, artwork.id, artwork.video_thumb)
-											: '/'}>
-										<track kind="captions" />
-									</video>
-								{:else}
-									<div>
-										<img
-											class="front-img"
-											width="100%"
-											height="100%"
-											loading="lazy"
-											src={artwork.front_image
-												? getImageURL(artwork.collectionId, artwork.id, artwork.front_image)
-												: '/'}
-											alt={artwork.title} />
-									</div>
-								{/if}
-							</div>
-						</item>
-					</a>
-				{/if}
+										alt={artwork.title} />
+								</div>
+							{/if}
+						</div>
+					</item>
+				</a>
 			{/if}
 		{/each}
 	</flex>

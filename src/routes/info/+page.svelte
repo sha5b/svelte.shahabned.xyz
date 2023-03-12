@@ -1,4 +1,5 @@
 <script>
+	// @ts-nocheck
 	import { pb } from '$lib/pocketbase'
 	import { onMount, onDestroy } from 'svelte'
 	import { getImageURL } from '$lib/utils/getURL'
@@ -26,6 +27,7 @@
 <div style="--height: {innerHeight};--width: {innerWidth}">
 	<flex>
 		<content>
+			<flex-row><h1>shahab nedaei</h1></flex-row>
 			<flex-row style="justify-content: flex-start; gap: 2rem">
 				<div>
 					<h6>statement</h6>
@@ -71,8 +73,8 @@
 
 	h1 {
 		font-family: 'Bitter';
-		font-size: 5rem;
-		letter-spacing: 0.75rem;
+		font-size: 3.5rem;
+		letter-spacing: 0.25rem;
 		margin-bottom: 0.5rem;
 		line-height: 5.5rem;
 		padding-bottom: 1.5rem;
@@ -88,27 +90,6 @@
 	p {
 		line-height: 0.75rem;
 		font-size: 1.3rem;
-	}
-
-	.front-img {
-		object-fit: cover;
-		z-index: 1;
-		overflow: hide;
-		flex-grow: 1;
-		width: 100vw;
-		aspect-ratio: calc(var(--width)) / calc(var(--height) + 50);
-	}
-	.front_video {
-		object-fit: cover;
-		z-index: 1;
-		overflow: hide;
-		flex-grow: 1;
-		width: 100%;
-		aspect-ratio: calc(var(--width)) / calc(var(--height) + 50);
-	}
-
-	img-wrapper {
-		min-width: 100%;
 	}
 
 	flex {

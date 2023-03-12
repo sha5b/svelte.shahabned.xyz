@@ -1,4 +1,6 @@
+
 <script>
+	// @ts-nocheck
 	import { pb } from '$lib/pocketbase'
 	import { onMount, onDestroy } from 'svelte'
 	import { getImageURL } from '$lib/utils/getURL'
@@ -196,7 +198,7 @@
 		overflow: hide;
 		flex-grow: 1;
 		width: 100vw;
-		aspect-ratio: calc(var(--width)) / calc(var(--height) + 50);
+		height: 100vh;
 	}
 	.featured-video {
 		object-fit: cover;
@@ -204,7 +206,7 @@
 		overflow: hide;
 		flex-grow: 1;
 		width: 100%;
-		aspect-ratio: calc(var(--width)) / calc(var(--height) + 50);
+		height: 100vh;
 	}
 
 	img-wrapper {
