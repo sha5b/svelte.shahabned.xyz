@@ -261,7 +261,7 @@
 	}
 
 	content {
-		padding: 2.5rem 10rem 2.5rem 5rem;
+		padding: 2.5rem 10rem 2.5rem 7.5rem;
 		white-space: wrap;
 	}
 </style>

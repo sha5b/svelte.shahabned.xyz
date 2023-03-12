@@ -83,7 +83,7 @@
 	}
 
 	:global(flexcontainer) {
-		padding-left: 5rem;
+		padding-left: 2.5rem;
 		position: relative;
 		overflow: hidden;
 		display: flex;

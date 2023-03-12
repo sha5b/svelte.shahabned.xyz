@@ -19,7 +19,7 @@
 	}
 	nav {
 		display: flex;
-		width: 5rem;
+		width: 2.5rem;
 		height: 100vh;
 		position: fixed;
 		z-index: 4;
