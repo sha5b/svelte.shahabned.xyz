@@ -134,7 +134,7 @@
 						{#if artwork.editions}
 							<div>
 								<a
-									href={`mailto:ned.tabulov@gmail.com?subject=acquisition for"${artwork.title}" from ...${artwork.collectionName}/${artwork.slug}`}
+									href={`mailto:ned.tabulov@gmail.com?subject=acquisition for "${artwork.title}" from ...${artwork.collectionName}/${artwork.slug}`}
 									><button class="contrast" style="width:100%">buy edition</button></a>
 							</div>
 						{/if}

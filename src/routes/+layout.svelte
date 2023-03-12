@@ -21,6 +21,7 @@
 		font-family: 'Urbanist';
 		display: flex;
 		flex-grow: 1;
+		background-color: var(--main-white);
 	}
 
 	:global(h1) {
@@ -60,7 +61,6 @@
 	}
 
 	:global(p) {
-		text-align: justify;
 		line-height: 2rem;
 		white-space: pre-wrap;
 		font-size: 1.3rem;

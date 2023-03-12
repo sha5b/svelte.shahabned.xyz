@@ -30,37 +30,22 @@
 			<flex-row><h1>shahab nedaei</h1></flex-row>
 			<flex-row style="justify-content: flex-start; gap: 2rem">
 				<div>
-					<h6>statement</h6>
-					<p style="line-height:1.5rem ">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum orci a leo
-						gravida, at porttitor enim dapibus. Proin non commodo tortor, nec convallis eros.
-						<br /> Nullam hendrerit ante diam, non luctus risus vestibulum non. Suspendisse neque
-						ipsum, lobortis ac rhoncus eget, lacinia in dolor. Nam sit amet mauris tempus, suscipit
-						neque ac, fringilla lacus. Aliquam erat volutpat. Sed euismod sapien sed nisl ultrices,
-						nec imperdiet orci ornare. Phasellus volutpat, leo nec rutrum fringilla, justo enim
-						semper quam, sed faucibus tellus nunc eu magna. Vivamus quis aliquam massa, quis dapibus
-						urna.
-						<br />
-						Duis consectetur magna odio, ac feugiat tellus vehicula vel. Praesent tempor, arcu vel sodales
-						iaculis, diam ante cursus lectus, in auctor diam est sit amet metus. Curabitur a tincidunt
-						odio. Ut venenatis fringilla nunc eget tincidunt. Morbi fermentum metus neque, ut interdum
-						nisi efficitur id. Mauris pretium tincidunt lacinia. Etiam fringilla ut velit nec finibus.
-						Morbi eu ligula orci. Donec.
-					</p>
-				</div>
-				<div>
-					<p>insta and shit</p>
+					<h3>statement</h3>
+					<p style="line-height:1.5rem ">nutterbutterbutternutter</p>
 				</div>
 			</flex-row>
-
+			<flex-row style="justify-content: flex-start; gap: 2rem">
+				<div>
+					<p>insta and shit</p>
+					<p>{exhibition.title}</p>
+					<p><Time timestamp={exhibition.date} /></p>
+					<a href={`${exhibition.curator_link}`}><p>{exhibition.curator_name}</p></a>
+					<a href={`${exhibition.location_link}`}><p>{exhibition.location_name}</p></a>
+				</div>
+			</flex-row>
 			{#each exhibitions as exhibition, i (exhibition.id)}
 				<flex-row style="justify-content: flex-start; gap: 2rem">
-					<div style="border-left: 1px solid black; padding: 1rem">
-						<p>{exhibition.title}</p>
-						<p><Time timestamp={exhibition.date} /></p>
-						<a href={`${exhibition.curator_link}`}><p>{exhibition.curator_name}</p></a>
-						<a href={`${exhibition.location_link}`}><p>{exhibition.location_name}</p></a>
-					</div>
+					<div />
 				</flex-row>
 			{/each}
 		</content>
@@ -68,30 +53,6 @@
 </div>
 
 <style lang="css">
-	a {
-	}
-
-	h1 {
-		font-family: 'Bitter';
-		font-size: 3.5rem;
-		letter-spacing: 0.25rem;
-		margin-bottom: 0.5rem;
-		line-height: 5.5rem;
-		padding-bottom: 1.5rem;
-	}
-	h6 {
-		font-family: 'Urbanist';
-		font-size: 3rem;
-		letter-spacing: 0.25rem;
-		padding-bottom: 1rem;
-		font-weight: 300;
-	}
-
-	p {
-		line-height: 0.75rem;
-		font-size: 1.3rem;
-	}
-
 	flex {
 		justify-content: center;
 		display: flex;
