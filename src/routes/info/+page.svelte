@@ -84,7 +84,10 @@
 				</table>
 			</div>
 			<div>
-				<div>all rights reserved © shahab nedaei, berlin, 2023</div>
+				<div>
+					all rights reserved © shahab nedaei 2023 <a
+						href="https://github.com/sha5b/svelte.shahabned.xyz">github</a>
+				</div>
 			</div>
 		</content>
 	</flex>
