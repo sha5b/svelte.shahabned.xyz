@@ -6,7 +6,9 @@
 	<nav>
 		<item><a href="/info/">info</a></item>
 		<item><a href="/">{navTitel}</a></item>
-		<item><a href="/editions">editions</a></item>
+		<item><a href="/artworks">artworks</a></item>
+		<item><a href="/editions">prints</a></item>
+		<item><a href="/editions">curation</a></item>
 	</nav>
 </div>
 
