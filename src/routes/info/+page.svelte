@@ -15,7 +15,7 @@
 	onMount(async () => {
 		const exhibitionQuery = await pb.collection('exhibitions').getList(1, 250, {
 			sort: '-date',
-			expand: 'artworks,'
+			expand: 'artworks'
 		})
 		exhibitions = exhibitionQuery.items
 		artist = await pb.collection('users').getList(1, 250, {
@@ -34,36 +34,57 @@
 					<h1>shahab nedaei</h1>
 				</div>
 				<div>
-					<button>instagram</button>
+					<p>instagram</p>
 				</div>
 			</flex-row>
 			<div>
-				<h3 style="padding-bottom:0rem;margin-bottom: 0rem">statement</h3>
+				{#each artist as artist}
+					<p>{artist.location}</p>
+				{/each}
+			</div>
+			<div>
+				<h3 style="padding-bottom:1rem;margin-bottom: 0rem">statement</h3>
 				{#each artist as artist}
 					<p>{@html sanitizeHtml(artist.statement)}</p>
 				{/each}
 				<p style="line-height:1.5rem " />
 			</div>
-			<div style="padding:0rem 10rem 0rem 7.5rem">
-				<h4 style="padding-top:5rem;padding-bottom:1rem;margin-bottom: 0rem">exhibitions</h4>
-				{#each exhibitions as exhibition, i (exhibition.id)}
-					<div>
-						<flex-row>
-							<div>
-								<p style="font-weight:bold"><Time timestamp={exhibition.date} /></p>
-								<p style="font-weight:bold">{exhibition.title}</p>
-							</div>
-							<div>
-								<p>curated</p>
-								<a href={`${exhibition.curator_link}`}><p>{exhibition.curator_name}</p></a>
-							</div>
-							<div>
-								<p>location</p>
-								<a href={`${exhibition.location_link}`}><p>{exhibition.location_name}</p></a>
-							</div>
-						</flex-row>
-					</div>
-				{/each}
+			<div>
+				<h3 style="padding-top:2rem;padding-bottom:1rem;margin-bottom: 0rem">exhibitions</h3>
+			</div>
+			<div>
+				<table>
+					<thead>
+						<tr>
+							<th />
+							<th><p>location</p></th>
+
+							<th><p>date</p></th>
+							<th><p>curation</p></th>
+						</tr>
+					</thead>
+					{#each exhibitions as exhibition, i (exhibition.id)}
+						<tbody>
+							<tr>
+								<td><p>{exhibition.title}</p></td>
+								<td
+									><p>
+										<a href={`${exhibition.location_link}`}>{exhibition.location_name}</a>
+									</p></td>
+								{#if exhibition.date}
+									<td><Time timestamp={exhibition.date} /></td>
+								{:else}
+									<td>permanent</td>
+								{/if}
+
+								<td><a href={`${exhibition.curator_link}`}>{exhibition.curator_name}</a></td>
+							</tr>
+						</tbody>
+					{/each}
+				</table>
+			</div>
+			<div>
+				<div>all rights reserved © shahab nedaei, berlin, 2023</div>
 			</div>
 		</content>
 	</flex>
@@ -102,5 +123,15 @@
 	content {
 		width: 100%;
 		padding: 2.5rem 10rem 2.5rem 10rem;
+	}
+	th {
+		border: none;
+		padding-left: 0rem;
+		padding-right: 0rem;
+	}
+	td {
+		border: none;
+		padding-left: 0rem;
+		padding-right: 0rem;
 	}
 </style>

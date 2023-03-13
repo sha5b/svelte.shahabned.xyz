@@ -27,6 +27,7 @@
 		justify-content: space-between;
 		flex-direction: column;
 	}
+
 	nav item {
 		rotate: -90deg;
 		list-style: none;

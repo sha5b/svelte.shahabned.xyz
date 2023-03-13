@@ -124,7 +124,9 @@
 								<div style="border-left: 1px solid black; padding: 1rem">
 									<p>{exhibition.title}</p>
 									<p><Time timestamp={exhibition.date} /></p>
+									<p>curated</p>
 									<a href={`${exhibition.curator_link}`}><p>{exhibition.curator_name}</p></a>
+									<p>location</p>
 									<a href={`${exhibition.location_link}`}><p>{exhibition.location_name}</p></a>
 								</div>
 							{/each}
