@@ -9,10 +9,11 @@
 	import { page } from '$app/stores'
 	import sanitizeHtml from 'sanitize-html'
 	import Footer from '$lib/components/Footer.svelte'
+	import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
 
 	let exhibitions = []
 	let artist = []
-	let artworks = []
+
 	onMount(async () => {
 		const exhibitionQuery = await pb.collection('exhibitions').getList(1, 250, {
 			sort: '-date',
@@ -34,13 +35,15 @@
 				<div>
 					<h1>shahab nedaei</h1>
 				</div>
-				<div>
-					<p>instagram</p>
-				</div>
+				<a href="https://www.instagram.com/shahabned/">
+					<div style="width: 64px; color: var(--main-black)">
+						<FaInstagram />
+					</div>
+				</a>
 			</flex-row>
 			<div>
 				{#each artist as artist}
-					<p>{artist.location}</p>
+					<p style="font-size: 1.3rem">{artist.location}</p>
 				{/each}
 			</div>
 			<div>
@@ -58,10 +61,10 @@
 								><h3 style="padding-top:2rem;padding-bottom:1rem;margin-bottom: 0rem">
 									exhibitions
 								</h3></th>
-							<th><p>location</p></th>
+							<th><h5>location</h5></th>
 
-							<th><p>date</p></th>
-							<th><p>curated</p></th>
+							<th><h5>date</h5></th>
+							<th><h5>curated</h5></th>
 						</tr>
 					</thead>
 					{#each exhibitions as exhibition, i (exhibition.id)}
@@ -102,6 +105,7 @@
 	}
 	p {
 		margin-bottom: 0rem;
+		font-size: 1rem;
 	}
 
 	flex {
@@ -141,5 +145,11 @@
 		padding-right: 0rem;
 		padding-top: 1.3rem;
 		padding-bottom: 1.3rem;
+	}
+
+	.icon {
+		color: var(--main-black);
+		width: 64 px;
+		height: 64 px;
 	}
 </style>
