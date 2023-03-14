@@ -7,6 +7,7 @@
 	import { spring } from 'svelte/motion'
 	import Time from 'svelte-time'
 	import { fade, scale } from 'svelte/transition'
+	import Footer from '$lib/components/Footer.svelte'
 
 	let scroll
 
@@ -362,6 +363,7 @@
 		{/each}
 	</flex>
 </flexcontainer>
+<Footer />
 
 <style lang="css">
 	flex {

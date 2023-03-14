@@ -8,6 +8,7 @@
 	import { fade, scale } from 'svelte/transition'
 	import { page } from '$app/stores'
 	import sanitizeHtml from 'sanitize-html'
+	import Footer from '$lib/components/Footer.svelte'
 
 	let videoPlayState = false
 	$: innerWidth = 0
@@ -171,6 +172,7 @@
 		{/if}
 	{/each}
 </flexcontainer>
+<Footer />
 
 <style lang="css">
 	h1 {
