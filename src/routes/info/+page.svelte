@@ -64,7 +64,7 @@
 							<th><h5>location</h5></th>
 
 							<th><h5>date</h5></th>
-							<th><h5>curated</h5></th>
+							<th><h5>curator</h5></th>
 						</tr>
 					</thead>
 					{#each exhibitions as exhibition, i (exhibition.id)}
