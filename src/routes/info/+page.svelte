@@ -8,6 +8,7 @@
 	import { fade, scale } from 'svelte/transition'
 	import { page } from '$app/stores'
 	import sanitizeHtml from 'sanitize-html'
+	import Footer from '$lib/components/Footer.svelte'
 
 	let exhibitions = []
 	let artist = []
@@ -50,17 +51,17 @@
 				<p style="line-height:1.5rem " />
 			</div>
 			<div>
-				<h3 style="padding-top:2rem;padding-bottom:1rem;margin-bottom: 0rem">exhibitions</h3>
-			</div>
-			<div>
 				<table>
 					<thead>
 						<tr>
-							<th />
+							<th
+								><h3 style="padding-top:2rem;padding-bottom:1rem;margin-bottom: 0rem">
+									exhibitions
+								</h3></th>
 							<th><p>location</p></th>
 
 							<th><p>date</p></th>
-							<th><p>curation</p></th>
+							<th><p>curated</p></th>
 						</tr>
 					</thead>
 					{#each exhibitions as exhibition, i (exhibition.id)}
@@ -83,12 +84,7 @@
 					{/each}
 				</table>
 			</div>
-			<div>
-				<div>
-					all rights reserved © shahab nedaei 2023 <a
-						href="https://github.com/sha5b/svelte.shahabned.xyz">github</a>
-				</div>
-			</div>
+			<Footer />
 		</content>
 	</flex>
 </flexcontainer>
@@ -128,13 +124,18 @@
 		padding: 2.5rem 10rem 2.5rem 10rem;
 	}
 	th {
+		justify-content: baseline;
+		vertical-align: text-bottom;
 		border: none;
 		padding-left: 0rem;
 		padding-right: 0rem;
+		padding-bottom: 0rem;
 	}
 	td {
 		border: none;
 		padding-left: 0rem;
 		padding-right: 0rem;
+		padding-top: 1.3rem;
+		padding-bottom: 1.3rem;
 	}
 </style>

@@ -91,7 +91,7 @@
 	}
 
 	:global(flex item) {
-		width: 99%;
+		width: 99%; /* this is the value that makes the padding on the left side of the the picture container if you want to change it*/
 		border-radius: 0.5rem;
 		position: relative;
 		overflow: hidden;
