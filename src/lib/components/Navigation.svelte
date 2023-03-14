@@ -4,11 +4,11 @@
 
 <div>
 	<nav>
-		<item><a href="/info/">info</a></item>
-		<item><a href="/">{navTitel}</a></item>
-		<item><a href="/artworks">artworks</a></item>
-		<item><a href="/editions">prints</a></item>
-		<item><a href="/editions">curation</a></item>
+		<item><a href="/info/" data-sveltkit-prefetch>info</a></item>
+		<item><a href="/" data-sveltkit-prefetch>{navTitel}</a></item>
+		<item><a href="/artworks" data-sveltkit-prefetch>artworks</a></item>
+		<item><a href="/editions" data-sveltkit-prefetch>prints</a></item>
+		<item><a href="/editions" data-sveltkit-prefetch>curation</a></item>
 	</nav>
 </div>
 

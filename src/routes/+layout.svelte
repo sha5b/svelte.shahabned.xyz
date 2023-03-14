@@ -1,5 +1,14 @@
 <script>
+	import { page } from '$app/stores'
 	import Navigation from '$lib/components/Navigation.svelte'
+
+	export const load = ({ url }) => {
+		const { pathname } = url
+
+		return {
+			pathname
+		}
+	}
 </script>
 
 <main>

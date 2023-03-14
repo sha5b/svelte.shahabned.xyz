@@ -123,6 +123,10 @@
 		width: 100%;
 		padding: 2.5rem 10rem 2.5rem 10rem;
 	}
+	table {
+		white-space: wrap;
+		flex-wrap: wrap;
+	}
 	th {
 		justify-content: baseline;
 		vertical-align: text-bottom;

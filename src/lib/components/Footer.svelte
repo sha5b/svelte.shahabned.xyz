@@ -1,7 +1,7 @@
 <div>
 	<div>
-		all rights reserved © shahab nedaei 2023 <a href="https://github.com/sha5b/svelte.shahabned.xyz"
-			>github</a>
+		all rights reserved © shahab nedaei 2023 / <a
+			href="https://github.com/sha5b/svelte.shahabned.xyz">github</a>
 	</div>
 </div>
 

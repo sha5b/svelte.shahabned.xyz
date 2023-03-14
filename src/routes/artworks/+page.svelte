@@ -51,6 +51,8 @@
 		return pairArray
 	}
 
+	// use fetch for faster loading and put it all in a +page.js file.
+
 	onMount(async () => {
 		const artworkquery = await pb.collection('artworks').getList(1, 250, {
 			sort: '-founding_date',
@@ -60,6 +62,7 @@
 		artColOne = sliceAndJoinArray(artworks, columns)[0]
 		artColTwo = sliceAndJoinArray(artworks, columns)[1]
 		artColThree = sliceAndJoinArray(artworks, columns)[2]
+		console.log(data)
 	})
 </script>
 
