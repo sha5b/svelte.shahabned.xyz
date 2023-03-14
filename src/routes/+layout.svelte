@@ -1,6 +1,7 @@
 <script>
 	import { page } from '$app/stores'
 	import Navigation from '$lib/components/Navigation.svelte'
+	import { MetaTags } from 'svelte-meta-tags'
 
 	export const load = ({ url }) => {
 		const { pathname } = url
@@ -11,6 +12,39 @@
 	}
 </script>
 
+<MetaTags
+	title="shahab nedaei"
+	titleTemplate="%s | digital and internet art"
+	description="digital and internet art"
+	canonical="https://shahabned.xyz/"
+	openGraph={{
+		url: 'https://shahabned.xyz',
+		title: 'shahab nedaei | digital and internet art',
+		description: 'digital and internet art',
+		images: [
+			{
+				url: '../static/main.webp',
+				width: 512,
+				height: 512,
+				alt: 'handwritten logo'
+			}
+		],
+		site_name: 'shahab nedaei'
+	}}
+	additionalMetaTags={[
+		{
+			property: 'dc:creator',
+			content: 'shahab nedaei'
+		},
+		{
+			name: 'application-name',
+			content: 'shahab nedaei | digital and internet art'
+		},
+		{
+			httpEquiv: 'x-ua-compatible',
+			content: 'IE=edge; chrome=1'
+		}
+	]} />
 <main>
 	<Navigation />
 	<slot />
