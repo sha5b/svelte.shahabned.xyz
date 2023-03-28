@@ -79,7 +79,8 @@
 					<div style="flex-grow:1">
 						{#if work.edition}
 							<div>
-								<a href={`mailto:ned.tabulov@gmail.com?subject=acquisition for work "${work.slug}"`}
+								<a
+									href={`mailto:ned.tabulov@gmail.com?subject=acquisition for the work "${work.slug}"`}
 									><button class="contrast" style="width:100%">buy edition</button></a>
 							</div>
 						{/if}

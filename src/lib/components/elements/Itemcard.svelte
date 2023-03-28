@@ -139,6 +139,10 @@
 </a>
 
 <style>
+	container {
+		width: 100%;
+		height: 100%;
+	}
 	container:hover scrolltext {
 		opacity: 1;
 	}
@@ -162,7 +166,7 @@
 		letter-spacing: 0.25rem;
 		font-size: 2rem;
 		margin-bottom: 0.25rem;
-		white-space: wrap;
+		white-space: nowrap;
 	}
 	h2 {
 		color: white;
@@ -175,7 +179,7 @@
 		color: white;
 		margin-bottom: 0.25rem;
 		letter-spacing: 0.25rem;
-		white-space: nowrap;
+		white-space: wrap;
 	}
 	scrolltext {
 		z-index: 2;
