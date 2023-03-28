@@ -152,6 +152,7 @@
 		width: 100%;
 		height: 100%;
 		border-radius: 0.25rem;
+		background-color: black;
 	}
 	video {
 		object-fit: cover;
@@ -160,6 +161,7 @@
 		height: 100%;
 		min-height: 500px;
 		border-radius: 0.25rem;
+		background-color: black;
 	}
 	h1 {
 		color: white;

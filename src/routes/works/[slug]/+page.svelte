@@ -138,7 +138,7 @@
 		width: 100%;
 		height: 100%;
 		max-width: 100%;
-
+		background-color: black;
 	}
 	.cover-img {
 		border-radius: 0rem;
@@ -147,6 +147,7 @@
 		object-fit: cover;
 		height: 100vh;
 		width: 100%;
+		background-color: black;
 	}
 
 	h1 {

@@ -24,7 +24,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"jspdf": "^2.5.1",
 		"pocketbase": "^0.13.0",
 		"svelte-icons": "^2.1.0"
 	}
