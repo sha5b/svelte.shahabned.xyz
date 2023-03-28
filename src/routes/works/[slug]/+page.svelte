@@ -138,6 +138,7 @@
 		width: 100%;
 		height: 100%;
 		max-width: 100%;
+
 	}
 	.cover-img {
 		border-radius: 0rem;

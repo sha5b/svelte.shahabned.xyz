@@ -150,6 +150,7 @@
 		object-fit: cover;
 		overflow: hide;
 		width: 100%;
+		height: 100%;
 		border-radius: 0.25rem;
 	}
 	video {
