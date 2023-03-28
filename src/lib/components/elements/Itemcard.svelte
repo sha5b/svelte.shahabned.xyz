@@ -33,14 +33,7 @@
 					<h1>{title}</h1>
 				</content>
 				<content>
-					<div style="display:flex; gap:1rem">
-						<h2>{genre}</h2>
-						{#if dimension}
-							<h2>/</h2>
-							<h2>{dimension}</h2>
-						{/if}
-					</div>
-					<p>{material}</p>
+					<h2>{genre}</h2>
 					<p><Time timestamp={date} format="MMMM YYYY" /></p>
 					{#if edition}
 						<p>editions: {edition}</p>
@@ -52,14 +45,7 @@
 					<h1>{title}</h1>
 				</content>
 				<content>
-					<div style="display:flex; gap:1rem">
-						<h2>{genre}</h2>
-						{#if dimension}
-							<h2>/</h2>
-							<h2>{dimension}</h2>
-						{/if}
-					</div>
-					<p>{material}</p>
+					<h2>{genre}</h2>
 					<p><Time timestamp={date} format="MMMM YYYY" /></p>
 					{#if edition}
 						<p>editions: {edition}</p>
@@ -71,14 +57,7 @@
 					<h1>{title}</h1>
 				</content>
 				<content>
-					<div style="display:flex; gap:1rem">
-						<h2>{genre}</h2>
-						{#if dimension}
-							<h2>/</h2>
-							<h2>{dimension}</h2>
-						{/if}
-					</div>
-					<p>{material}</p>
+					<h2>{genre}</h2>
 					<p><Time timestamp={date} format="MMMM YYYY" /></p>
 					{#if edition}
 						<p>editions: {edition}</p>
@@ -90,14 +69,7 @@
 					<h1>{title}</h1>
 				</content>
 				<content>
-					<div style="display:flex; gap:1rem">
-						<h2>{genre}</h2>
-						{#if dimension}
-							<h2>/</h2>
-							<h2>{dimension}</h2>
-						{/if}
-					</div>
-					<p>{material}</p>
+					<h2>{genre}</h2>
 					<p><Time timestamp={date} format="MMMM YYYY" /></p>
 					{#if edition}
 						<p>editions: {edition}</p>
@@ -109,14 +81,7 @@
 					<h1>{title}</h1>
 				</content>
 				<content>
-					<div style="display:flex; gap:1rem">
-						<h2>{genre}</h2>
-						{#if dimension}
-							<h2>/</h2>
-							<h2>{dimension}</h2>
-						{/if}
-					</div>
-					<p>{material}</p>
+					<h2>{genre}</h2>
 					<p><Time timestamp={date} format="MMMM YYYY" /></p>
 					{#if edition}
 						<p>editions: {edition}</p>
@@ -169,7 +134,8 @@
 		letter-spacing: 0.25rem;
 		font-size: 2rem;
 		margin-bottom: 0.25rem;
-		white-space: nowrap;
+		white-space: wrap;
+		min-width: 400px;
 	}
 	h2 {
 		color: white;
@@ -177,6 +143,7 @@
 		margin-bottom: 0.5rem;
 		font-size: 1.5rem;
 		white-space: nowrap;
+		font-weight: 300;
 	}
 	p {
 		color: white;
