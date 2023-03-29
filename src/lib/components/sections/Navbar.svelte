@@ -16,7 +16,7 @@
 
 		<bottom>
 			<a style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
-			<a href="/buy"><button>support my work</button></a>
+			<a href="/buy"><button class="contrast">support my work</button></a>
 		</bottom>
 	</container>
 {/if}
@@ -27,16 +27,13 @@
 		width: 100%;
 		height: 100%;
 		position: fixed;
-		background-color: white;
+		background-color: rgba(255, 255, 255, 0.75);
 		z-index: 10;
 	}
 	button {
 		height: 100%;
 		font-size: 1.5rem;
-		color: black;
 		width: 435px;
-		background-color: white;
-		border: 2px solid black;
 		box-shadow: none;
 	}
 	right {
