@@ -3,6 +3,7 @@
 	import Navbar from '$lib/components/sections/Navbar.svelte'
 	import Frame from '$lib/components/elements/Frame.svelte'
 	import { spring } from 'svelte/motion'
+	export let data
 </script>
 
 <Navbar />

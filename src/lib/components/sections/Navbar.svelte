@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte'
 
 	let scroll
-	let y = undefined
+	let y
 
 	let newY = []
 	$: oldY = newY[1]
@@ -19,7 +19,7 @@
 </script>
 
 <svelte:window on:scroll={updateY} bind:scrollY={y} />
-{#if oldY >= y}
+{#if oldY >= y && y != 0}
 	<container transition:fly={{ duration: 1000, y: 800 }}>
 		<right>
 			<h1><a href="/works">all works</a></h1>
