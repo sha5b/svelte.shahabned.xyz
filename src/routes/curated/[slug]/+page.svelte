@@ -35,8 +35,14 @@
 						</div>
 					{/if}
 				{/each}
+				<div style="margin-top:auto;">
+					<h4>location</h4>
+					<a href={`${curated.space_link}`}><h2>{curated.space_name}</h2></a>
+				</div>
 				<div style="padding-top:2rem;padding-bottom:5rem">
-					{@html curated.synopsis}
+					<p>
+						{@html curated.synopsis}
+					</p>
 				</div>
 				<flex>
 					{#each curated.gallery as image}

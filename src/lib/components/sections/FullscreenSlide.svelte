@@ -26,14 +26,17 @@
 									{#each curated.expand.colab as colab}
 										{#if colab.role == 'curated'}
 											<div style="margin-top:auto;">
-												<a href={`${colab.link}`}><h2>{colab.title}</h2></a>
+												<h2>{colab.title}</h2>
 											</div>
 										{/if}
 									{/each}
 								</div>
 							</div>
 							<div style="z-index:5">
-								<a href={`${curated.space_link}`}><p>{curated.space_name}</p></a>
+								<div style="display:flex;justify-content:space-between">
+									<h2>{curated.space_name}</h2>
+									<p>location</p>
+								</div>
 							</div>
 						</flex>
 						<image-overlay />
