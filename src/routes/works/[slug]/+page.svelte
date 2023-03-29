@@ -82,7 +82,24 @@
 						<img src={getImageURL(work.collectionId, work.id, work.file)} alt={`${work.title}`} />
 					{/if}
 				</div>
-				<div style="padding-top:2rem;">
+				{#if work.expand.exhibition}
+					<table>
+						<thead><th><h2 style="padding-bottom: 0;margin-bottom: 0;">exhibitions</h2></th></thead
+						><tbody>
+							{#each work.expand.exhibition as exhibition}
+								<tr>
+									<td><a href={`${exhibition.link}`}>{exhibition.title}</a></td>
+									<td>
+										<Time timestamp={exhibition.date} format="MMMM YYYY" />
+									</td>
+									<td>
+										{exhibition.city}, {exhibition.nation}
+									</td>
+								</tr>
+							{/each}</tbody>
+					</table>
+				{/if}
+				<div style="padding-top:0rem;">
 					{@html work.synopsis}
 				</div>
 				<flex>
@@ -175,5 +192,25 @@
 		margin: 0;
 		bottom: 0;
 		font-family: 'Urbanist';
+	}
+	table {
+		white-space: wrap;
+		flex-wrap: wrap;
+	}
+	th {
+		justify-content: baseline;
+		vertical-align: text-bottom;
+		border: none;
+		padding-top: 2rem;
+		padding-left: 0rem;
+		padding-right: 0rem;
+		padding-bottom: 0rem;
+		margin: 0;
+	}
+	td {
+		border: none;
+		padding-left: 0rem;
+		padding-right: 0rem;
+		padding-bottom: 1.3rem;
 	}
 </style>
