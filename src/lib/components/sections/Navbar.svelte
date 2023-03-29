@@ -4,61 +4,81 @@
 </script>
 
 <svelte:window bind:scrollY={scroll} />
-<container>
-	{#if scroll > 80}
-		<flex transition:slide>
-			<item>
-				<a href="/buy">buy</a>
-			</item>
-			<item>
-				<a href="/works">works</a>
-			</item>
-			<item>
-				<a style="font-weight:bold" href="/">shahab nedaei</a>
-			</item>
-			<item>
-				<a href="/info">info</a>
-			</item>
-			<item>
-				<a href="/">curated</a>
-			</item>
-		</flex>
-	{/if}
-</container>
+
+{#if scroll < 80}
+	<container transition:slide={{ duration: 1000 }}>
+		<right>
+			<h1><a href="/works">all works</a></h1>
+			<h1><a href="/">curated</a></h1>
+
+			<h1><a href="/info">info</a></h1>
+		</right>
+
+		<bottom>
+			<a style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
+			<a href="/buy"><button>support my work</button></a>
+		</bottom>
+	</container>
+{/if}
 
 <style>
 	container {
+		overflow: hidden;
 		width: 100%;
-	}
-	flex {
+		height: 100%;
+		position: fixed;
 		background-color: white;
-		position: fixed; /* Make it stick/fixed */
+		z-index: 10;
+	}
+	button {
+		height: 100%;
+		font-size: 1.5rem;
+		color: black;
+		width: 435px;
+		background-color: white;
+		border: 2px solid black;
+		box-shadow: none;
+	}
+	right {
+		position: absolute;
+		right: 0;
+		padding-right: 5rem;
+	}
+
+	bottom {
+		width: 100%;
 		display: flex;
 		justify-content: space-between;
-		gap: 1rem;
-		top: 0;
-		z-index: 10;
-		width: 100%;
-		padding-left: 10rem;
-		padding-right: 10rem;
-		padding-bottom: 0.5rem;
-		padding-top: 0.5rem;
+		position: absolute;
+		bottom: 0;
+		padding: 5rem;
 	}
-	item {
-		margin: 0;
-		padding: 0;
-	}
+
 	a {
 		text-decoration: none;
 		font-family: 'Urbanist';
 		color: black;
 		accent-color: gray;
 		border-radius: 0;
-		font-size: 0.8rem;
 		padding: 0.5rem;
 	}
 	a:hover {
 		background-color: black;
 		color: white;
+	}
+	h1 {
+		font-family: 'Bitter';
+		letter-spacing: 0.25rem;
+		font-size: 5rem;
+		white-space: wrap;
+		min-width: 400px;
+		padding: 0;
+	}
+	h2 {
+		font-family: 'Urbanist';
+		margin-bottom: 0.5rem;
+		font-size: 3rem;
+		white-space: nowrap;
+		font-weight: 300;
 	}
 </style>

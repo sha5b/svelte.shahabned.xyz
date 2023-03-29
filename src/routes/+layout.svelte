@@ -1,11 +1,14 @@
 <script>
 	import { page } from '$app/stores'
 	import Navbar from '$lib/components/sections/Navbar.svelte'
+	import Frame from '$lib/components/elements/Frame.svelte'
 	import { spring } from 'svelte/motion'
 </script>
 
 <Navbar />
-<slot />
+<Frame>
+	<slot />
+</Frame>
 
 <style global>
 	@import url('https://fonts.googleapis.com/css?family=Inter&display=swap');
