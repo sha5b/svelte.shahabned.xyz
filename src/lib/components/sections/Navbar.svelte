@@ -63,8 +63,6 @@
 		padding: 0.5rem;
 	}
 	a:hover {
-		background-color: black;
-		color: white;
 	}
 	h1 {
 		font-family: 'Bitter';
