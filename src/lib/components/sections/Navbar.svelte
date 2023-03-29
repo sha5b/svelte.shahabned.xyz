@@ -28,8 +28,17 @@
 		</right>
 
 		<bottom>
-			<a style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
-			<a href="/buy"><button class="contrast">support my work</button></a>
+			<scrolltext>
+				<content>
+					<a style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
+					<a aria-hidden="true" style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
+					<a aria-hidden="true" style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
+					<a aria-hidden="true" style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
+					<a aria-hidden="true" style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
+					<a aria-hidden="true" style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
+					<a aria-hidden="true" style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
+				</content>
+			</scrolltext>
 		</bottom>
 	</container>
 {/if}
@@ -46,7 +55,6 @@
 	button {
 		height: 100%;
 		font-size: 1.5rem;
-		width: 435px;
 		box-shadow: none;
 	}
 	right {
@@ -87,5 +95,28 @@
 		font-size: 3rem;
 		white-space: nowrap;
 		font-weight: 300;
+	}
+
+	scrolltext {
+		z-index: 2;
+		--gap: 2rem;
+		display: flex;
+		overflow: hidden;
+		gap: var(--gap);
+		width: 100%;
+	}
+	scrolltext content {
+		display: flex;
+		animation: scroll 60s linear infinite;
+		width: 100%;
+	}
+
+	@keyframes scroll {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translate(calc(-100% - var(--gap)));
+		}
 	}
 </style>

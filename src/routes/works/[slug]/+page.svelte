@@ -77,9 +77,23 @@
 							src={getImageURL(work.collectionId, work.id, work.file)}
 							alt={`${work.title}`}><track kind="captions" /></video>
 					{:else if work.type === 'image'}
-						<img src={getImageURL(work.collectionId, work.id, work.file)} alt={`${work.title}`} />
+						<Lightbox
+							enableClickToClose={true}
+							enableEscapeToClose={true}
+							enableImageExpand={true}
+							showCloseButton={false}>
+							<img
+								src={getImageURL(work.collectionId, work.id, work.file)}
+								alt={`${work.title}`} /></Lightbox>
 					{:else if work.type === '3d'}
-						<img src={getImageURL(work.collectionId, work.id, work.file)} alt={`${work.title}`} />
+						<Lightbox
+							enableClickToClose={true}
+							enableEscapeToClose={true}
+							enableImageExpand={true}
+							showCloseButton={false}>
+							<img
+								src={getImageURL(work.collectionId, work.id, work.file)}
+								alt={`${work.title}`} /></Lightbox>
 					{/if}
 				</div>
 				{#if work.expand.exhibition}
