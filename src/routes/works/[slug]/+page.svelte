@@ -36,6 +36,14 @@
 			<content>
 				<h1>{work.title}</h1>
 				<h2>{work.genre}</h2>
+				{#each work.expand.colab as colab}
+					{#if colab.role == 'artist'}
+						<div style="margin-top:auto;">
+							<h4>collaboration</h4>
+							<a href={`${colab.link}`}><h2>{colab.title}</h2></a>
+						</div>
+					{/if}
+				{/each}
 				<div style="display:flex; gap:1rem">
 					<h4>material:</h4>
 					<p>{work.material}</p>
@@ -162,6 +170,8 @@
 		font-weight: 300;
 	}
 	h4 {
+		margin: 0;
+		bottom: 0;
 		font-family: 'Urbanist';
 	}
 </style>

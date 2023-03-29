@@ -1,0 +1,119 @@
+<script>
+	import { splitArrayColumns } from '$lib/utils/splitArrayColumns'
+	import { getImageURL } from '$lib/utils/getURL'
+	import Time from 'svelte-time'
+
+	export let columns
+	export let arr
+	let scroll
+
+	let verticalColumn = splitArrayColumns(arr, columns)
+</script>
+
+<flex-wrapper>
+	{#each verticalColumn as column, i}
+		<flex>
+			{#each column as curated, i (curated.id)}
+				<a href={`curated/${curated.slug}`}>
+					<item>
+						<flex style="position:absolute; padding:2rem;width:100%;">
+							<div style="width:100%; z-index: 5;">
+								<div style="display:flex;justify-content:space-between">
+									<h1>{curated.title}</h1>
+									<p><Time timestamp={curated.date} format="MMMM YYYY" /></p>
+								</div>
+								<div>
+									{#each curated.expand.colab as colab}
+										{#if colab.role == 'curated'}
+											<div style="margin-top:auto;">
+												<a href={`${colab.link}`}><h2>{colab.title}</h2></a>
+											</div>
+										{/if}
+									{/each}
+								</div>
+							</div>
+							<div style="z-index:5">
+								<a href={`${curated.space_link}`}><p>{curated.space_name}</p></a>
+							</div>
+						</flex>
+						<image-overlay />
+						<img
+							src={getImageURL(curated.collectionId, curated.id, curated.thumb)}
+							alt={`${curated.title}`} />
+					</item>
+				</a>
+			{/each}
+		</flex>
+	{/each}
+</flex-wrapper>
+
+<style lang="css">
+	flex-wrapper {
+		display: flex;
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+		padding-bottom: 1rem;
+		padding-top: 1rem;
+		width: 100%;
+		height: 100%;
+		flex-direction: column;
+	}
+	flex {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+		gap: 1rem;
+		justify-content: space-between;
+		padding-top: 0rem;
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+	flex item {
+		position: relative;
+		overflow: hidden;
+		display: block;
+		width: 100%;
+	}
+	img {
+		object-fit: cover;
+		overflow: hide;
+		width: 100%;
+		max-height: 500px;
+		border-radius: 0.25rem;
+	}
+	image-overlay {
+		border-radius: 0.25rem;
+		z-index: 1;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: black;
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out;
+	}
+	flex item:hover image-overlay {
+		opacity: 0.6;
+	}
+
+	h1 {
+		color: white;
+		font-family: 'Bitter';
+		letter-spacing: 0.25rem;
+		font-size: 4rem;
+		padding: 0;
+		margin: 0;
+	}
+	h2 {
+		color: white;
+		font-family: 'Urbanist';
+		font-size: 3rem;
+		padding: 0;
+		margin: 0;
+	}
+	p {
+		color: white;
+		padding: 0;
+		margin: 0;
+	}
+</style>

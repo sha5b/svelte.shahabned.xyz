@@ -23,8 +23,7 @@
 	<container transition:fly={{ duration: 1000, y: 800 }}>
 		<right>
 			<h1><a href="/works">all works</a></h1>
-			<h1><a href="/">curated</a></h1>
-
+			<h1><a href="/curated">curated</a></h1>
 			<h1><a href="/info">info</a></h1>
 		</right>
 
@@ -67,7 +66,6 @@
 
 	a {
 		text-decoration: none;
-		font-family: 'Urbanist';
 		color: black;
 		accent-color: gray;
 		border-radius: 0;
