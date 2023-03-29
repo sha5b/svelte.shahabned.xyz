@@ -1,11 +1,24 @@
 <script>
-	let scroll
 	import { slide } from 'svelte/transition'
+	import { onMount } from 'svelte'
+
+	let scroll
+	let y
+
+	let newY = []
+	$: oldY = newY[1]
+
+	function updateY(event) {
+		newY.push(y)
+		if (newY.length > 5) {
+			newY.shift()
+		}
+		newY = newY
+	}
 </script>
 
-<svelte:window bind:scrollY={scroll} />
-
-{#if scroll < 80}
+<svelte:window on:scroll={updateY} bind:scrollY={y} />
+{#if oldY >= y}
 	<container transition:slide={{ duration: 1000 }}>
 		<right>
 			<h1><a href="/works">all works</a></h1>
