@@ -1,16 +1,17 @@
 <script>
-	import { slide } from 'svelte/transition'
+	import { page } from '$app/stores'
+	import { slide, fly } from 'svelte/transition'
 	import { onMount } from 'svelte'
 
 	let scroll
-	let y
+	let y = undefined
 
 	let newY = []
 	$: oldY = newY[1]
 
 	function updateY(event) {
 		newY.push(y)
-		if (newY.length > 5) {
+		if (newY.length > 3) {
 			newY.shift()
 		}
 		newY = newY
@@ -19,7 +20,7 @@
 
 <svelte:window on:scroll={updateY} bind:scrollY={y} />
 {#if oldY >= y}
-	<container transition:slide={{ duration: 1000 }}>
+	<container transition:fly={{ duration: 1000, y: 800 }}>
 		<right>
 			<h1><a href="/works">all works</a></h1>
 			<h1><a href="/">curated</a></h1>
@@ -40,7 +41,7 @@
 		width: 100%;
 		height: 100%;
 		position: fixed;
-		background-color: rgba(255, 255, 255, 0.75);
+		background-color: rgba(255, 255, 255, 0.9);
 		z-index: 10;
 	}
 	button {
