@@ -52,7 +52,7 @@
 		overflow: hidden;
 		width: 100%;
 		height: 100%;
-		position: absolute;
+		position: fixed;
 		background-color: rgba(255, 255, 255, 0.75);
 		z-index: 10;
 		padding: 7.5rem;
