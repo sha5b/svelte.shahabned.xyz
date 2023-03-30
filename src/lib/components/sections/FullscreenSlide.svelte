@@ -18,7 +18,7 @@
 					<item>
 						<flex style="">
 							<text-hover>
-								<div style="width:100%; z-index: 5;">
+								<div style="width:100%; z-index: 5;		align-items: baseline;">
 									<div style="display:flex;justify-content:space-between">
 										<h1>{curated.title}</h1>
 										<p><Time timestamp={curated.date} format="MMMM YYYY" /></p>
@@ -33,7 +33,7 @@
 										{/each}
 									</div>
 								</div>
-								<div style="z-index:5">
+								<div style="z-index:5;align-items: baseline;">
 									<div style="display:flex;justify-content:space-between">
 										<h2>{curated.space_name}</h2>
 										<p>location</p>
@@ -62,6 +62,7 @@
 		width: 100%;
 		height: 100%;
 		flex-direction: column;
+		align-items: baseline;
 	}
 
 	flex {

@@ -241,7 +241,7 @@
 		align-items: end;
 	}
 	p {
-		font-size: 1rem;
+		font-size: 1.25rem;
 		margin-bottom: 0;
 	}
 </style>

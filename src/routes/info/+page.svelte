@@ -60,12 +60,15 @@
 		font-family: 'Bitter';
 		font-size: 2.5rem;
 		letter-spacing: 0.25rem;
+		padding-top: 2rem;
+		margin-bottom: 0;
 	}
 
 	h3 {
 		font-family: 'Urbanist';
 		font-size: 2.5rem;
 		letter-spacing: 0.25rem;
+		margin-bottom: 0;
 	}
 	p {
 		margin-bottom: 0rem;
@@ -73,9 +76,11 @@
 	table {
 		white-space: wrap;
 		flex-wrap: wrap;
+		align-items: baseline;
 	}
 	th {
 		justify-content: baseline;
+		align-items: baseline;
 		vertical-align: text-bottom;
 		border: none;
 		padding-left: 0rem;
@@ -83,6 +88,7 @@
 		padding-bottom: 0rem;
 	}
 	td {
+		align-items: baseline;
 		border: none;
 		padding-left: 0rem;
 		padding-right: 0rem;
