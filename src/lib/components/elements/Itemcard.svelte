@@ -31,7 +31,7 @@
 <!-- <scrolltext style:transform={`translate3d(0, ${$mousePosition.y - scroll * -0.1 - 100}px, 0)`}> -->
 <a href={`/works/${slug}`}>
 	<container on:mousemove={handleMousemove}>
-		<scrolltext style:transform={`translate3d(0, ${mouse.y - scroll * (i / 10) - 100}px, 0)`}>
+		<scrolltext style:transform={`translate3d(0, ${mouse.y - scroll * (-i / 10) - 100}px, 0)`}>
 			<div>
 				<content>
 					<h1>{title}</h1>

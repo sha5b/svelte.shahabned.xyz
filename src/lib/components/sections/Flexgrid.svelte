@@ -11,7 +11,7 @@
 
 <flex-wrapper>
 	{#each verticalColumn as column, i}
-		<flex style:transform={`translate3d(0, ${scroll * (i / 10)}px, 0)`}>
+		<flex style:transform={`translate3d(0, ${scroll * (-i / 10)}px, 0)`}>
 			{#each column as work (work.id)}
 				<item>
 					<Itemcard
