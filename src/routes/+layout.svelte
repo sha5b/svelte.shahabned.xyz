@@ -17,7 +17,7 @@
 	[data-theme='light'],
 	:root:not([data-theme='dark']) {
 		--primary: #df8766;
-		--primary-hover: #c4687a;
+		--primary-hover: #df8766;
 		--primary-focus: rgba(31, 24, 60, 0.125);
 		--primary-inverse: #f4f5f5;
 		font-family: 'Urbanist';
