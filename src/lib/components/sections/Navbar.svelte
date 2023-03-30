@@ -25,10 +25,8 @@
 		const currentScrollPos = window.pageYOffset
 		if (currentScrollPos > prevScrollPos) {
 			scrollDirection = false
-			console.log(scrollDirection)
 		} else {
 			scrollDirection = true
-			console.log(scrollDirection)
 		}
 		prevScrollPos = currentScrollPos
 	}
@@ -37,20 +35,15 @@
 <svelte:window on:scroll={handleScroll} bind:scrollY={y} />
 {#if scrollDirection && y != 0}
 	<container transition:fly={{ duration: 1000, y: 800 }}>
-		<div style="display:flex">
-			<div style="width:100%" />
-			<right>
-				<div>
-					<h1><a href="/works">all works</a></h1>
-					<h1><a href="/curated">curated</a></h1>
-					<h1><a href="/info">info</a></h1>
-				</div>
-			</right>
-		</div>
+		<navigation style="align-items: end;text-align:right">
+			<a href="/works"><h1>all works</h1></a>
+			<a href="/curated"><h1>curated</h1></a>
+			<a href="/info"><h1>info</h1></a>
+		</navigation>
 
-		<bottom>
-			<a style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
-		</bottom>
+		<navigation tyle="align-items: start;">
+			<div><a style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a></div>
+		</navigation>
 	</container>
 {/if}
 
@@ -62,24 +55,12 @@
 		position: fixed;
 		background-color: rgba(255, 255, 255, 0.75);
 		z-index: 10;
-	}
-	right {
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-end;
-		padding-right: 5rem;
-		padding-top: 5rem;
-		width: 100%;
-		align-items: end;
+		padding: 7.5rem;
 	}
 
-	bottom {
-		width: 100%;
+	navigation {
 		display: flex;
-		justify-content: space-between;
-		position: absolute;
-		bottom: 0;
-		padding: 5rem;
+		flex-direction: column;
 	}
 
 	a {
@@ -90,6 +71,8 @@
 		padding: 0.5rem;
 	}
 	a:hover {
+		text-decoration: underline;
+		color: var(--primary);
 	}
 	h1 {
 		font-family: 'Bitter';
