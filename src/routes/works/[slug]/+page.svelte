@@ -158,21 +158,6 @@
 						</item>
 					{/each}
 				</flex>
-				{#if work.gallery_process}
-					<flex style="padding-top:8rem">
-						{#each work.gallery_process as image}
-							<item-process>
-								<Lightbox
-									enableClickToClose={true}
-									enableEscapeToClose={true}
-									enableImageExpand={true}
-									showCloseButton={false}>
-									<img src={getImageURL(work.collectionId, work.id, image)} alt={`${work.title}`} />
-								</Lightbox>
-							</item-process>
-						{/each}
-					</flex>
-				{/if}
 			</content>
 		{/if}
 	{/each}
@@ -195,12 +180,8 @@
 		padding-bottom: 1rem;
 	}
 	flex item {
+		overflow: hidden;
 		width: 25%;
-		flex-grow: 1;
-		align-items: stretch;
-	}
-	flex item-process {
-		width: 10%;
 		flex-grow: 1;
 		align-items: stretch;
 	}
