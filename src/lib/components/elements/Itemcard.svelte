@@ -159,6 +159,7 @@
 		user-select: none;
 		pointer-events: none;
 		gap: var(--gap);
+		transition: opacity 0.3s ease-in-out;
 	}
 	scrolltext content {
 		display: flex;

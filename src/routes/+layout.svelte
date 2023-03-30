@@ -32,6 +32,12 @@
 	:root::-webkit-scrollbar-thumb {
 		background: black;
 	}
+	:global(h1) {
+		font-family: 'Bitter';
+	}
+	:global(h2) {
+		font-family: 'Urbanist';
+	}
 	:global(p) {
 		font-family: 'Urbanist';
 		font-size: 1.25rem;

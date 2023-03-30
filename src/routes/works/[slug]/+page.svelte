@@ -113,7 +113,7 @@
 							{/each}</tbody>
 					</table>
 				{/if}
-				<div style="padding-top:0rem;">
+				<div style="padding-top:4rem;">
 					{@html work.synopsis}
 				</div>
 				<flex>
