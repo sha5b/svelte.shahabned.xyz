@@ -3,8 +3,7 @@
 	import { getImageURL } from '$lib/utils/getURL'
 	import { spring } from 'svelte/motion'
 	import FaBitcoin from 'svelte-icons/fa/FaBitcoin.svelte'
-	import FaEuroSign from 'svelte-icons/fa/FaEuroSign.svelte'
-	import GiCoins from 'svelte-icons/gi/GiCoins.svelte'
+	import FaShoppingCart from 'svelte-icons/fa/FaShoppingCart.svelte'
 	export let scroll
 	export let title
 	export let slug
@@ -114,7 +113,7 @@
 				{#if edition}
 					<a href="https://www.instagram.com/shahabned/">
 						<div style="width: 48px; color: white">
-							<GiCoins />
+							<FaShoppingCart />
 						</div>
 					</a>
 				{/if}

@@ -4,8 +4,7 @@
 	import { getImageURL } from '$lib/utils/getURL'
 	import { Lightbox } from 'svelte-lightbox'
 	import FaBitcoin from 'svelte-icons/fa/FaBitcoin.svelte'
-	import FaEuroSign from 'svelte-icons/fa/FaEuroSign.svelte'
-	import GiCoins from 'svelte-icons/gi/GiCoins.svelte'
+	import FaShoppingCart from 'svelte-icons/fa/FaShoppingCart.svelte'
 	export let data
 	// mouse position setup - needs to be a component - i don't know how
 </script>
@@ -52,7 +51,7 @@
 							<a
 								href={`mailto:ned.tabulov@gmail.com?subject=acquisition for the work "${work.slug}"`}>
 								<div style="width: 88px; color: black">
-									<GiCoins />
+									<FaShoppingCart />
 								</div>
 							</a>
 						{/if}
