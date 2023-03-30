@@ -11,32 +11,15 @@
 
 	function updateY(event) {
 		newY.push(y)
-		if (newY.length > 50) {
+		if (newY.length > 10) {
 			newY.shift()
 		}
 		newY = newY
 	}
-
-	onMount(() => {
-		window.addEventListener('wheel', function (event) {
-			var currentScrollTop = window.pageYOffset || document.documentElement.scrollTop
-			if (currentScrollTop > lastScrollTop) {
-				// Scrolling down
-				scrollDirection = false
-			} else {
-				// Scrolling up
-				scrollDirection = true
-			}
-			lastScrollTop = currentScrollTop
-		})
-	})
-
-	var lastScrollTop = 0
-	var scrollDirection = false
 </script>
 
 <svelte:window on:scroll={updateY} bind:scrollY={y} />
-{#if scrollDirection}
+{#if oldY >= y && y != 0}
 	<container transition:fly={{ duration: 1000, y: 800 }}>
 		<div style="display:flex">
 			<div style="width:100%" />
