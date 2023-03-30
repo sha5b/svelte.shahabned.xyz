@@ -4,10 +4,12 @@
 	import Itemcard from '$lib/components/elements/Itemcard.svelte'
 	import Flexgrid from '$lib/components/sections/Flexgrid.svelte'
 	export let data
+	let scroll
 
 	// mouse position setup - needs to be a component - i don't know how
 </script>
 
+<svelte:window bind:scrollY={scroll} />
 <div>
-	<Flexgrid arr={data.works} columns={3} />
+	<Flexgrid arr={data.works} columns={3} {scroll} />
 </div>

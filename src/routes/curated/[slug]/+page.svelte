@@ -44,6 +44,7 @@
 						{@html curated.synopsis}
 					</p>
 				</div>
+				<div>₿</div>
 				<flex>
 					{#each curated.gallery as image}
 						<item>

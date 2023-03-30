@@ -102,8 +102,8 @@
 						><tbody>
 							{#each work.expand.exhibition as exhibition}
 								<tr>
-									<td><a href={`${exhibition.link}`}>{exhibition.title}</a></td>
-									<td>
+									<td><p><a href={`${exhibition.link}`}>{exhibition.title}</a></p></td>
+									<td style="">
 										<Time timestamp={exhibition.date} format="MMMM YYYY" />
 									</td>
 									<td>
@@ -226,5 +226,10 @@
 		padding-left: 0rem;
 		padding-right: 0rem;
 		padding-bottom: 1.3rem;
+		align-items: end;
+	}
+	p {
+		font-size: 1rem;
+		margin-bottom: 0;
 	}
 </style>
