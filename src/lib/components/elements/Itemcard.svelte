@@ -2,12 +2,15 @@
 	import Time from 'svelte-time'
 	import { getImageURL } from '$lib/utils/getURL'
 	import { spring } from 'svelte/motion'
+	import FaBitcoin from 'svelte-icons/fa/FaBitcoin.svelte'
+	import FaEuroSign from 'svelte-icons/fa/FaEuroSign.svelte'
 	export let scroll
 	export let title
 	export let slug
 	export let genre
 	export let material
 	export let dimension
+	export let nft
 	export let date
 	export let edition
 	export let collectionId
@@ -99,6 +102,22 @@
 			{:else if type === '3d'}
 				<img src={getImageURL(collectionId, id, thumb)} alt={`${title}`} />
 			{/if}
+			<icons>
+				{#if nft}
+					<a href="https://www.instagram.com/shahabned/">
+						<div style="width: 48px; color: white">
+							<FaBitcoin />
+						</div>
+					</a>
+				{/if}
+				{#if edition}
+					<a href="https://www.instagram.com/shahabned/">
+						<div style="width: 24px; color: white">
+							<FaEuroSign />
+						</div>
+					</a>
+				{/if}
+			</icons>
 		</div>
 	</container>
 </a>
@@ -126,6 +145,17 @@
 		min-height: 500px;
 		border-radius: 0.25rem;
 	}
+	icons {
+		display: flex;
+		gap: 1rem;
+		z-index: 2;
+		position: absolute;
+		bottom: 20px;
+		right: 30px;
+		align-items: baseline;
+		opacity: 0.75;
+	}
+
 	h1 {
 		color: white;
 		font-family: 'Bitter';
@@ -142,6 +172,11 @@
 		font-size: 1.5rem;
 		white-space: nowrap;
 		font-weight: 300;
+	}
+	h6 {
+		color: white;
+		font-family: 'Urbanist';
+		font-size: 1.5rem;
 	}
 	p {
 		color: white;

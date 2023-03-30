@@ -3,6 +3,8 @@
 	import { page } from '$app/stores'
 	import { getImageURL } from '$lib/utils/getURL'
 	import { Lightbox } from 'svelte-lightbox'
+	import FaBitcoin from 'svelte-icons/fa/FaBitcoin.svelte'
+	import FaEuroSign from 'svelte-icons/fa/FaEuroSign.svelte'
 	export let data
 	// mouse position setup - needs to be a component - i don't know how
 </script>
@@ -35,7 +37,26 @@
 			{/if}
 			<content>
 				<h1>{work.title}</h1>
-				<h2>{work.genre}</h2>
+				<div style="display:flex; justify-content:space-between">
+					<h2>{work.genre}</h2>
+					<icons>
+						{#if work.nft}
+							<a href={`${work.nft}`}>
+								<div style="width: 88px; color: black">
+									<FaBitcoin />
+								</div>
+							</a>
+						{/if}
+						{#if work.edition}
+							<a
+								href={`mailto:ned.tabulov@gmail.com?subject=acquisition for the work "${work.slug}"`}>
+								<div style="width: 44px; color: black">
+									<FaEuroSign />
+								</div>
+							</a>
+						{/if}
+					</icons>
+				</div>
 				{#if work.expand.colab}
 					{#each work.expand.colab as colab}
 						{#if colab.role == 'artist'}
@@ -113,25 +134,9 @@
 							{/each}</tbody>
 					</table>
 				{/if}
-				<div style="padding-top:4rem;">
+				<div style="padding-top:2rem;">
 					{@html work.synopsis}
 				</div>
-				<flex>
-					<div style="flex-grow:1">
-						{#if work.edition}
-							<div>
-								<a
-									href={`mailto:ned.tabulov@gmail.com?subject=acquisition for the work "${work.slug}"`}
-									><button class="contrast" style="width:100%">buy edition</button></a>
-							</div>
-						{/if}
-					</div>
-					<div style="flex-grow:1">
-						{#if work.nft}
-							<a href={`${work.nft}`}><button class="contrast">buy nft</button></a>
-						{/if}
-					</div>
-				</flex>
 				<flex>
 					{#each work.gallery as image}
 						<item>
@@ -174,6 +179,12 @@
 	content {
 		padding: 2.5rem 10rem 2.5rem 10rem;
 	}
+	icons {
+		display: flex;
+		gap: 2.5rem;
+		align-items: baseline;
+		opacity: 0.75;
+	}
 	img {
 		object-fit: cover;
 		width: 100%;
@@ -215,17 +226,12 @@
 		justify-content: baseline;
 		vertical-align: text-bottom;
 		border: none;
-		padding-top: 2rem;
-		padding-left: 0rem;
-		padding-right: 0rem;
-		padding-bottom: 0rem;
+
 		margin: 0;
 	}
 	td {
 		border: none;
-		padding-left: 0rem;
-		padding-right: 0rem;
-		padding-bottom: 1.3rem;
+
 		align-items: end;
 	}
 	p {

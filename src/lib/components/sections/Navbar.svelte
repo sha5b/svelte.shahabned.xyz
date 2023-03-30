@@ -21,11 +21,16 @@
 <svelte:window on:scroll={updateY} bind:scrollY={y} />
 {#if oldY >= y && y != 0}
 	<container transition:fly={{ duration: 1000, y: 800 }}>
-		<right>
-			<h1><a href="/works">all works</a></h1>
-			<h1><a href="/curated">curated</a></h1>
-			<h1><a href="/info">info</a></h1>
-		</right>
+		<div style="display:flex">
+			<div style="width:100%" />
+			<right>
+				<div>
+					<h1><a href="/works">all works</a></h1>
+					<h1><a href="/curated">curated</a></h1>
+					<h1><a href="/info">info</a></h1>
+				</div>
+			</right>
+		</div>
 
 		<bottom>
 			<a style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
@@ -42,15 +47,14 @@
 		background-color: rgba(255, 255, 255, 0.75);
 		z-index: 10;
 	}
-	button {
-		height: 100%;
-		font-size: 1.5rem;
-		box-shadow: none;
-	}
 	right {
-		position: absolute;
-		right: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
 		padding-right: 5rem;
+		padding-top: 5rem;
+		width: 100%;
+		align-items: end;
 	}
 
 	bottom {
@@ -59,7 +63,7 @@
 		justify-content: space-between;
 		position: absolute;
 		bottom: 0;
-		padding: 2rem;
+		padding: 5rem;
 	}
 
 	a {
@@ -77,12 +81,12 @@
 		font-size: 5rem;
 		white-space: wrap;
 		min-width: 400px;
-		padding: 0;
+		margin-top: 0;
 	}
 	h2 {
 		font-family: 'Urbanist';
 		margin-bottom: 0.5rem;
-		font-size: 3rem;
+		font-size: 4rem;
 		white-space: nowrap;
 		font-weight: 300;
 	}

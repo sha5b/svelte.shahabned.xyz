@@ -26,6 +26,7 @@
 						edition={work.edition}
 						collectionId={work.collectionId}
 						id={work.id}
+						nft={work.nft}
 						type={work.type}
 						thumb={work.thumb} />
 				</item>
