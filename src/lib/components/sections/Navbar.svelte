@@ -3,6 +3,20 @@
 	import { slide, fly } from 'svelte/transition'
 	import { onMount } from 'svelte'
 
+	let scroll
+	let y
+
+	let newY = []
+	$: oldY = newY[1]
+
+	function updateY(event) {
+		newY.push(y)
+		if (newY.length > 10) {
+			newY.shift()
+		}
+		newY = newY
+	}
+
 	let prevScrollPos = 0
 	let scrollDirection = false
 
@@ -16,26 +30,19 @@
 		}
 		prevScrollPos = currentScrollPos
 	}
-
-	const resetScrollDirection = () => {
-		scrollDirection = false
-	}
 </script>
 
-<svelte:window on:scroll={handleScroll} />
-{#if scrollDirection}
+<svelte:window on:scroll={handleScroll} bind:scrollY={y} />
+{#if scrollDirection && y != 0}
 	<container transition:fly={{ duration: 1000, y: 800 }}>
 		<navigation style="align-items: end;text-align:right">
-			<a on:click={resetScrollDirection} href="/works"><h1>all works</h1></a>
-			<a on:click={resetScrollDirection} href="/curated"><h1>curated</h1></a>
-			<a on:click={resetScrollDirection} href="/info"><h1>info</h1></a>
+			<a href="/works"><h1>all works</h1></a>
+			<a href="/curated"><h1>curated</h1></a>
+			<a href="/info"><h1>info</h1></a>
 		</navigation>
 
 		<navigation tyle="align-items: start;">
-			<div>
-				<a on:click={resetScrollDirection} style="font-weight:bold" href="/"
-					><h2>shahab nedaei</h2></a>
-			</div>
+			<div><a style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a></div>
 		</navigation>
 	</container>
 {/if}
@@ -45,7 +52,7 @@
 		overflow: hidden;
 		width: 100%;
 		height: 100%;
-		position: fixed;
+		position: absolute;
 		background-color: rgba(255, 255, 255, 0.75);
 		z-index: 10;
 		padding: 7.5rem;
