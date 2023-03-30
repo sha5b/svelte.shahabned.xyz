@@ -74,7 +74,7 @@
 				</div>
 				<flex>
 					{#if work.dimension}<div style="display:flex; gap:1rem;align-items: baseline;">
-							<h4>dimnesion:</h4>
+							<h4>dimension:</h4>
 							<p>{work.dimension}</p>
 						</div>
 					{/if}
@@ -86,7 +86,7 @@
 
 					{#if work.edition}
 						<div style="display:flex; gap:1rem;align-items: baseline;">
-							<h4>eidition:</h4>
+							<h4>edition:</h4>
 							<p>{work.edition}</p>
 						</div>
 					{/if}
