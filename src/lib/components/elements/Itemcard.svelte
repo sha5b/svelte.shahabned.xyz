@@ -4,6 +4,7 @@
 	import { spring } from 'svelte/motion'
 	import FaBitcoin from 'svelte-icons/fa/FaBitcoin.svelte'
 	import FaEuroSign from 'svelte-icons/fa/FaEuroSign.svelte'
+	import GiCoins from 'svelte-icons/gi/GiCoins.svelte'
 	export let scroll
 	export let title
 	export let slug
@@ -112,8 +113,8 @@
 				{/if}
 				{#if edition}
 					<a href="https://www.instagram.com/shahabned/">
-						<div style="width: 24px; color: white">
-							<FaEuroSign />
+						<div style="width: 48px; color: white">
+							<GiCoins />
 						</div>
 					</a>
 				{/if}
@@ -153,7 +154,7 @@
 		bottom: 20px;
 		right: 30px;
 		align-items: baseline;
-		opacity: 0.75;
+		opacity: 0.9;
 	}
 
 	h1 {

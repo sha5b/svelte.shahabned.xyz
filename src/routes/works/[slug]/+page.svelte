@@ -5,6 +5,7 @@
 	import { Lightbox } from 'svelte-lightbox'
 	import FaBitcoin from 'svelte-icons/fa/FaBitcoin.svelte'
 	import FaEuroSign from 'svelte-icons/fa/FaEuroSign.svelte'
+	import GiCoins from 'svelte-icons/gi/GiCoins.svelte'
 	export let data
 	// mouse position setup - needs to be a component - i don't know how
 </script>
@@ -50,8 +51,8 @@
 						{#if work.edition}
 							<a
 								href={`mailto:ned.tabulov@gmail.com?subject=acquisition for the work "${work.slug}"`}>
-								<div style="width: 44px; color: black">
-									<FaEuroSign />
+								<div style="width: 88px; color: black">
+									<GiCoins />
 								</div>
 							</a>
 						{/if}
