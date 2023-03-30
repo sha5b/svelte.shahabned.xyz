@@ -161,16 +161,16 @@
 		color: white;
 		font-family: 'Bitter';
 		letter-spacing: 0.25rem;
-		font-size: 2rem;
+		font-size: 3rem;
 		margin-bottom: 0.25rem;
 		white-space: wrap;
-		min-width: 400px;
+		min-width: 500px;
 	}
 	h2 {
 		color: white;
 		font-family: 'Urbanist';
 		margin-bottom: 0.5rem;
-		font-size: 1.5rem;
+		font-size: 2.5rem;
 		white-space: nowrap;
 		font-weight: 300;
 	}

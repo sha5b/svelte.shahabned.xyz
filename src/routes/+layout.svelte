@@ -40,7 +40,7 @@
 	}
 	:global(p) {
 		font-family: 'Urbanist';
-		font-size: 1.25rem;
+		font-size: 1.5rem;
 		letter-spacing: 0.1rem;
 	}
 	:global(img) {
