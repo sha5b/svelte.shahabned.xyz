@@ -16,28 +16,30 @@
 			{#each column as curated, i (curated.id)}
 				<a href={`curated/${curated.slug}`}>
 					<item>
-						<flex style="position:absolute; padding:2rem;width:100%;">
-							<div style="width:100%; z-index: 5;">
-								<div style="display:flex;justify-content:space-between">
-									<h1>{curated.title}</h1>
-									<p><Time timestamp={curated.date} format="MMMM YYYY" /></p>
+						<flex style="">
+							<text-hover>
+								<div style="width:100%; z-index: 5;">
+									<div style="display:flex;justify-content:space-between">
+										<h1>{curated.title}</h1>
+										<p><Time timestamp={curated.date} format="MMMM YYYY" /></p>
+									</div>
+									<div>
+										{#each curated.expand.colab as colab}
+											{#if colab.role == 'curated'}
+												<div style="margin-top:auto;">
+													<h2>{colab.title}</h2>
+												</div>
+											{/if}
+										{/each}
+									</div>
 								</div>
-								<div>
-									{#each curated.expand.colab as colab}
-										{#if colab.role == 'curated'}
-											<div style="margin-top:auto;">
-												<h2>{colab.title}</h2>
-											</div>
-										{/if}
-									{/each}
+								<div style="z-index:5">
+									<div style="display:flex;justify-content:space-between">
+										<h2>{curated.space_name}</h2>
+										<p>location</p>
+									</div>
 								</div>
-							</div>
-							<div style="z-index:5">
-								<div style="display:flex;justify-content:space-between">
-									<h2>{curated.space_name}</h2>
-									<p>location</p>
-								</div>
-							</div>
+							</text-hover>
 						</flex>
 						<image-overlay />
 						<img
@@ -61,6 +63,7 @@
 		height: 100%;
 		flex-direction: column;
 	}
+
 	flex {
 		display: flex;
 		flex-direction: column;
@@ -77,6 +80,21 @@
 		overflow: hidden;
 		display: block;
 		width: 100%;
+	}
+	flex item:hover text-hover {
+		opacity: 1;
+	}
+
+	text-hover {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		position: absolute;
+		padding: 2rem;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		transition: opacity 0.1s ease-in-out;
 	}
 	img {
 		object-fit: cover;

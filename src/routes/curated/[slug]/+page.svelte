@@ -72,6 +72,7 @@
 		margin: 0 auto;
 		padding-bottom: 2rem;
 	}
+
 	flex {
 		display: flex;
 		justify-content: space-between;

@@ -28,17 +28,7 @@
 		</right>
 
 		<bottom>
-			<scrolltext>
-				<content>
-					<a style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
-					<a aria-hidden="true" style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
-					<a aria-hidden="true" style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
-					<a aria-hidden="true" style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
-					<a aria-hidden="true" style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
-					<a aria-hidden="true" style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
-					<a aria-hidden="true" style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
-				</content>
-			</scrolltext>
+			<a style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
 		</bottom>
 	</container>
 {/if}
@@ -49,7 +39,7 @@
 		width: 100%;
 		height: 100%;
 		position: fixed;
-		background-color: rgba(255, 255, 255, 0.9);
+		background-color: rgba(255, 255, 255, 0.75);
 		z-index: 10;
 	}
 	button {
@@ -69,7 +59,7 @@
 		justify-content: space-between;
 		position: absolute;
 		bottom: 0;
-		padding: 5rem;
+		padding: 2rem;
 	}
 
 	a {
@@ -95,28 +85,5 @@
 		font-size: 3rem;
 		white-space: nowrap;
 		font-weight: 300;
-	}
-
-	scrolltext {
-		z-index: 2;
-		--gap: 2rem;
-		display: flex;
-		overflow: hidden;
-		gap: var(--gap);
-		width: 100%;
-	}
-	scrolltext content {
-		display: flex;
-		animation: scroll 60s linear infinite;
-		width: 100%;
-	}
-
-	@keyframes scroll {
-		from {
-			transform: translateX(0);
-		}
-		to {
-			transform: translate(calc(-100% - var(--gap)));
-		}
 	}
 </style>
