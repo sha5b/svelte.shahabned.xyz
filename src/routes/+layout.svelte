@@ -15,11 +15,14 @@
 	@import url('https://fonts.googleapis.com/css?family=Urbanist&display=swap');
 
 	:root {
-		--main-black: #15171c;
-		--main-white: #f6f7f7;
-		--main-grey: #74818b;
-		--secondary-grey: #818484;
 		font-family: 'Urbanist';
+	}
+	[data-theme='light'],
+	:root:not([data-theme='dark']) {
+		--primary: #df8766;
+		--primary-hover: #c4687a;
+		--primary-focus: rgba(31, 24, 60, 0.125);
+		--primary-inverse: #f4f5f5;
 	}
 	:root::-webkit-scrollbar {
 		width: 0.25rem;

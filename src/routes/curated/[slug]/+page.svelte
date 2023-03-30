@@ -22,7 +22,7 @@
 						{#if colab.role == 'curated'}
 							<div style="margin-top:auto;">
 								<h4>exhibited artists</h4>
-								<a href={`${colab.link}`}><h2>{colab.title}</h2></a>
+								<a target="_blank" href={`${colab.link}`}><h2>{colab.title}</h2></a>
 							</div>
 						{/if}
 					{/each}
@@ -31,13 +31,13 @@
 					{#if colab.role == 'artist'}
 						<div style="margin-top:auto;">
 							<h4>collaboration</h4>
-							<a href={`${colab.link}`}><h2>{colab.title}</h2></a>
+							<a target="_blank" href={`${colab.link}`}><h2>{colab.title}</h2></a>
 						</div>
 					{/if}
 				{/each}
 				<div style="margin-top:auto;">
 					<h4>location</h4>
-					<a href={`${curated.space_link}`}><h2>{curated.space_name}</h2></a>
+					<a target="_blank" href={`${curated.space_link}`}><h2>{curated.space_name}</h2></a>
 				</div>
 				<div style="padding-top:2rem;padding-bottom:5rem">
 					<p>
