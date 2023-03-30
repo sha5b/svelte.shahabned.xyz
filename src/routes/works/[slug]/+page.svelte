@@ -36,7 +36,7 @@
 					alt={`${work.title}`} />
 			{/if}
 			<content>
-				<h1>{work.title}</h1>
+				<a href="/works"><h1>{work.title}</h1></a>
 				<div style="display:flex; justify-content:space-between">
 					<h2>{work.genre}</h2>
 					<icons>
@@ -67,24 +67,24 @@
 						{/if}
 					{/each}
 				{/if}
-				<div style="display:flex; gap:1rem">
+				<div style="display:flex; gap:1rem;align-items: baseline;">
 					<h4>material:</h4>
 					<p>{work.material}</p>
 				</div>
 				<flex>
-					{#if work.dimension}<div style="display:flex; gap:1rem;">
+					{#if work.dimension}<div style="display:flex; gap:1rem;align-items: baseline;">
 							<h4>dimnesion:</h4>
 							<p>{work.dimension}</p>
 						</div>
 					{/if}
 
-					<div style="display:flex; gap:1rem">
+					<div style="display:flex; gap:1rem;align-items: baseline;">
 						<h4>created:</h4>
 						<p><Time timestamp={work.date} format="MMMM YYYY" /></p>
 					</div>
 
 					{#if work.edition}
-						<div style="display:flex; gap:1rem">
+						<div style="display:flex; gap:1rem;align-items: baseline;">
 							<h4>eidition:</h4>
 							<p>{work.edition}</p>
 						</div>
@@ -119,7 +119,12 @@
 				</div>
 				{#if work.expand.exhibition}
 					<table>
-						<thead><th><h2 style="padding-bottom: 0;margin-bottom: 0;">exhibitions</h2></th></thead
+						<thead
+							><th
+								><h2 style="padding-top:3rem;padding-bottom: 0;margin-bottom: 0;">
+									exhibitions
+								</h2></th
+							></thead
 						><tbody>
 							{#each work.expand.exhibition as exhibition}
 								<tr>
@@ -226,12 +231,12 @@
 		justify-content: baseline;
 		vertical-align: text-bottom;
 		border: none;
-
+		align-items: baseline;
 		margin: 0;
 	}
 	td {
 		border: none;
-
+		align-items: baseline;
 		align-items: end;
 	}
 	p {
