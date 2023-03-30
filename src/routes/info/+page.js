@@ -9,11 +9,20 @@ export const load = async () => {
 	const owner = await pb.collection('users').getOne('bgho9k9u2mpc5vo', {
 		sort: '-created'
 	})
+	const colab = await pb.collection('collaboration').getFullList({
+		sort: '-title',
+	})
+		const curated = await pb.collection('curated').getFullList({
+		sort: '-date',
+		expand: 'colab'
+	})
 
 	const exhibtions = await response
 
 	return {
 		exhibtions,
-		owner
+		owner,
+		colab,
+		curated
 	}
 }

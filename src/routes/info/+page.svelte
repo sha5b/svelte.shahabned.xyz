@@ -1,6 +1,7 @@
 <script>
 	import Time from 'svelte-time'
 	import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
+	import FaGithub from 'svelte-icons/fa/FaGithub.svelte'
 	export let data
 </script>
 
@@ -10,16 +11,37 @@
 			<div style="display:flex">
 				<h1>{data.owner.name}</h1>
 
-				<a href="https://www.instagram.com/shahabned/">
-					<div style="width: 64px; color: black">
-						<FaInstagram />
-					</div>
-				</a>
+				<div style="display:flex;gap:2rem">
+					<a target="_blank" href="https://github.com/sha5b/svelte.shahabned.xyz">
+						<div style="width: 64px; color: black">
+							<FaGithub />
+						</div>
+					</a>
+					<a target="_blank" href="https://www.instagram.com/shahabned/">
+						<div style="width: 64px; color: black">
+							<FaInstagram />
+						</div>
+					</a>
+				</div>
 			</div>
 			<p>currently based in berlin</p>
 			<h3>statement</h3>
 			<p>{data.owner.statement}</p>
 		</div>
+	</div>
+	<div>
+		{#if data.colab}
+			<h2 style="padding-bottom:1rem">collaborations</h2>
+			<flex>
+				{#each data.colab as colab}
+					{#if colab.role == 'artist'}
+						<item>
+							<a target="_blank" href={`${colab.link}`}><h6>{colab.title}</h6></a>
+						</item>
+					{/if}
+				{/each}
+			</flex>
+		{/if}
 	</div>
 	<div>
 		<table>
@@ -30,9 +52,10 @@
 			<tbody>
 				{#each data.exhibtions as exhibition (exhibition.id)}
 					<tr>
-						<td><a href={`${exhibition.link}`}>{exhibition.title}</a></td>
+						<td><a target="_blank" href={`${exhibition.link}`}>{exhibition.title}</a></td>
 						<td
-							><a href={`${exhibition.expand.curator.link}`}>{exhibition.expand.curator.title}</a
+							><a target="_blank" href={`${exhibition.expand.curator.link}`}
+								>{exhibition.expand.curator.title}</a
 							></td>
 						<td>
 							<Time timestamp={exhibition.date} format="MMMM YYYY" />
@@ -48,6 +71,15 @@
 </div>
 
 <style>
+	flex {
+		display: flex;
+		width: 100%;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+	flex item {
+		flex-grow: 1;
+	}
 	h1 {
 		font-family: 'Bitter';
 		margin: 0;
@@ -68,7 +100,13 @@
 		font-family: 'Urbanist';
 		font-size: 2.5rem;
 		letter-spacing: 0.25rem;
+
 		margin-bottom: 0;
+	}
+	h6 {
+		font-family: 'Urbanist';
+		font-size: 1.5rem;
+		margin: 0;
 	}
 	p {
 		margin-bottom: 0rem;

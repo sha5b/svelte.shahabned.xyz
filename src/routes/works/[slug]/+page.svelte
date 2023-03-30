@@ -42,7 +42,7 @@
 					<h2>{work.genre}</h2>
 					<icons>
 						{#if work.nft}
-							<a href={`${work.nft}`}>
+							<a target="_blank" href={`${work.nft}`}>
 								<div style="width: 88px; color: black">
 									<FaBitcoin />
 								</div>
@@ -63,7 +63,7 @@
 						{#if colab.role == 'artist'}
 							<div style="margin-top:auto;">
 								<h4>collaboration</h4>
-								<a href={`${colab.link}`}><h2>{colab.title}</h2></a>
+								<a target="_blank" href={`${colab.link}`}><h2>{colab.title}</h2></a>
 							</div>
 						{/if}
 					{/each}
@@ -129,7 +129,10 @@
 						><tbody>
 							{#each work.expand.exhibition as exhibition}
 								<tr>
-									<td><p><a href={`${exhibition.link}`}>{exhibition.title}</a></p></td>
+									<td
+										><p>
+											<a target="_blank" href={`${exhibition.link}`}>{exhibition.title}</a>
+										</p></td>
 									<td style="">
 										<Time timestamp={exhibition.date} format="MMMM YYYY" />
 									</td>
