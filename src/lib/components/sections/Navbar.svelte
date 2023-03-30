@@ -11,15 +11,31 @@
 
 	function updateY(event) {
 		newY.push(y)
-		if (newY.length > 20) {
+		if (newY.length > 10) {
 			newY.shift()
 		}
 		newY = newY
 	}
+
+	let prevScrollPos = 0
+	let scrollDirection = false
+
+	const handleScroll = () => {
+		scrollDirection = false
+		const currentScrollPos = window.pageYOffset
+		if (currentScrollPos > prevScrollPos) {
+			scrollDirection = false
+			console.log(scrollDirection)
+		} else {
+			scrollDirection = true
+			console.log(scrollDirection)
+		}
+		prevScrollPos = currentScrollPos
+	}
 </script>
 
-<svelte:window on:scroll={updateY} bind:scrollY={y} />
-{#if oldY >= y && y != 0}
+<svelte:window on:scroll={handleScroll} bind:scrollY={y} />
+{#if scrollDirection && y != 0}
 	<container transition:fly={{ duration: 1000, y: 800 }}>
 		<div style="display:flex">
 			<div style="width:100%" />
