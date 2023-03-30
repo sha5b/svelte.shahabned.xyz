@@ -11,7 +11,7 @@
 
 	function updateY(event) {
 		newY.push(y)
-		if (newY.length > 10) {
+		if (newY.length > 20) {
 			newY.shift()
 		}
 		newY = newY
