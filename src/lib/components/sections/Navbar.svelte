@@ -35,15 +35,17 @@
 <svelte:window on:scroll={handleScroll} bind:scrollY={y} />
 {#if scrollDirection && y != 0}
 	<container transition:fly={{ duration: 1000, y: 800 }}>
-		<navigation style="align-items: end;text-align:right">
-			<a href="/works"><h1>all works</h1></a>
-			<a href="/curated"><h1>curated</h1></a>
-			<a href="/info"><h1>info</h1></a>
-		</navigation>
+		<flex>
+			<navigation style="align-items: end;text-align:right">
+				<a href="/works"><h1>all works</h1></a>
+				<a href="/curated"><h1>curated</h1></a>
+				<a href="/info"><h1>info</h1></a>
+			</navigation>
 
-		<navigation tyle="align-items: start;">
-			<div><a style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a></div>
-		</navigation>
+			<navigation tyle="align-items: start;">
+				<div><a style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a></div>
+			</navigation>
+		</flex>
 	</container>
 {/if}
 
@@ -61,6 +63,13 @@
 	navigation {
 		display: flex;
 		flex-direction: column;
+	}
+	flex {
+		display: flex;
+		width: 100%;
+		height: 100%;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 
 	a {

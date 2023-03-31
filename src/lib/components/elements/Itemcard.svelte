@@ -130,6 +130,9 @@
 	container:hover scrolltext {
 		opacity: 1;
 	}
+	a {
+		cursor: none;
+	}
 	img {
 		object-fit: cover;
 		overflow: hide;
