@@ -10,7 +10,6 @@
 	const resetScroll = () => {
 		scrollDirection = false
 	}
-	$: console.log(scrollDirection)
 </script>
 
 <Navbar scrollDirection={resetScroll} />

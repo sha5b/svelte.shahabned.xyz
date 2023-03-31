@@ -138,4 +138,24 @@
 		padding: 0;
 		margin: 0;
 	}
+
+	@media (max-width: 768px) {
+		h1 {
+			font-size: 3rem;
+		}
+		h2 {
+			font-size: 2rem;
+		}
+	}
+	@media (max-width: 480px) {
+		h1 {
+			font-size: 2rem;
+		}
+		h2 {
+			font-size: 1.5rem;
+		}
+		p {
+			font-size: 1rem;
+		}
+	}
 </style>
