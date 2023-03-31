@@ -38,7 +38,7 @@
 </script>
 
 <svelte:window on:scroll={handleScroll} bind:scrollY={y} on:click={(scrollDirection = false)} />
-{#if scrollDirection}
+{#if scrollDirection && y != 0}
 	<container transition:fly={{ duration: 600, y: 800 }}>
 		<flex>
 			<navigation style="align-items: end;text-align:right">
