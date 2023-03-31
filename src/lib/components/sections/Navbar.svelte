@@ -23,12 +23,15 @@
 	const handleScroll = () => {
 		scrollDirection = false
 		const currentScrollPos = window.pageYOffset
+
 		if (currentScrollPos > prevScrollPos) {
 			scrollDirection = false
 		} else {
 			scrollDirection = true
 		}
-		prevScrollPos = currentScrollPos
+		setTimeout(() => {
+			prevScrollPos = currentScrollPos
+		}, 1000)
 	}
 </script>
 

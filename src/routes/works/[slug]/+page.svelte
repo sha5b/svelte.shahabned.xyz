@@ -320,12 +320,11 @@
 			flex-grow: 1;
 			flex-shrink: 1;
 		}
+		h1 {
+			font-size: 4rem;
+		}
 		h2 {
-			font-family: 'Urbanist';
 			font-size: 2.5rem;
-			font-weight: 300;
-			margin: 0;
-			padding-bottom: 2rem;
 		}
 	}
 </style>
