@@ -118,4 +118,27 @@
 		bottom: 0;
 		font-family: 'Urbanist';
 	}
+
+	@media (max-width: 1024px) {
+		content {
+			padding: 1rem 5rem 1rem 5rem;
+		}
+		flex item {
+			width: 33%;
+		}
+	}
+
+	@media (max-width: 768px) {
+		content {
+			padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+		}
+	}
+	@media (max-width: 480px) {
+		content {
+			padding: 0.5rem 1rem 0.5rem 1rem;
+		}
+		flex item {
+			width: 100%;
+		}
+	}
 </style>

@@ -37,22 +37,18 @@
 			{/if}
 			<content>
 				<a href="/works"><h1>{work.title}</h1></a>
-				<div style="display:flex; justify-content:space-between">
+				<div style="display:flex; justify-content:space-between;align-items:baseline">
 					<h2>{work.genre}</h2>
 					<icons>
 						{#if work.nft}
 							<a target="_blank" href={`${work.nft}`}>
-								<div style=" color: black">
-									<FaBitcoin />
-								</div>
+								<FaBitcoin />
 							</a>
 						{/if}
 						{#if work.edition}
 							<a
 								href={`mailto:ned.tabulov@gmail.com?subject=acquisition for the work "${work.slug}"`}>
-								<div style=" color: black">
-									<FaShoppingCart />
-								</div>
+								<FaShoppingCart />
 							</a>
 						{/if}
 					</icons>
@@ -178,8 +174,6 @@
 		gap: 1rem;
 		padding-top: 1rem;
 		padding-bottom: 1rem;
-		align-items: baseline;
-		align-content: baseline;
 	}
 	flex item {
 		overflow: hidden;
@@ -190,20 +184,17 @@
 	content {
 		padding: 2.5rem 10rem 2.5rem 10rem;
 	}
-	@media (max-width: 1024px) {
-		content {
-			padding: 1rem 5rem 1rem 5rem;
-		}
-	}
 
 	icons {
 		display: flex;
 		gap: 2.5rem;
 		align-items: baseline;
 		opacity: 0.75;
+		color: white;
 	}
 	icons a {
 		width: 72px;
+		color: black;
 	}
 
 	icons a:hover {
@@ -236,6 +227,8 @@
 		font-family: 'Urbanist';
 		font-size: 3rem;
 		font-weight: 300;
+		margin: 0;
+		padding-bottom: 2rem;
 	}
 	h4 {
 		margin: 0;
@@ -262,6 +255,15 @@
 		font-size: 1.25rem;
 		margin-bottom: 0;
 	}
+	@media (max-width: 1024px) {
+		content {
+			padding: 1rem 5rem 1rem 5rem;
+		}
+		flex item {
+			width: 33%;
+		}
+	}
+
 	@media (max-width: 768px) {
 		content {
 			padding: 0.5rem 2.5rem 0.5rem 2.5rem;
@@ -275,7 +277,10 @@
 			padding: 0.5rem 1rem 0.5rem 1rem;
 		}
 		icons a {
-			width: 24px;
+			width: 32px;
+		}
+		flex item {
+			width: 100%;
 		}
 	}
 </style>
