@@ -5,6 +5,7 @@
 	import { Lightbox } from 'svelte-lightbox'
 	import FaBitcoin from 'svelte-icons/fa/FaBitcoin.svelte'
 	import FaShoppingCart from 'svelte-icons/fa/FaShoppingCart.svelte'
+	import MediaQuery from 'svelte-media-query'
 	export let data
 	// mouse position setup - needs to be a component - i don't know how
 </script>
@@ -113,31 +114,64 @@
 								alt={`${work.title}`} /></Lightbox>
 					{/if}
 				</div>
-				{#if work.expand.exhibition}
-					<table>
-						<thead
-							><th
-								><h2 style="padding-top:3rem;padding-bottom: 0;margin-bottom: 0;">
-									exhibitions
-								</h2></th
-							></thead
-						><tbody>
-							{#each work.expand.exhibition as exhibition}
-								<tr>
-									<td
-										><p>
-											<a target="_blank" href={`${exhibition.link}`}>{exhibition.title}</a>
-										</p></td>
-									<td style="">
-										<Time timestamp={exhibition.date} format="MMMM YYYY" />
-									</td>
-									<td>
-										{exhibition.city}, {exhibition.nation}
-									</td>
-								</tr>
-							{/each}</tbody>
-					</table>
-				{/if}
+				<MediaQuery query="(min-width: 1024px)" let:matches>
+					{#if matches}
+						{#if work.expand.exhibition}
+							<table>
+								<thead
+									><th
+										><h2 style="padding-top:3rem;padding-bottom: 0;margin-bottom: 0;">
+											exhibitions
+										</h2></th
+									></thead
+								><tbody>
+									{#each work.expand.exhibition as exhibition}
+										<tr>
+											<td
+												><p>
+													<a target="_blank" href={`${exhibition.link}`}>{exhibition.title}</a>
+												</p></td>
+											<td style="">
+												<Time timestamp={exhibition.date} format="MMMM YYYY" />
+											</td>
+											<td>
+												{exhibition.city}, {exhibition.nation}
+											</td>
+										</tr>
+									{/each}</tbody>
+							</table>
+						{/if}
+					{/if}
+				</MediaQuery>
+				<MediaQuery query="(max-width: 1024px)" let:matches>
+					{#if matches}
+						{#if work.expand.exhibition}
+							<table>
+								<thead
+									><th
+										><h2 style="padding-top:3rem;padding-bottom: 0;margin-bottom: 0;">
+											exhibitions
+										</h2></th
+									></thead
+								><tbody>
+									{#each work.expand.exhibition as exhibition}
+										<tr>
+											<td
+												><p>
+													<a target="_blank" href={`${exhibition.link}`}>{exhibition.title}</a>
+												</p></td>
+										</tr>
+										<tr>
+											<td style="">
+												<Time timestamp={exhibition.date} format="MMMM YYYY" />
+												<div>{exhibition.city}, {exhibition.nation}</div>
+											</td>
+										</tr>
+									{/each}</tbody>
+							</table>
+						{/if}
+					{/if}
+				</MediaQuery>
 				<div style="padding-top:2rem;">
 					{@html work.synopsis}
 				</div>
@@ -245,6 +279,8 @@
 		border: none;
 		align-items: baseline;
 		margin: 0;
+		flex-grow: 1;
+		flex-shrink: 1;
 	}
 	td {
 		border: none;
@@ -281,6 +317,15 @@
 		}
 		flex item {
 			width: 100%;
+			flex-grow: 1;
+			flex-shrink: 1;
+		}
+		h2 {
+			font-family: 'Urbanist';
+			font-size: 2.5rem;
+			font-weight: 300;
+			margin: 0;
+			padding-bottom: 2rem;
 		}
 	}
 </style>
