@@ -7,6 +7,7 @@
 
 	let prevScrollPos = 0
 	export let scrollDirection
+	let delay
 
 	const handleScroll = () => {
 		const currentScrollPos = window.pageYOffset
@@ -101,6 +102,12 @@
 			padding: 2.5rem;
 		}
 		navigation {
+		}
+		h1 {
+			font-size: 4rem;
+		}
+		h2 {
+			font-size: 3rem;
 		}
 	}
 </style>

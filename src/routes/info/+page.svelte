@@ -14,14 +14,10 @@
 
 				<icons style="display:flex;gap:2rem">
 					<a target="_blank" href="https://github.com/sha5b/svelte.shahabned.xyz">
-						<div>
-							<FaGithub />
-						</div>
+						<FaGithub />
 					</a>
 					<a target="_blank" href="https://www.instagram.com/shahabned/">
-						<div>
-							<FaInstagram />
-						</div>
+						<FaInstagram />
 					</a>
 				</icons>
 			</div>
@@ -137,7 +133,7 @@
 		letter-spacing: 0.75rem;
 	}
 	h2 {
-		font-family: 'Bitter';
+		font-family: 'Urbanist';
 		font-size: 2.5rem;
 		letter-spacing: 0.25rem;
 		padding-top: 2rem;
@@ -202,10 +198,22 @@
 		content {
 			padding: 0.5rem 2.5rem 0.5rem 2.5rem;
 		}
+		icons {
+			flex-direction: column;
+		}
+		icons a {
+			width: 48px;
+		}
 	}
 	@media (max-width: 480px) {
 		content {
 			padding: 0.5rem 1rem 0.5rem 1rem;
+		}
+		icons {
+			flex-direction: column;
+		}
+		icons a {
+			width: 32px;
 		}
 	}
 </style>
