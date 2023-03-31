@@ -42,7 +42,7 @@
 					<icons>
 						{#if work.nft}
 							<a target="_blank" href={`${work.nft}`}>
-								<div style="width: 88px; color: black">
+								<div style=" color: black">
 									<FaBitcoin />
 								</div>
 							</a>
@@ -50,7 +50,7 @@
 						{#if work.edition}
 							<a
 								href={`mailto:ned.tabulov@gmail.com?subject=acquisition for the work "${work.slug}"`}>
-								<div style="width: 88px; color: black">
+								<div style=" color: black">
 									<FaShoppingCart />
 								</div>
 							</a>
@@ -178,6 +178,8 @@
 		gap: 1rem;
 		padding-top: 1rem;
 		padding-bottom: 1rem;
+		align-items: baseline;
+		align-content: baseline;
 	}
 	flex item {
 		overflow: hidden;
@@ -188,11 +190,24 @@
 	content {
 		padding: 2.5rem 10rem 2.5rem 10rem;
 	}
+	@media (max-width: 1024px) {
+		content {
+			padding: 1rem 5rem 1rem 5rem;
+		}
+	}
+
 	icons {
 		display: flex;
 		gap: 2.5rem;
 		align-items: baseline;
 		opacity: 0.75;
+	}
+	icons a {
+		width: 72px;
+	}
+
+	icons a:hover {
+		color: var(--primary);
 	}
 	img {
 		object-fit: cover;
@@ -246,5 +261,21 @@
 	p {
 		font-size: 1.25rem;
 		margin-bottom: 0;
+	}
+	@media (max-width: 768px) {
+		content {
+			padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+		}
+		icons a {
+			width: 48px;
+		}
+	}
+	@media (max-width: 480px) {
+		content {
+			padding: 0.5rem 1rem 0.5rem 1rem;
+		}
+		icons a {
+			width: 24px;
+		}
 	}
 </style>

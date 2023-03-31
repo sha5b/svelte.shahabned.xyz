@@ -105,14 +105,14 @@
 			<icons>
 				{#if nft}
 					<a href="https://www.instagram.com/shahabned/">
-						<div style="width: 48px; color: white">
+						<div style="width: 32px; color: white">
 							<FaBitcoin />
 						</div>
 					</a>
 				{/if}
 				{#if edition}
 					<a href="https://www.instagram.com/shahabned/">
-						<div style="width: 48px; color: white">
+						<div style="width: 32px; color: white">
 							<FaShoppingCart />
 						</div>
 					</a>
@@ -129,9 +129,6 @@
 	}
 	container:hover scrolltext {
 		opacity: 1;
-	}
-	a {
-		cursor: none;
 	}
 	img {
 		object-fit: cover;

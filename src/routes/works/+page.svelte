@@ -3,6 +3,7 @@
 	import { spring } from 'svelte/motion'
 	import Itemcard from '$lib/components/elements/Itemcard.svelte'
 	import Flexgrid from '$lib/components/sections/Flexgrid.svelte'
+	import MediaQuery from 'svelte-media-query'
 	export let data
 	let scroll
 
@@ -10,6 +11,24 @@
 </script>
 
 <svelte:window bind:scrollY={scroll} />
-<div>
-	<Flexgrid arr={data.works} columns={3} {scroll} />
-</div>
+<MediaQuery query="(min-width: 768px)" let:matches>
+	{#if matches}
+		<div>
+			<Flexgrid arr={data.works} columns={3} {scroll} />
+		</div>
+	{/if}
+</MediaQuery>
+<MediaQuery query="(min-width: 480px) and (max-width: 768px)" let:matches>
+	{#if matches}
+		<div>
+			<Flexgrid arr={data.works} columns={2} {scroll} />
+		</div>
+	{/if}
+</MediaQuery>
+<MediaQuery query="(max-width: 480px)" let:matches>
+	{#if matches}
+		<div>
+			<Flexgrid arr={data.works} columns={1} {scroll} />
+		</div>
+	{/if}
+</MediaQuery>

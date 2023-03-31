@@ -42,8 +42,8 @@
 				<a href="/info"><h1>info</h1></a>
 			</navigation>
 
-			<navigation tyle="align-items: start;">
-				<div><a style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a></div>
+			<navigation>
+				<a style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
 			</navigation>
 		</flex>
 	</container>
@@ -57,12 +57,17 @@
 		position: fixed;
 		background-color: rgba(255, 255, 255, 0.75);
 		z-index: 10;
-		padding: 7.5rem;
+		padding: 5rem;
 	}
 
 	navigation {
 		display: flex;
 		flex-direction: column;
+		flex-grow: 1;
+		flex-shrink: 1;
+		height: 100%;
+		width: 100%;
+		justify-content: flex-end;
 	}
 	flex {
 		display: flex;
@@ -87,15 +92,19 @@
 		font-family: 'Bitter';
 		letter-spacing: 0.25rem;
 		font-size: 5rem;
-		white-space: wrap;
-		min-width: 400px;
-		margin-top: 0;
+		margin: 0;
 	}
 	h2 {
 		font-family: 'Urbanist';
 		margin-bottom: 0.5rem;
 		font-size: 4rem;
-		white-space: nowrap;
 		font-weight: 300;
+	}
+	@media (max-width: 768px) {
+		container {
+			padding: 2.5rem;
+		}
+		navigation {
+		}
 	}
 </style>
