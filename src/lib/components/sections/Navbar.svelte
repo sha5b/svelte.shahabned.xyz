@@ -35,20 +35,24 @@
 			prevScrollPos = currentScrollPos
 		}, delay)
 	}
+
+	const resetSrcoll = () => {
+		scrollDirection = false
+	}
 </script>
 
-<svelte:window on:scroll={handleScroll} bind:scrollY={y} on:click={(scrollDirection = false)} />
-{#if scrollDirection && y != 0}
+<svelte:window on:scroll={handleScroll} bind:scrollY={y} />
+{#if scrollDirection}
 	<container transition:fly={{ duration: 600, y: 800 }}>
 		<flex>
 			<navigation style="align-items: end;text-align:right">
-				<a href="/works"><h1>all works</h1></a>
-				<a href="/curated"><h1>curated</h1></a>
-				<a href="/info"><h1>info</h1></a>
+				<a on:click={resetSrcoll} href="/works"><h1>all works</h1></a>
+				<a on:click={resetSrcoll} href="/curated"><h1>curated</h1></a>
+				<a on:click={resetSrcoll} href="/info"><h1>info</h1></a>
 			</navigation>
 
 			<navigation>
-				<a style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
+				<a on:click={resetSrcoll} style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
 			</navigation>
 		</flex>
 	</container>
