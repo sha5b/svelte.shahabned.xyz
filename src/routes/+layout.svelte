@@ -7,12 +7,12 @@
 	export let data
 	let scrollDirection
 
-	const resetScroll = () => {
+	onMount(() => {
 		scrollDirection = false
-	}
+	})
 </script>
 
-<Navbar scrollDirection={resetScroll} />
+<Navbar {scrollDirection} />
 <slot />
 
 <style global>

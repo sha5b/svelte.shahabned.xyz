@@ -7,40 +7,31 @@
 
 	let prevScrollPos = 0
 	export let scrollDirection
-	let delay
 
 	const handleScroll = () => {
 		const currentScrollPos = window.pageYOffset
 
 		if (currentScrollPos > prevScrollPos) {
 			scrollDirection = false
-			delay = 2000
 		} else {
 			scrollDirection = true
-			delay = 100
 		}
-		setTimeout(() => {
-			prevScrollPos = currentScrollPos
-		}, delay)
-	}
-
-	const resetScroll = () => {
-		scrollDirection = false
+		prevScrollPos = currentScrollPos
 	}
 </script>
 
-<svelte:window on:scroll={handleScroll} on:load={resetScroll} />
-{#if scrollDirection}
+<svelte:window on:scroll={handleScroll} bind:scrollY={y} />
+{#if scrollDirection && y > 0}
 	<container transition:fly={{ duration: 800, y: 800 }}>
 		<flex>
 			<navigation style="align-items: end;text-align:right">
-				<a on:click={resetScroll} href="/works"><h1>all works</h1></a>
-				<a on:click={resetScroll} href="/curated"><h1>curated</h1></a>
-				<a on:click={resetScroll} href="/info"><h1>info</h1></a>
+				<a href="/works"><h1>all works</h1></a>
+				<a href="/curated"><h1>curated</h1></a>
+				<a href="/info"><h1>info</h1></a>
 			</navigation>
 
 			<navigation>
-				<a on:click={resetScroll} style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
+				<a style="font-weight:bold" href="/"><h2>shahab nedaei</h2></a>
 			</navigation>
 		</flex>
 	</container>
