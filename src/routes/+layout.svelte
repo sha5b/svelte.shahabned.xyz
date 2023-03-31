@@ -1,12 +1,19 @@
 <script>
 	import { page } from '$app/stores'
 	import Navbar from '$lib/components/sections/Navbar.svelte'
+	import { onMount } from 'svelte'
 
 	import { spring } from 'svelte/motion'
 	export let data
+	let scrollDirection
+
+	const resetScroll = () => {
+		scrollDirection = false
+	}
+	$: console.log(scrollDirection)
 </script>
 
-<Navbar />
+<Navbar scrollDirection={resetScroll} />
 <slot />
 
 <style global>

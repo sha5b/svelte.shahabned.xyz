@@ -3,30 +3,17 @@
 	import { slide, fly } from 'svelte/transition'
 	import { onMount } from 'svelte'
 
-	let scroll
 	let y
 
-	let newY = []
-	$: oldY = newY[1]
-
-	function updateY(event) {
-		newY.push(y)
-		if (newY.length > 10) {
-			newY.shift()
-		}
-		newY = newY
-	}
-
 	let prevScrollPos = 0
-	let scrollDirection = false
-	let delay
+	export let scrollDirection
+
 	const handleScroll = () => {
-		scrollDirection = false
 		const currentScrollPos = window.pageYOffset
 
 		if (currentScrollPos > prevScrollPos) {
 			scrollDirection = false
-			delay = 1000
+			delay = 2000
 		} else {
 			scrollDirection = true
 			delay = 100
@@ -41,7 +28,7 @@
 	}
 </script>
 
-<svelte:window on:scroll={handleScroll} bind:scrollY={y} />
+<svelte:window on:scroll={handleScroll} />
 {#if scrollDirection}
 	<container transition:fly={{ duration: 600, y: 800 }}>
 		<flex>
