@@ -150,10 +150,10 @@
 		gap: 1rem;
 		z-index: 2;
 		position: absolute;
-		bottom: 20px;
-		right: 30px;
+		bottom: 15px;
+		right: 15px;
 		align-items: baseline;
-		opacity: 0.9;
+		opacity: 0.75;
 	}
 
 	h1 {
