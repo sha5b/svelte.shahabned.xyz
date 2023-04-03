@@ -18,7 +18,7 @@
 					<item>
 						<flex style="">
 							<text-hover>
-								<div style="width:100%; z-index: 5;		align-items: baseline;">
+								<div style="width:100%; z-index: 5;	align-items: baseline;">
 									<div style="display:flex;justify-content:space-between">
 										<h1>{curated.title}</h1>
 										<p><Time timestamp={curated.date} format="MMMM YYYY" /></p>
@@ -36,7 +36,6 @@
 								<div style="z-index:5;align-items: baseline;">
 									<div style="display:flex;justify-content:space-between">
 										<h2>{curated.space_name}</h2>
-										<p>location</p>
 									</div>
 								</div>
 							</text-hover>
@@ -101,7 +100,7 @@
 		object-fit: cover;
 		overflow: hide;
 		width: 100%;
-		max-height: 500px;
+		max-height: 600px;
 		border-radius: 0.25rem;
 	}
 	image-overlay {
