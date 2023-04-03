@@ -46,12 +46,12 @@
 								<FaBitcoin />
 							</a>
 						{/if}
-						{#if work.edition}
+						<!-- {#if work.edition}
 							<a
 								href={`mailto:ned.tabulov@gmail.com?subject=acquisition for the work "${work.slug}"`}>
 								<FaShoppingCart />
 							</a>
-						{/if}
+						{/if} -->
 					</icons>
 				</div>
 				{#if work.expand.colab}

@@ -110,13 +110,13 @@
 						</div>
 					</a>
 				{/if}
-				{#if edition}
+				<!-- {#if edition}
 					<a href="https://www.instagram.com/shahabned/">
 						<div style="width: 32px; color: white">
 							<FaShoppingCart />
 						</div>
 					</a>
-				{/if}
+				{/if} -->
 			</icons>
 		</div>
 	</container>
