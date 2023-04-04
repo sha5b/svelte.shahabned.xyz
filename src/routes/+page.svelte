@@ -1,11 +1,10 @@
 <script>
 	import { spring } from 'svelte/motion'
-	import { getImageURL } from '$lib/utils/getURL'
-	import { page } from '$app/stores'
-	import Itemcard from '$lib/components/elements/Itemcard.svelte'
 	import Flexgrid from '$lib/components/sections/Flexgrid.svelte'
 	import MediaQuery from 'svelte-media-query'
+
 	export let data
+
 	let scroll
 
 	// mouse position setup - needs to be a component - i don't know how

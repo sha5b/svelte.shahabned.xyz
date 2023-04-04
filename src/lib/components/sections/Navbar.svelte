@@ -1,27 +1,27 @@
 <script>
-	import { page } from '$app/stores'
-	import { slide, fly } from 'svelte/transition'
-	import { onMount } from 'svelte'
+	import { fly } from 'svelte/transition'
 
+	let prevScrollPos
+	let tolerance = 50
+	let scrollDirection
 	let y
 
-	let prevScrollPos = 0
-	export let scrollDirection
-
 	const handleScroll = () => {
-		const currentScrollPos = window.pageYOffset
-
-		if (currentScrollPos > prevScrollPos) {
+		const currentScrollPos = scrollY
+		let diff = prevScrollPos - currentScrollPos
+		if (diff < -tolerance) {
 			scrollDirection = false
-		} else {
+		} else if (diff > tolerance) {
 			scrollDirection = true
 		}
-		prevScrollPos = currentScrollPos
+		prevScrollPos = currentScrollPos - tolerance
+
+		console.log('sd', scrollDirection)
 	}
 </script>
 
 <svelte:window on:scroll={handleScroll} bind:scrollY={y} />
-{#if scrollDirection && y > 0}
+{#if scrollDirection && y != 0}
 	<container transition:fly={{ duration: 800, y: 800 }}>
 		<flex>
 			<navigation style="align-items: end;text-align:right">

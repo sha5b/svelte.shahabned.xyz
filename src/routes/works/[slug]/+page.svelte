@@ -2,9 +2,7 @@
 	import Time from 'svelte-time'
 	import { page } from '$app/stores'
 	import { getImageURL } from '$lib/utils/getURL'
-	import { Lightbox } from 'svelte-lightbox'
 	import FaBitcoin from 'svelte-icons/fa/FaBitcoin.svelte'
-	import FaShoppingCart from 'svelte-icons/fa/FaShoppingCart.svelte'
 	import MediaQuery from 'svelte-media-query'
 	export let data
 	// mouse position setup - needs to be a component - i don't know how
@@ -95,23 +93,9 @@
 							src={getImageURL(work.collectionId, work.id, work.file)}
 							alt={`${work.title}`}><track kind="captions" /></video>
 					{:else if work.type === 'image'}
-						<Lightbox
-							enableClickToClose={true}
-							enableEscapeToClose={true}
-							enableImageExpand={true}
-							showCloseButton={false}>
-							<img
-								src={getImageURL(work.collectionId, work.id, work.file)}
-								alt={`${work.title}`} /></Lightbox>
+						<img src={getImageURL(work.collectionId, work.id, work.file)} alt={`${work.title}`} />
 					{:else if work.type === '3d'}
-						<Lightbox
-							enableClickToClose={true}
-							enableEscapeToClose={true}
-							enableImageExpand={true}
-							showCloseButton={false}>
-							<img
-								src={getImageURL(work.collectionId, work.id, work.file)}
-								alt={`${work.title}`} /></Lightbox>
+						<img src={getImageURL(work.collectionId, work.id, work.file)} alt={`${work.title}`} />
 					{/if}
 				</div>
 				<MediaQuery query="(min-width: 1024px)" let:matches>
@@ -178,13 +162,7 @@
 				<flex>
 					{#each work.gallery as image}
 						<item>
-							<Lightbox
-								enableClickToClose={true}
-								enableEscapeToClose={true}
-								enableImageExpand={true}
-								showCloseButton={false}>
-								<img src={getImageURL(work.collectionId, work.id, image)} alt={`${work.title}`} />
-							</Lightbox>
+							<img src={getImageURL(work.collectionId, work.id, image)} alt={`${work.title}`} />
 						</item>
 					{/each}
 				</flex>

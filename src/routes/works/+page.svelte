@@ -1,7 +1,4 @@
 <script>
-	import { getImageURL } from '$lib/utils/getURL'
-	import { spring } from 'svelte/motion'
-	import Itemcard from '$lib/components/elements/Itemcard.svelte'
 	import Flexgrid from '$lib/components/sections/Flexgrid.svelte'
 	import MediaQuery from 'svelte-media-query'
 	export let data

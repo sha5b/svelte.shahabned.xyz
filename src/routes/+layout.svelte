@@ -5,14 +5,9 @@
 
 	import { spring } from 'svelte/motion'
 	export let data
-	let scrollDirection
-
-	onMount(() => {
-		scrollDirection = false
-	})
 </script>
 
-<Navbar {scrollDirection} />
+<Navbar />
 <slot />
 
 <style global>
