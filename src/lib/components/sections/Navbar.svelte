@@ -2,7 +2,7 @@
 	import { fly } from 'svelte/transition'
 
 	let prevScrollPos
-	let tolerance = 50
+	let tolerance = 25
 	let scrollDirection
 	let y
 
