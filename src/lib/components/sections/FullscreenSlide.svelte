@@ -100,7 +100,7 @@
 		object-fit: cover;
 		overflow: hide;
 		width: 100%;
-		max-height: 1000px;
+		max-height: 850px;
 		border-radius: 0.25rem;
 	}
 	image-overlay {
