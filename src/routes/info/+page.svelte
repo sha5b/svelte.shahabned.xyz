@@ -9,8 +9,8 @@
 <container>
 	<content>
 		<div>
-			<div style="display:flex">
-				<h1>{data.owner.name}</h1>
+			<div style="display:flex;justify-content:space-between">
+				<a href="/"><h1>{data.owner.name}</h1></a>
 
 				<icons style="display:flex;gap:2rem">
 					<a target="_blank" href="https://github.com/sha5b/svelte.shahabned.xyz">

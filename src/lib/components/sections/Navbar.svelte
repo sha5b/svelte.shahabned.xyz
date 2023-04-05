@@ -2,7 +2,7 @@
 	import { fly } from 'svelte/transition'
 
 	let prevScrollPos
-	let tolerance = 20
+	let tolerance = 25
 	let scrollDirection
 	let y
 
@@ -14,8 +14,7 @@
 		} else if (diff > tolerance) {
 			scrollDirection = true
 		}
-		prevScrollPos = currentScrollPos
-
+		prevScrollPos = currentScrollPos - tolerance
 		console.log('sd', scrollDirection)
 	}
 </script>
