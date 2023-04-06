@@ -8,9 +8,13 @@ export const load = async () => {
 		sort: '-date',
 		filter: 'featured = true'
 	})
+	const owner = await pb.collection('users').getOne('bgho9k9u2mpc5vo', {
+		sort: '-created'
+	})
 	const works = await response
 
 	return {
-		works
+		works,
+		owner
 	}
 }

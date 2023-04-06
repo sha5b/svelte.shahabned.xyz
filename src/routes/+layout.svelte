@@ -4,7 +4,6 @@
 	import { onMount } from 'svelte'
 
 	import { spring } from 'svelte/motion'
-	export let data
 </script>
 
 <Navbar />

@@ -11,6 +11,7 @@
 <container>
 	{#each data.works as work}
 		{#if work.slug === $page.params.slug}
+			<meta name="keywords" content={`${work.tags}`} />
 			{#if work.type === 'video'}
 				<video
 					class="cover-img"

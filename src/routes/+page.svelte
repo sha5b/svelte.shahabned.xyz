@@ -15,6 +15,11 @@
 	}
 </script>
 
+<svelte:head>
+	<meta name="keywords" content={`${data.owner.tags}`} />
+	<meta name="description" content={`${data.owner.description}`} />
+</svelte:head>
+
 <svelte:window bind:scrollY={scroll} />
 
 <MediaQuery query="(min-width: 768px)" let:matches>
