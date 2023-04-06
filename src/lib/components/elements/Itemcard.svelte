@@ -95,12 +95,8 @@
 		<div>
 			<image-overlay />
 			{#if type === 'video'}
-				<video
-					autoplay
-					muted
-					loop
-					src={getImageURL(collectionId, id, thumb, '0x250')}
-					alt={`${title}`}><track kind="captions" /></video>
+				<video autoplay muted loop src={getImageURL(collectionId, id, thumb)} alt={`${title}`}
+					><track kind="captions" /></video>
 			{:else if type === 'image'}
 				<img src={getImageURL(collectionId, id, thumb, '0x250')} alt={`${title}`} />
 			{:else if type === '3d'}
