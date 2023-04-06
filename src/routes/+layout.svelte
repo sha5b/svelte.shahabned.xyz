@@ -6,6 +6,9 @@
 	import { spring } from 'svelte/motion'
 </script>
 
+<svelte:head>
+	<title>shahab nedaei | digital and intenet art</title>
+</svelte:head>
 <Navbar />
 <slot />
 
