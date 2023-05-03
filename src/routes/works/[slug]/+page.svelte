@@ -2,9 +2,10 @@
 	import Time from 'svelte-time'
 	import { page } from '$app/stores'
 	import { getImageURL } from '$lib/utils/getURL'
-	import FaBitcoin from 'svelte-icons/fa/FaBitcoin.svelte'
 	import MediaQuery from 'svelte-media-query'
 	export let data
+	import { Lightbox } from 'svelte-lightbox'
+
 	// mouse position setup - needs to be a component - i don't know how
 </script>
 
@@ -39,19 +40,6 @@
 				<a href="/works"><h1>{work.title}</h1></a>
 				<div style="display:flex; justify-content:space-between;align-items:baseline">
 					<h2>{work.genre}</h2>
-					<icons>
-						{#if work.nft}
-							<a target="_blank" href={`${work.nft}`}>
-								<FaBitcoin />
-							</a>
-						{/if}
-						<!-- {#if work.edition}
-							<a
-								href={`mailto:ned.tabulov@gmail.com?subject=acquisition for the work "${work.slug}"`}>
-								<FaShoppingCart />
-							</a>
-						{/if} -->
-					</icons>
 				</div>
 				{#if work.expand.colab}
 					{#each work.expand.colab as colab}
@@ -94,9 +82,13 @@
 							src={getImageURL(work.collectionId, work.id, work.file)}
 							alt={`${work.title}`}><track kind="captions" /></video>
 					{:else if work.type === 'image'}
-						<img src={getImageURL(work.collectionId, work.id, work.file)} alt={`${work.title}`} />
+						<Lightbox enableEscapeToClose={true} enableClickToClose={true} showCloseButton={false}>
+							<img src={getImageURL(work.collectionId, work.id, work.file)} alt={`${work.title}`} />
+						</Lightbox>
 					{:else if work.type === '3d'}
-						<img src={getImageURL(work.collectionId, work.id, work.file)} alt={`${work.title}`} />
+						<Lightbox enableEscapeToClose={true} enableClickToClose={true} showCloseButton={false}>
+							<img src={getImageURL(work.collectionId, work.id, work.file)} alt={`${work.title}`} />
+						</Lightbox>
 					{/if}
 				</div>
 				<MediaQuery query="(min-width: 1024px)" let:matches>
@@ -163,7 +155,12 @@
 				<flex>
 					{#each work.gallery as image}
 						<item>
-							<img src={getImageURL(work.collectionId, work.id, image)} alt={`${work.title}`} />
+							<Lightbox
+								enableEscapeToClose={true}
+								enableClickToClose={true}
+								showCloseButton={false}>
+								<img src={getImageURL(work.collectionId, work.id, image)} alt={`${work.title}`} />
+							</Lightbox>
 						</item>
 					{/each}
 				</flex>
@@ -195,24 +192,9 @@
 		align-items: stretch;
 	}
 	content {
-		padding: 2.5rem 10rem 2.5rem 10rem;
+		padding: 2.5rem 15rem 2.5rem 15rem;
 	}
 
-	icons {
-		display: flex;
-		gap: 2.5rem;
-		align-items: baseline;
-		opacity: 0.75;
-		color: white;
-	}
-	icons a {
-		width: 72px;
-		color: black;
-	}
-
-	icons a:hover {
-		color: var(--primary);
-	}
 	img {
 		object-fit: cover;
 		width: 100%;
@@ -232,13 +214,13 @@
 
 	h1 {
 		font-family: 'Bitter';
-		font-size: 4rem;
+		font-size: 3rem;
 		letter-spacing: 0.75rem;
 	}
 
 	h2 {
 		font-family: 'Urbanist';
-		font-size: 3rem;
+		font-size: 2rem;
 		font-weight: 300;
 		margin: 0;
 		padding-bottom: 2rem;
@@ -249,6 +231,7 @@
 		font-family: 'Urbanist';
 	}
 	table {
+		margin: 0;
 		white-space: wrap;
 		flex-wrap: wrap;
 	}
@@ -283,27 +266,15 @@
 		content {
 			padding: 0.5rem 2.5rem 0.5rem 2.5rem;
 		}
-		icons a {
-			width: 48px;
-		}
 	}
 	@media (max-width: 480px) {
 		content {
 			padding: 0.5rem 1rem 0.5rem 1rem;
 		}
-		icons a {
-			width: 32px;
-		}
 		flex item {
 			width: 100%;
 			flex-grow: 1;
 			flex-shrink: 1;
-		}
-		h1 {
-			font-size: 4rem;
-		}
-		h2 {
-			font-size: 2.5rem;
 		}
 	}
 </style>

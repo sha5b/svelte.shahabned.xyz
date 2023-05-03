@@ -44,8 +44,9 @@
 	}
 	:global(p) {
 		font-family: 'Urbanist';
-		font-size: 1.5rem;
+		font-size: 1rem;
 		letter-spacing: 0.1rem;
+		line-height: 1.75rem;
 	}
 	:global(img) {
 		border-radius: 0.25rem;

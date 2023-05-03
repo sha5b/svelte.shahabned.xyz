@@ -2,8 +2,6 @@
 	import Time from 'svelte-time'
 	import { getImageURL } from '$lib/utils/getURL'
 	import { spring } from 'svelte/motion'
-	import FaBitcoin from 'svelte-icons/fa/FaBitcoin.svelte'
-	import FaShoppingCart from 'svelte-icons/fa/FaShoppingCart.svelte'
 	export let scroll
 	export let title
 	export let slug
@@ -102,22 +100,6 @@
 			{:else if type === '3d'}
 				<img src={getImageURL(collectionId, id, thumb, '0x250')} alt={`${title}`} />
 			{/if}
-			<icons>
-				{#if nft}
-					<a href="https://www.instagram.com/shahabned/">
-						<div style="width: 32px; color: white">
-							<FaBitcoin />
-						</div>
-					</a>
-				{/if}
-				<!-- {#if edition}
-					<a href="https://www.instagram.com/shahabned/">
-						<div style="width: 32px; color: white">
-							<FaShoppingCart />
-						</div>
-					</a>
-				{/if} -->
-			</icons>
 		</div>
 	</container>
 </a>
@@ -144,16 +126,6 @@
 		height: 100%;
 		min-height: 500px;
 		border-radius: 0.25rem;
-	}
-	icons {
-		display: flex;
-		gap: 1rem;
-		z-index: 2;
-		position: absolute;
-		bottom: 15px;
-		right: 15px;
-		align-items: baseline;
-		opacity: 0.75;
 	}
 
 	h1 {
@@ -222,6 +194,12 @@
 		}
 		to {
 			transform: translate(calc(-100% - var(--gap)));
+		}
+	}
+
+	@media (max-width: 768px) {
+		video {
+			min-height: 250px;
 		}
 	}
 </style>
