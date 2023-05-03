@@ -10,14 +10,6 @@
 	}
 </script>
 
-{#if isNavbarActive}
-	<button on:click={ActivateNavbar} class="button-closer">
-		<div style="color:black">
-			<FaTimes />
-		</div>
-	</button>
-{/if}
-
 {#if !isNavbarActive}
 	<button on:click={ActivateNavbar} class="button-closer">
 		<div style="color:black">
