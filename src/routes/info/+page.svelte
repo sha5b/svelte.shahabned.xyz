@@ -9,19 +9,8 @@
 <container>
 	<content>
 		<div>
-			<div style="display:flex;justify-content:space-between">
-				<a href="/"><h1>{data.owner.name}</h1></a>
-
-				<icons style="display:flex;gap:2rem">
-					<a target="_blank" href="https://github.com/sha5b/svelte.shahabned.xyz">
-						<FaGithub />
-					</a>
-					<a target="_blank" href="https://www.instagram.com/shahabned/">
-						<FaInstagram />
-					</a>
-				</icons>
-			</div>
-			<p>currently based in berlin</p>
+			<a href="/"><h1>{data.owner.name}</h1></a>
+			<p style="padding-top:1rem">currently based in berlin</p>
 			<h3>statement</h3>
 			<p>{data.owner.statement}</p>
 		</div>
@@ -196,7 +185,7 @@
 
 	@media (max-width: 768px) {
 		content {
-			padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+			padding: 0.5rem 5rem 0.5rem 5rem;
 		}
 		icons {
 			flex-direction: column;
@@ -207,7 +196,7 @@
 	}
 	@media (max-width: 480px) {
 		content {
-			padding: 0.5rem 1rem 0.5rem 1rem;
+			padding: 0.5rem 2rem 0.5rem 2rem;
 		}
 		icons {
 			flex-direction: column;

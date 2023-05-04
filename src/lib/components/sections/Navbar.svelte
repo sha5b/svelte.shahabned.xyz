@@ -32,6 +32,12 @@
 
 			<navigation>
 				<a href="/"><h2>shahab nedaei</h2></a>
+				<div>
+					<a href="mailto:abc@example.com">e-mail</a>
+					<a href="https://t.me/shahabned">telegram</a>
+					<a target="_blank" href="https://www.instagram.com/shahabned/">instagram</a>
+					<a target="_blank" href="https://github.com/sha5b/svelte.shahabned.xyz">source</a>
+				</div>
 			</navigation>
 		</flex>
 	</button>
@@ -56,9 +62,9 @@
 		height: 100%;
 		box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 		z-index: 10;
-		padding: 5rem;
 		padding-top: 7.5rem;
 		padding-right: 2rem;
+		padding-bottom: 2rem;
 		position: fixed;
 		z-index: 9;
 		background-color: rgba(255, 255, 255, 0.75);

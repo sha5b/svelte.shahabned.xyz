@@ -88,7 +88,7 @@
 		align-items: stretch;
 	}
 	content {
-		padding: 2.5rem 10rem 2.5rem 10rem;
+		padding: 2.5rem 15rem 2.5rem 15rem;
 	}
 	img {
 		object-fit: cover;
@@ -129,12 +129,12 @@
 
 	@media (max-width: 768px) {
 		content {
-			padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+			padding: 0.5rem 5rem 0.5rem 5rem;
 		}
 	}
 	@media (max-width: 480px) {
 		content {
-			padding: 0.5rem 1rem 0.5rem 1rem;
+			padding: 0.5rem 2rem 0.5rem 2rem;
 		}
 		flex item {
 			width: 100%;
