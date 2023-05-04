@@ -27,11 +27,11 @@
 			<navigation style="align-items: end;text-align:right">
 				<a href="/works"><h1>all works</h1></a>
 				<a href="/curated"><h1>curated</h1></a>
-				<a href="/info"><h1>info</h1></a>
+				<a href="/"><h1>selected</h1></a>
 			</navigation>
 
 			<navigation>
-				<a href="/"><h2>shahab nedaei</h2></a>
+				<a href="/info"><h2>shahab nedaei</h2></a>
 				<div>
 					<a href="mailto:abc@example.com">e-mail</a>
 					<a href="https://t.me/shahabned">telegram</a>
