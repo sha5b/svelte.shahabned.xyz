@@ -33,7 +33,7 @@
 			<navigation>
 				<a href="/info"><h2>shahab nedaei</h2></a>
 				<div>
-					<a href="mailto:abc@example.com">e-mail</a>
+					<a href="mailto:ned.tabulov@gmail.com">e-mail</a>
 					<a href="https://t.me/shahabned">telegram</a>
 					<a target="_blank" href="https://www.instagram.com/shahabned/">instagram</a>
 					<a target="_blank" href="https://github.com/sha5b/svelte.shahabned.xyz">source</a>
