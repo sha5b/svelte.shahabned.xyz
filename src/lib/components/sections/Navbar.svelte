@@ -25,9 +25,9 @@
 		transition:fly={{ duration: 800, y: 800 }}>
 		<flex>
 			<navigation style="align-items: end;text-align:right">
+				<a href="/"><h1>selected</h1></a>
 				<a href="/works"><h1>all works</h1></a>
 				<a href="/curated"><h1>curated</h1></a>
-				<a href="/"><h1>selected</h1></a>
 			</navigation>
 
 			<navigation>
