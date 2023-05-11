@@ -42,14 +42,16 @@
 					<h2>{work.genre}</h2>
 				</div>
 				{#if work.expand.colab}
-					{#each work.expand.colab as colab}
-						{#if colab.role == 'artist'}
-							<div style="margin-top:auto;">
-								<h4>collaboration</h4>
-								<a target="_blank" href={`${colab.link}`}><h2>{colab.title}</h2></a>
-							</div>
-						{/if}
-					{/each}
+					<h4>collaboration</h4>
+					<flex style="justify-content: flex-start;gap:2rem">
+						{#each work.expand.colab as colab}
+							{#if colab.role == 'artist'}
+								<div style="margin-top:auto;">
+									<a target="_blank" href={`${colab.link}`}><h2>{colab.title}</h2></a>
+								</div>
+							{/if}
+						{/each}
+					</flex>
 				{/if}
 				<div style="display:flex; gap:1rem;align-items: baseline;">
 					<h4>material:</h4>
