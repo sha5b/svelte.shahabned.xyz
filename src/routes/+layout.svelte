@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-	<title>shahab nedaei | digital and intenet art</title>
+	<title>shahab nedaei | digital art</title>
 </svelte:head>
 <Navbar />
 <slot />

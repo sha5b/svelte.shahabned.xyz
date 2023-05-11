@@ -1,16 +1,18 @@
 <script>
 	import Time from 'svelte-time'
-	import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
-	import FaGithub from 'svelte-icons/fa/FaGithub.svelte'
 	import MediaQuery from 'svelte-media-query'
+	import { getImageURL } from '$lib/utils/getURL'
 	export let data
 </script>
 
 <container>
 	<content>
 		<div>
-			<a href="/"><h1>{data.owner.name}</h1></a>
-			<p style="padding-top:1rem">currently based in berlin</p>
+			<div>
+				<a href="/"><h1>{data.owner.name}</h1></a>
+				<p style="padding-top:1rem">currently based in berlin</p>
+			</div>
+
 			<h3>statement</h3>
 			<p>{data.owner.statement}</p>
 		</div>
