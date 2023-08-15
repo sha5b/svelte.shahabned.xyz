@@ -64,7 +64,7 @@
 				<table>
 					<thead>
 						<th><h2>exhibitions</h2></th>
-						<th><h2>curator</h2></th>
+						<th></th>
 					</thead>
 					<tbody>
 						{#each data.exhibtions as exhibition (exhibition.id)}
