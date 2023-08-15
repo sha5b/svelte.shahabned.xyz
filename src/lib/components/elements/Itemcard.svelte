@@ -199,7 +199,10 @@
 
 	@media (max-width: 768px) {
 		video {
-			min-height: 250px;
+			min-height: 150px;
+		}
+		scrolltext {
+			visibility: hidden;
 		}
 	}
 </style>

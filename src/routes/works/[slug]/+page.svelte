@@ -19,6 +19,7 @@
 					on:mouseenter={() => (work.play = false)}
 					on:mouseleave={() => (work.play = true)}
 					bind:paused={work.play}
+					muted
 					autoplay
 					loop
 					src={getImageURL(work.collectionId, work.id, work.file)}

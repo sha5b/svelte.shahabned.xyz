@@ -11,7 +11,7 @@
 <MediaQuery query="(min-width: 768px)" let:matches>
 	{#if matches}
 		<div>
-			<Flexgrid arr={data.works} columns={3} {scroll} />
+			<Flexgrid arr={data.works} columns={4} {scroll} />
 		</div>
 	{/if}
 </MediaQuery>
@@ -25,7 +25,7 @@
 <MediaQuery query="(max-width: 480px)" let:matches>
 	{#if matches}
 		<div>
-			<Flexgrid arr={data.works} columns={2} {scroll} />
+			<Flexgrid arr={data.works} columns={3} {scroll} />
 		</div>
 	{/if}
 </MediaQuery>

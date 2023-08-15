@@ -25,7 +25,7 @@
 <MediaQuery query="(min-width: 768px)" let:matches>
 	{#if matches}
 		<div on:mousemove={handleMousemove}>
-			<Flexgrid arr={data.works} columns={2} {scroll} />
+			<Flexgrid arr={data.works} columns={3} {scroll} />
 		</div>
 	{/if}
 </MediaQuery>
@@ -33,7 +33,7 @@
 <MediaQuery query="(max-width: 768px)" let:matches>
 	{#if matches}
 		<div on:mousemove={handleMousemove}>
-			<Flexgrid arr={data.works} columns={1} {scroll} />
+			<Flexgrid arr={data.works} columns={2} {scroll} />
 		</div>
 	{/if}
 </MediaQuery>
