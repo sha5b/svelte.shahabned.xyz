@@ -4,7 +4,6 @@
 	import { getImageURL } from '$lib/utils/getURL'
 	import MediaQuery from 'svelte-media-query'
 	export let data
-	import { Lightbox } from 'svelte-lightbox'
 
 	// mouse position setup - needs to be a component - i don't know how
 </script>
@@ -85,13 +84,9 @@
 							src={getImageURL(work.collectionId, work.id, work.file)}
 							alt={`${work.title}`}><track kind="captions" /></video>
 					{:else if work.type === 'image'}
-						<Lightbox enableEscapeToClose={true} enableClickToClose={true} showCloseButton={false}>
 							<img src={getImageURL(work.collectionId, work.id, work.file)} alt={`${work.title}`} />
-						</Lightbox>
 					{:else if work.type === '3d'}
-						<Lightbox enableEscapeToClose={true} enableClickToClose={true} showCloseButton={false}>
 							<img src={getImageURL(work.collectionId, work.id, work.file)} alt={`${work.title}`} />
-						</Lightbox>
 					{/if}
 				</div>
 				<MediaQuery query="(min-width: 1024px)" let:matches>
@@ -158,12 +153,7 @@
 				<flex>
 					{#each work.gallery as image}
 						<item>
-							<Lightbox
-								enableEscapeToClose={true}
-								enableClickToClose={true}
-								showCloseButton={false}>
 								<img src={getImageURL(work.collectionId, work.id, image)} alt={`${work.title}`} />
-							</Lightbox>
 						</item>
 					{/each}
 				</flex>

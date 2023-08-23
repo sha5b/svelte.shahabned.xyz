@@ -2,7 +2,6 @@
 	import Time from 'svelte-time'
 	import { page } from '$app/stores'
 	import { getImageURL } from '$lib/utils/getURL'
-	import { Lightbox } from 'svelte-lightbox'
 	export let data
 	// mouse position setup - needs to be a component - i don't know how
 </script>
@@ -48,14 +47,9 @@
 				<flex>
 					{#each curated.gallery as image}
 						<item>
-							<Lightbox
-								enableEscapeToClose={true}
-								enableClickToClose={true}
-								showCloseButton={false}>
 								<img
 									src={getImageURL(curated.collectionId, curated.id, image)}
 									alt={`${curated.title}`} />
-							</Lightbox>
 						</item>
 					{/each}
 				</flex>
