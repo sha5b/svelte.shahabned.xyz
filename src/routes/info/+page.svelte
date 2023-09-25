@@ -10,7 +10,7 @@
 		<div>
 			<div>
 				<a href="/"><h1>{data.owner.name}</h1></a>
-				<p style="padding-top:1rem">currently based in berlin</p>
+				<p style="padding-top:1rem">currently based in Austria</p>
 			</div>
 
 			<h3>statement</h3>
